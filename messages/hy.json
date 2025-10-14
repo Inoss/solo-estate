@@ -1,128 +1,128 @@
 {
   "common": {
-    "home": "Home",
-    "projects": "Projects",
-    "about": "About",
-    "services": "Services",
-    "insights": "Insights",
-    "contact": "Contact",
-    "faq": "FAQ",
-    "language": "Language",
-    "requestOffer": "Request Offer",
-    "learnMore": "Learn More",
-    "viewAll": "View All",
-    "search": "Search",
-    "filter": "Filter",
-    "sort": "Sort by",
-    "currency": "Currency"
+    "home": "Գլխավոր",
+    "projects": "Նախագծեր",
+    "about": "Մեր մասին",
+    "services": "Ծառայություններ",
+    "insights": "Վերլուծություն",
+    "contact": "Կապ",
+    "faq": "Հաճախ տրվող հարցեր",
+    "language": "Լեզու",
+    "requestOffer": "Պահանջել առաջարկ",
+    "learnMore": "Իմանալ ավելին",
+    "viewAll": "Դիտել բոլորը",
+    "search": "Որոնում",
+    "filter": "Ֆիլտր",
+    "sort": "Դասավորել",
+    "currency": "Արժույթ"
   },
   "home": {
     "hero": {
-      "title": "Investment Real Estate in Georgia",
-      "subtitle": "Verified projects with transparent metrics and guaranteed returns",
-      "cta": "Explore Projects"
+      "title": "Ներդրումային անշարժ գույք Վրաստանում",
+      "subtitle": "Ստուգված նախագծեր թափանցիկ ցուցանիշներով և երաշխավորված եկամուտով",
+      "cta": "Ուսումնասիրել նախագծերը"
     },
     "featured": {
-      "title": "Featured Projects",
-      "subtitle": "Handpicked investment opportunities"
+      "title": "Առաջարկվող նախագծեր",
+      "subtitle": "Ընտրված ներդրումային հնարավորություններ"
     },
     "howItWorks": {
-      "title": "How It Works",
+      "title": "Ինչպես է աշխատում",
       "step1": {
-        "title": "Consultation",
-        "description": "Discuss your investment goals with our experts"
+        "title": "Խորհրդատվություն",
+        "description": "Քննարկեք ձեր ներդրումային նպատակները մեր փորձագետների հետ"
       },
       "step2": {
-        "title": "Project Selection",
-        "description": "Browse verified projects matching your criteria"
+        "title": "Նախագծի ընտրություն",
+        "description": "Ուսումնասիրեք ստուգված նախագծերը, որոնք համապատասխանում են ձեր չափանիշներին"
       },
       "step3": {
-        "title": "Due Diligence",
-        "description": "Complete legal and financial verification"
+        "title": "Համապարփակ ստուգում",
+        "description": "Ամբողջական իրավական և ֆինանսական ստուգում"
       },
       "step4": {
-        "title": "Investment & Management",
-        "description": "Secure your investment with professional property management"
+        "title": "Ներդրում և կառավարում",
+        "description": "Ապահովեք ձեր ներդրումը պրոֆեսիոնալ գույքի կառավարմամբ"
       }
     },
     "trustBadges": {
-      "licensed": "Licensed Real Estate Agency",
-      "verified": "All Projects Verified",
-      "support": "24/7 Support",
-      "transparent": "Transparent Metrics"
+      "licensed": "Լիցենզավորված անշարժ գույքի գործակալություն",
+      "verified": "Բոլոր նախագծերը ստուգված են",
+      "support": "24/7 աջակցություն",
+      "transparent": "Թափանցիկ ցուցանիշներ"
     }
   },
   "projects": {
-    "title": "Investment Projects",
+    "title": "Ներդրումային նախագծեր",
     "filters": {
-      "location": "Location",
-      "propertyType": "Property Type",
-      "status": "Status",
-      "priceRange": "Price Range",
-      "yieldRange": "Projected Yield"
+      "location": "Տեղակայություն",
+      "propertyType": "Գույքի տեսակ",
+      "status": "Կարգավիճակ",
+      "priceRange": "Գնային միջակայք",
+      "yieldRange": "Կանխատեսվող եկամուտ"
     },
     "propertyTypes": {
-      "apartment": "Apartment",
-      "aparthotel": "Aparthotel",
-      "commercial": "Commercial",
-      "villa": "Villa"
+      "apartment": "Բնակարան",
+      "aparthotel": "Ապարտ-հյուրանոց",
+      "commercial": "Առևտրային",
+      "villa": "Վիլլա"
     },
     "statuses": {
-      "offPlan": "Off-Plan",
-      "underConstruction": "Under Construction",
-      "ready": "Ready"
+      "offPlan": "Նախագծային փուլում",
+      "underConstruction": "Շինարարության ընթացքում",
+      "ready": "Պատրաստ"
     },
     "sortOptions": {
-      "priceAsc": "Price: Low to High",
-      "priceDesc": "Price: High to Low",
-      "yieldDesc": "Yield: High to Low",
-      "deliveryAsc": "Delivery: Earliest"
+      "priceAsc": "Գին: Ցածրից բարձր",
+      "priceDesc": "Գին: Բարձրից ցածր",
+      "yieldDesc": "Եկամուտ: Բարձրից ցածր",
+      "deliveryAsc": "Հանձնում: Ամենամոտ"
     },
     "metrics": {
-      "price": "Price",
-      "pricePerSqm": "Price per m²",
-      "yield": "Projected Yield",
-      "capRate": "Cap Rate",
-      "irr": "IRR",
-      "delivery": "Delivery",
-      "area": "Area"
+      "price": "Գին",
+      "pricePerSqm": "Գին մ²-ի համար",
+      "yield": "Կանխատեսվող եկամուտ",
+      "capRate": "Կապիտալիզացիայի գործակից",
+      "irr": "Ներքին եկամտաբերություն",
+      "delivery": "Հանձնում",
+      "area": "Մակերես"
     }
   },
   "projectDetail": {
-    "overview": "Overview",
-    "highlights": "Highlights",
-    "investmentMetrics": "Investment Metrics",
-    "location": "Location",
-    "floorPlans": "Floor Plans",
-    "developer": "Developer",
-    "documents": "Documents",
-    "faq": "Frequently Asked Questions",
-    "downloadBrochure": "Download Brochure",
-    "monthlyRent": "Est. Monthly Rent",
-    "occupancy": "Occupancy Assumption",
-    "managementFee": "Management Fee"
+    "overview": "Ընդհանուր ակնարկ",
+    "highlights": "Հիմնական կետեր",
+    "investmentMetrics": "Ներդրումային ցուցանիշներ",
+    "location": "Տեղակայություն",
+    "floorPlans": "Հարկերի պլաններ",
+    "developer": "Կառուցապատող",
+    "documents": "Փաստաթղթեր",
+    "faq": "Հաճախ տրվող հարցեր",
+    "downloadBrochure": "Ներբեռնել բրոշուրը",
+    "monthlyRent": "Ենթադրյալ ամսական վարձ",
+    "occupancy": "Զբաղվածության ենթադրություն",
+    "managementFee": "Կառավարման վարձատրություն"
   },
   "requestForm": {
-    "title": "Request Investment Offer",
-    "name": "Full Name",
-    "email": "Email",
-    "phone": "Phone / WhatsApp",
-    "country": "Country",
-    "budget": "Investment Budget",
-    "preferredCity": "Preferred City",
-    "propertyType": "Property Type",
-    "message": "Message (optional)",
-    "consent": "I agree to the processing of my personal data",
-    "submit": "Submit Request",
-    "success": "Thank you! We'll contact you shortly.",
-    "error": "Something went wrong. Please try again."
+    "title": "Պահանջել ներդրումային առաջարկ",
+    "name": "Անուն ազգանուն",
+    "email": "Էլ. փոստ",
+    "phone": "Հեռախոս / WhatsApp",
+    "country": "Երկիր",
+    "budget": "Ներդրումային բյուջե",
+    "preferredCity": "Նախընտրելի քաղաք",
+    "propertyType": "Գույքի տեսակ",
+    "message": "Հաղորդագրություն (ըստ ցանկության)",
+    "consent": "Համաձայն եմ իմ անձնական տվյալների մշակմանը",
+    "submit": "Ուղարկել հարցումը",
+    "success": "Շնորհակալություն! Մենք շուտով կապ կհաստատենք ձեզ հետ:",
+    "error": "Ինչ-որ բան սխալ է: Խնդրում ենք կրկին փորձել:"
   },
   "footer": {
-    "company": "Company",
-    "legal": "Legal",
-    "followUs": "Follow Us",
-    "copyright": "© {year} SOLO Estate. All rights reserved.",
-    "terms": "Terms of Service",
-    "privacy": "Privacy Policy"
+    "company": "Ընկերություն",
+    "legal": "Իրավական",
+    "followUs": "Հետևեք մեզ",
+    "copyright": "© {year} SOLO Estate. Բոլոր իրավունքները պաշտպանված են:",
+    "terms": "Ծառայությունների պայմաններ",
+    "privacy": "Գաղտնիության քաղաքականություն"
   }
 }

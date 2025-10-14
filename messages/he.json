@@ -1,128 +1,128 @@
 {
   "common": {
-    "home": "Home",
-    "projects": "Projects",
-    "about": "About",
-    "services": "Services",
-    "insights": "Insights",
-    "contact": "Contact",
-    "faq": "FAQ",
-    "language": "Language",
-    "requestOffer": "Request Offer",
-    "learnMore": "Learn More",
-    "viewAll": "View All",
-    "search": "Search",
-    "filter": "Filter",
-    "sort": "Sort by",
-    "currency": "Currency"
+    "home": "בית",
+    "projects": "פרויקטים",
+    "about": "אודות",
+    "services": "שירותים",
+    "insights": "תובנות",
+    "contact": "צור קשר",
+    "faq": "שאלות נפוצות",
+    "language": "שפה",
+    "requestOffer": "בקש הצעה",
+    "learnMore": "למד עוד",
+    "viewAll": "צפה בהכל",
+    "search": "חיפוש",
+    "filter": "סינון",
+    "sort": "מיון לפי",
+    "currency": "מטבע"
   },
   "home": {
     "hero": {
-      "title": "Investment Real Estate in Georgia",
-      "subtitle": "Verified projects with transparent metrics and guaranteed returns",
-      "cta": "Explore Projects"
+      "title": "נדל\"ן להשקעה בגאורגיה",
+      "subtitle": "פרויקטים מאומתים עם מדדים שקופים ותשואות מובטחות",
+      "cta": "גלה פרויקטים"
     },
     "featured": {
-      "title": "Featured Projects",
-      "subtitle": "Handpicked investment opportunities"
+      "title": "פרויקטים מומלצים",
+      "subtitle": "הזדמנויות השקעה נבחרות"
     },
     "howItWorks": {
-      "title": "How It Works",
+      "title": "איך זה עובד",
       "step1": {
-        "title": "Consultation",
-        "description": "Discuss your investment goals with our experts"
+        "title": "ייעוץ",
+        "description": "דון במטרות ההשקעה שלך עם המומחים שלנו"
       },
       "step2": {
-        "title": "Project Selection",
-        "description": "Browse verified projects matching your criteria"
+        "title": "בחירת פרויקט",
+        "description": "עיין בפרויקטים מאומתים התואמים את הקריטריונים שלך"
       },
       "step3": {
-        "title": "Due Diligence",
-        "description": "Complete legal and financial verification"
+        "title": "בדיקת נאותות",
+        "description": "אימות משפטי ופינסי מלא"
       },
       "step4": {
-        "title": "Investment & Management",
-        "description": "Secure your investment with professional property management"
+        "title": "השקעה וניהול",
+        "description": "אבטח את ההשקעה שלך עם ניהול נכסים מקצועי"
       }
     },
     "trustBadges": {
-      "licensed": "Licensed Real Estate Agency",
-      "verified": "All Projects Verified",
-      "support": "24/7 Support",
-      "transparent": "Transparent Metrics"
+      "licensed": "סוכנות נדל\"ן מורשית",
+      "verified": "כל הפרויקטים מאומתים",
+      "support": "תמיכה 24/7",
+      "transparent": "מדדים שקופים"
     }
   },
   "projects": {
-    "title": "Investment Projects",
+    "title": "פרויקטי השקעה",
     "filters": {
-      "location": "Location",
-      "propertyType": "Property Type",
-      "status": "Status",
-      "priceRange": "Price Range",
-      "yieldRange": "Projected Yield"
+      "location": "מיקום",
+      "propertyType": "סוג נכס",
+      "status": "סטטוס",
+      "priceRange": "טווח מחירים",
+      "yieldRange": "תשואה צפויה"
     },
     "propertyTypes": {
-      "apartment": "Apartment",
-      "aparthotel": "Aparthotel",
-      "commercial": "Commercial",
-      "villa": "Villa"
+      "apartment": "דירה",
+      "aparthotel": "דירת נופש",
+      "commercial": "מסחרי",
+      "villa": "וילה"
     },
     "statuses": {
-      "offPlan": "Off-Plan",
-      "underConstruction": "Under Construction",
-      "ready": "Ready"
+      "offPlan": "על הנייר",
+      "underConstruction": "בבניה",
+      "ready": "מוכן"
     },
     "sortOptions": {
-      "priceAsc": "Price: Low to High",
-      "priceDesc": "Price: High to Low",
-      "yieldDesc": "Yield: High to Low",
-      "deliveryAsc": "Delivery: Earliest"
+      "priceAsc": "מחיר: מנמוך לגבוה",
+      "priceDesc": "מחיר: מגבוה לנמוך",
+      "yieldDesc": "תשואה: מגבוה לנמוך",
+      "deliveryAsc": "מסירה: הקרובה ביותר"
     },
     "metrics": {
-      "price": "Price",
-      "pricePerSqm": "Price per m²",
-      "yield": "Projected Yield",
-      "capRate": "Cap Rate",
-      "irr": "IRR",
-      "delivery": "Delivery",
-      "area": "Area"
+      "price": "מחיר",
+      "pricePerSqm": "מחיר למ\"ר",
+      "yield": "תשואה צפויה",
+      "capRate": "שיעור היוון",
+      "irr": "תשואה פנימית",
+      "delivery": "מסירה",
+      "area": "שטח"
     }
   },
   "projectDetail": {
-    "overview": "Overview",
-    "highlights": "Highlights",
-    "investmentMetrics": "Investment Metrics",
-    "location": "Location",
-    "floorPlans": "Floor Plans",
-    "developer": "Developer",
-    "documents": "Documents",
-    "faq": "Frequently Asked Questions",
-    "downloadBrochure": "Download Brochure",
-    "monthlyRent": "Est. Monthly Rent",
-    "occupancy": "Occupancy Assumption",
-    "managementFee": "Management Fee"
+    "overview": "סקירה",
+    "highlights": "עיקרי הדברים",
+    "investmentMetrics": "מדדי השקעה",
+    "location": "מיקום",
+    "floorPlans": "תוכניות קומות",
+    "developer": "יזם",
+    "documents": "מסמכים",
+    "faq": "שאלות נפוצות",
+    "downloadBrochure": "הורד חוברת",
+    "monthlyRent": "שכר דירה חודשי משוער",
+    "occupancy": "הנחת תפוסה",
+    "managementFee": "דמי ניהול"
   },
   "requestForm": {
-    "title": "Request Investment Offer",
-    "name": "Full Name",
-    "email": "Email",
-    "phone": "Phone / WhatsApp",
-    "country": "Country",
-    "budget": "Investment Budget",
-    "preferredCity": "Preferred City",
-    "propertyType": "Property Type",
-    "message": "Message (optional)",
-    "consent": "I agree to the processing of my personal data",
-    "submit": "Submit Request",
-    "success": "Thank you! We'll contact you shortly.",
-    "error": "Something went wrong. Please try again."
+    "title": "בקש הצעת השקעה",
+    "name": "שם מלא",
+    "email": "דוא\"ל",
+    "phone": "טלפון / WhatsApp",
+    "country": "מדינה",
+    "budget": "תקציב השקעה",
+    "preferredCity": "עיר מועדפת",
+    "propertyType": "סוג נכס",
+    "message": "הודעה (אופציונלי)",
+    "consent": "אני מסכים לעיבוד הנתונים האישיים שלי",
+    "submit": "שלח בקשה",
+    "success": "תודה! ניצור איתך קשר בקרוב.",
+    "error": "משהו השתבש. אנא נסה שנית."
   },
   "footer": {
-    "company": "Company",
-    "legal": "Legal",
-    "followUs": "Follow Us",
-    "copyright": "© {year} SOLO Estate. All rights reserved.",
-    "terms": "Terms of Service",
-    "privacy": "Privacy Policy"
+    "company": "החברה",
+    "legal": "משפטי",
+    "followUs": "עקוב אחרינו",
+    "copyright": "© {year} SOLO Estate. כל הזכויות שמורות.",
+    "terms": "תנאי שימוש",
+    "privacy": "מדיניות פרטיות"
   }
 }

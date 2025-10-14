@@ -1,128 +1,128 @@
 {
   "common": {
-    "home": "Home",
-    "projects": "Projects",
-    "about": "About",
-    "services": "Services",
-    "insights": "Insights",
-    "contact": "Contact",
-    "faq": "FAQ",
-    "language": "Language",
-    "requestOffer": "Request Offer",
-    "learnMore": "Learn More",
-    "viewAll": "View All",
-    "search": "Search",
-    "filter": "Filter",
-    "sort": "Sort by",
-    "currency": "Currency"
+    "home": "Головна",
+    "projects": "Проекти",
+    "about": "Про нас",
+    "services": "Послуги",
+    "insights": "Аналітика",
+    "contact": "Контакти",
+    "faq": "Часті питання",
+    "language": "Мова",
+    "requestOffer": "Запросити пропозицію",
+    "learnMore": "Дізнатися більше",
+    "viewAll": "Переглянути все",
+    "search": "Пошук",
+    "filter": "Фільтр",
+    "sort": "Сортувати",
+    "currency": "Валюта"
   },
   "home": {
     "hero": {
-      "title": "Investment Real Estate in Georgia",
-      "subtitle": "Verified projects with transparent metrics and guaranteed returns",
-      "cta": "Explore Projects"
+      "title": "Інвестиційна нерухомість у Грузії",
+      "subtitle": "Перевірені проекти з прозорими показниками та гарантованою прибутковістю",
+      "cta": "Переглянути проекти"
     },
     "featured": {
-      "title": "Featured Projects",
-      "subtitle": "Handpicked investment opportunities"
+      "title": "Обрані проекти",
+      "subtitle": "Найкращі інвестиційні можливості"
     },
     "howItWorks": {
-      "title": "How It Works",
+      "title": "Як це працює",
       "step1": {
-        "title": "Consultation",
-        "description": "Discuss your investment goals with our experts"
+        "title": "Консультація",
+        "description": "Обговоріть ваші інвестиційні цілі з нашими експертами"
       },
       "step2": {
-        "title": "Project Selection",
-        "description": "Browse verified projects matching your criteria"
+        "title": "Вибір проекту",
+        "description": "Перегляньте перевірені проекти, що відповідають вашим критеріям"
       },
       "step3": {
-        "title": "Due Diligence",
-        "description": "Complete legal and financial verification"
+        "title": "Комплексна перевірка",
+        "description": "Повна юридична та фінансова верифікація"
       },
       "step4": {
-        "title": "Investment & Management",
-        "description": "Secure your investment with professional property management"
+        "title": "Інвестиція та управління",
+        "description": "Захистіть вашу інвестицію професійним управлінням нерухомістю"
       }
     },
     "trustBadges": {
-      "licensed": "Licensed Real Estate Agency",
-      "verified": "All Projects Verified",
-      "support": "24/7 Support",
-      "transparent": "Transparent Metrics"
+      "licensed": "Ліцензована агенція нерухомості",
+      "verified": "Усі проекти перевірені",
+      "support": "Підтримка 24/7",
+      "transparent": "Прозорі показники"
     }
   },
   "projects": {
-    "title": "Investment Projects",
+    "title": "Інвестиційні проекти",
     "filters": {
-      "location": "Location",
-      "propertyType": "Property Type",
-      "status": "Status",
-      "priceRange": "Price Range",
-      "yieldRange": "Projected Yield"
+      "location": "Локація",
+      "propertyType": "Тип нерухомості",
+      "status": "Статус",
+      "priceRange": "Діапазон цін",
+      "yieldRange": "Прогнозована прибутковість"
     },
     "propertyTypes": {
-      "apartment": "Apartment",
-      "aparthotel": "Aparthotel",
-      "commercial": "Commercial",
-      "villa": "Villa"
+      "apartment": "Квартира",
+      "aparthotel": "Апарт-готель",
+      "commercial": "Комерційна",
+      "villa": "Вілла"
     },
     "statuses": {
-      "offPlan": "Off-Plan",
-      "underConstruction": "Under Construction",
-      "ready": "Ready"
+      "offPlan": "На стадії проекту",
+      "underConstruction": "Будується",
+      "ready": "Готовий"
     },
     "sortOptions": {
-      "priceAsc": "Price: Low to High",
-      "priceDesc": "Price: High to Low",
-      "yieldDesc": "Yield: High to Low",
-      "deliveryAsc": "Delivery: Earliest"
+      "priceAsc": "Ціна: за зростанням",
+      "priceDesc": "Ціна: за спаданням",
+      "yieldDesc": "Прибутковість: за спаданням",
+      "deliveryAsc": "Здача: найближчі"
     },
     "metrics": {
-      "price": "Price",
-      "pricePerSqm": "Price per m²",
-      "yield": "Projected Yield",
-      "capRate": "Cap Rate",
-      "irr": "IRR",
-      "delivery": "Delivery",
-      "area": "Area"
+      "price": "Ціна",
+      "pricePerSqm": "Ціна за м²",
+      "yield": "Прогнозована прибутковість",
+      "capRate": "Ставка капіталізації",
+      "irr": "Внутрішня норма прибутковості",
+      "delivery": "Здача",
+      "area": "Площа"
     }
   },
   "projectDetail": {
-    "overview": "Overview",
-    "highlights": "Highlights",
-    "investmentMetrics": "Investment Metrics",
-    "location": "Location",
-    "floorPlans": "Floor Plans",
-    "developer": "Developer",
-    "documents": "Documents",
-    "faq": "Frequently Asked Questions",
-    "downloadBrochure": "Download Brochure",
-    "monthlyRent": "Est. Monthly Rent",
-    "occupancy": "Occupancy Assumption",
-    "managementFee": "Management Fee"
+    "overview": "Огляд",
+    "highlights": "Основні моменти",
+    "investmentMetrics": "Інвестиційні показники",
+    "location": "Локація",
+    "floorPlans": "Планування",
+    "developer": "Забудовник",
+    "documents": "Документи",
+    "faq": "Часті питання",
+    "downloadBrochure": "Завантажити брошуру",
+    "monthlyRent": "Очік. місячна орендна плата",
+    "occupancy": "Передбачувана заповнюваність",
+    "managementFee": "Плата за управління"
   },
   "requestForm": {
-    "title": "Request Investment Offer",
-    "name": "Full Name",
-    "email": "Email",
-    "phone": "Phone / WhatsApp",
-    "country": "Country",
-    "budget": "Investment Budget",
-    "preferredCity": "Preferred City",
-    "propertyType": "Property Type",
-    "message": "Message (optional)",
-    "consent": "I agree to the processing of my personal data",
-    "submit": "Submit Request",
-    "success": "Thank you! We'll contact you shortly.",
-    "error": "Something went wrong. Please try again."
+    "title": "Запросити інвестиційну пропозицію",
+    "name": "Повне ім'я",
+    "email": "Електронна пошта",
+    "phone": "Телефон / WhatsApp",
+    "country": "Країна",
+    "budget": "Інвестиційний бюджет",
+    "preferredCity": "Бажане місто",
+    "propertyType": "Тип нерухомості",
+    "message": "Повідомлення (необов'язково)",
+    "consent": "Я погоджуюсь на обробку моїх персональних даних",
+    "submit": "Надіслати запит",
+    "success": "Дякуємо! Ми зв'яжемося з вами найближчим часом.",
+    "error": "Щось пішло не так. Будь ласка, спробуйте ще раз."
   },
   "footer": {
-    "company": "Company",
-    "legal": "Legal",
-    "followUs": "Follow Us",
-    "copyright": "© {year} SOLO Estate. All rights reserved.",
-    "terms": "Terms of Service",
-    "privacy": "Privacy Policy"
+    "company": "Компанія",
+    "legal": "Юридична інформація",
+    "followUs": "Підписуйтесь",
+    "copyright": "© {year} SOLO Estate. Усі права захищені.",
+    "terms": "Умови використання",
+    "privacy": "Політика конфіденційності"
   }
 }

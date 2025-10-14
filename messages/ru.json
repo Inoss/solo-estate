@@ -27,102 +27,102 @@
       "subtitle": "Лучшие инвестиционные возможности"
     },
     "howItWorks": {
-      "title": "How It Works",
+      "title": "Как это работает",
       "step1": {
-        "title": "Consultation",
-        "description": "Discuss your investment goals with our experts"
+        "title": "Консультация",
+        "description": "Обсудите ваши инвестиционные цели с нашими экспертами"
       },
       "step2": {
-        "title": "Project Selection",
-        "description": "Browse verified projects matching your criteria"
+        "title": "Выбор проекта",
+        "description": "Изучите проверенные проекты, соответствующие вашим критериям"
       },
       "step3": {
-        "title": "Due Diligence",
-        "description": "Complete legal and financial verification"
+        "title": "Комплексная проверка",
+        "description": "Полная юридическая и финансовая верификация"
       },
       "step4": {
-        "title": "Investment & Management",
-        "description": "Secure your investment with professional property management"
+        "title": "Инвестиция и управление",
+        "description": "Защитите свою инвестицию профессиональным управлением недвижимостью"
       }
     },
     "trustBadges": {
-      "licensed": "Licensed Real Estate Agency",
-      "verified": "All Projects Verified",
-      "support": "24/7 Support",
-      "transparent": "Transparent Metrics"
+      "licensed": "Лицензированное агентство недвижимости",
+      "verified": "Все проекты проверены",
+      "support": "Поддержка 24/7",
+      "transparent": "Прозрачные показатели"
     }
   },
   "projects": {
-    "title": "Investment Projects",
+    "title": "Инвестиционные проекты",
     "filters": {
-      "location": "Location",
-      "propertyType": "Property Type",
-      "status": "Status",
-      "priceRange": "Price Range",
-      "yieldRange": "Projected Yield"
+      "location": "Локация",
+      "propertyType": "Тип недвижимости",
+      "status": "Статус",
+      "priceRange": "Диапазон цен",
+      "yieldRange": "Прогнозируемая доходность"
     },
     "propertyTypes": {
-      "apartment": "Apartment",
-      "aparthotel": "Aparthotel",
-      "commercial": "Commercial",
-      "villa": "Villa"
+      "apartment": "Квартира",
+      "aparthotel": "Апартотель",
+      "commercial": "Коммерческая",
+      "villa": "Вилла"
     },
     "statuses": {
-      "offPlan": "Off-Plan",
-      "underConstruction": "Under Construction",
-      "ready": "Ready"
+      "offPlan": "На стадии проекта",
+      "underConstruction": "Строится",
+      "ready": "Готов"
     },
     "sortOptions": {
-      "priceAsc": "Price: Low to High",
-      "priceDesc": "Price: High to Low",
-      "yieldDesc": "Yield: High to Low",
-      "deliveryAsc": "Delivery: Earliest"
+      "priceAsc": "Цена: по возрастанию",
+      "priceDesc": "Цена: по убыванию",
+      "yieldDesc": "Доходность: по убыванию",
+      "deliveryAsc": "Сдача: ближайшие"
     },
     "metrics": {
-      "price": "Price",
-      "pricePerSqm": "Price per m²",
-      "yield": "Projected Yield",
-      "capRate": "Cap Rate",
+      "price": "Цена",
+      "pricePerSqm": "Цена за м²",
+      "yield": "Прогнозируемая доходность",
+      "capRate": "Ставка капитализации",
       "irr": "IRR",
-      "delivery": "Delivery",
-      "area": "Area"
+      "delivery": "Сдача",
+      "area": "Площадь"
     }
   },
   "projectDetail": {
-    "overview": "Overview",
-    "highlights": "Highlights",
-    "investmentMetrics": "Investment Metrics",
-    "location": "Location",
-    "floorPlans": "Floor Plans",
-    "developer": "Developer",
-    "documents": "Documents",
-    "faq": "Frequently Asked Questions",
-    "downloadBrochure": "Download Brochure",
-    "monthlyRent": "Est. Monthly Rent",
-    "occupancy": "Occupancy Assumption",
-    "managementFee": "Management Fee"
+    "overview": "Обзор",
+    "highlights": "Основные моменты",
+    "investmentMetrics": "Инвестиционные показатели",
+    "location": "Локация",
+    "floorPlans": "Планировки",
+    "developer": "Застройщик",
+    "documents": "Документы",
+    "faq": "Часто задаваемые вопросы",
+    "downloadBrochure": "Скачать брошюру",
+    "monthlyRent": "Ожид. месячная арендная плата",
+    "occupancy": "Предполагаемая заполняемость",
+    "managementFee": "Плата за управление"
   },
   "requestForm": {
-    "title": "Request Investment Offer",
-    "name": "Full Name",
-    "email": "Email",
-    "phone": "Phone / WhatsApp",
-    "country": "Country",
-    "budget": "Investment Budget",
-    "preferredCity": "Preferred City",
-    "propertyType": "Property Type",
-    "message": "Message (optional)",
-    "consent": "I agree to the processing of my personal data",
-    "submit": "Submit Request",
-    "success": "Thank you! We'll contact you shortly.",
-    "error": "Something went wrong. Please try again."
+    "title": "Запросить инвестиционное предложение",
+    "name": "Полное имя",
+    "email": "Электронная почта",
+    "phone": "Телефон / WhatsApp",
+    "country": "Страна",
+    "budget": "Инвестиционный бюджет",
+    "preferredCity": "Предпочитаемый город",
+    "propertyType": "Тип недвижимости",
+    "message": "Сообщение (необязательно)",
+    "consent": "Я согласен на обработку моих персональных данных",
+    "submit": "Отправить запрос",
+    "success": "Спасибо! Мы свяжемся с вами в ближайшее время.",
+    "error": "Что-то пошло не так. Пожалуйста, попробуйте еще раз."
   },
   "footer": {
-    "company": "Company",
-    "legal": "Legal",
-    "followUs": "Follow Us",
-    "copyright": "© {year} SOLO Estate. All rights reserved.",
-    "terms": "Terms of Service",
-    "privacy": "Privacy Policy"
+    "company": "Компания",
+    "legal": "Юридическая информация",
+    "followUs": "Подписывайтесь",
+    "copyright": "© {year} SOLO Estate. Все права защищены.",
+    "terms": "Условия использования",
+    "privacy": "Политика конфиденциальности"
   }
 }

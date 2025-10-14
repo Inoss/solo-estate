@@ -1,128 +1,128 @@
 {
   "common": {
-    "home": "Home",
-    "projects": "Projects",
-    "about": "About",
-    "services": "Services",
-    "insights": "Insights",
-    "contact": "Contact",
-    "faq": "FAQ",
-    "language": "Language",
-    "requestOffer": "Request Offer",
-    "learnMore": "Learn More",
-    "viewAll": "View All",
-    "search": "Search",
-    "filter": "Filter",
-    "sort": "Sort by",
-    "currency": "Currency"
+    "home": "Ana səhifə",
+    "projects": "Layihələr",
+    "about": "Haqqımızda",
+    "services": "Xidmətlər",
+    "insights": "Məlumatlar",
+    "contact": "Əlaqə",
+    "faq": "Tez-tez verilən suallar",
+    "language": "Dil",
+    "requestOffer": "Təklif istəyin",
+    "learnMore": "Ətraflı öyrən",
+    "viewAll": "Hamısına bax",
+    "search": "Axtar",
+    "filter": "Filtr",
+    "sort": "Sırala",
+    "currency": "Valyuta"
   },
   "home": {
     "hero": {
-      "title": "Investment Real Estate in Georgia",
-      "subtitle": "Verified projects with transparent metrics and guaranteed returns",
-      "cta": "Explore Projects"
+      "title": "Gürcüstanda İnvestisiya Daşınmaz Əmlakı",
+      "subtitle": "Şəffaf göstəriciləri və zəmanətli gəliri olan yoxlanılmış layihələr",
+      "cta": "Layihələri kəşf et"
     },
     "featured": {
-      "title": "Featured Projects",
-      "subtitle": "Handpicked investment opportunities"
+      "title": "Seçilmiş layihələr",
+      "subtitle": "Əl ilə seçilmiş investisiya imkanları"
     },
     "howItWorks": {
-      "title": "How It Works",
+      "title": "Necə işləyir",
       "step1": {
-        "title": "Consultation",
-        "description": "Discuss your investment goals with our experts"
+        "title": "Məsləhət",
+        "description": "İnvestisiya məqsədlərinizi mütəxəssislərimizlə müzakirə edin"
       },
       "step2": {
-        "title": "Project Selection",
-        "description": "Browse verified projects matching your criteria"
+        "title": "Layihə seçimi",
+        "description": "Meyarlarınıza uyğun yoxlanılmış layihələrə baxın"
       },
       "step3": {
-        "title": "Due Diligence",
-        "description": "Complete legal and financial verification"
+        "title": "Ətraflı yoxlama",
+        "description": "Tam hüquqi və maliyyə yoxlaması"
       },
       "step4": {
-        "title": "Investment & Management",
-        "description": "Secure your investment with professional property management"
+        "title": "İnvestisiya və idarəetmə",
+        "description": "Peşəkar əmlak idarəçiliyi ilə investisiyanızı qoruyun"
       }
     },
     "trustBadges": {
-      "licensed": "Licensed Real Estate Agency",
-      "verified": "All Projects Verified",
-      "support": "24/7 Support",
-      "transparent": "Transparent Metrics"
+      "licensed": "Lisenziyalı əmlak agentliyi",
+      "verified": "Bütün layihələr yoxlanılıb",
+      "support": "24/7 dəstək",
+      "transparent": "Şəffaf göstəricilər"
     }
   },
   "projects": {
-    "title": "Investment Projects",
+    "title": "İnvestisiya layihələri",
     "filters": {
-      "location": "Location",
-      "propertyType": "Property Type",
+      "location": "Yer",
+      "propertyType": "Əmlak növü",
       "status": "Status",
-      "priceRange": "Price Range",
-      "yieldRange": "Projected Yield"
+      "priceRange": "Qiymət aralığı",
+      "yieldRange": "Proqnozlaşdırılan gəlir"
     },
     "propertyTypes": {
-      "apartment": "Apartment",
-      "aparthotel": "Aparthotel",
-      "commercial": "Commercial",
+      "apartment": "Mənzil",
+      "aparthotel": "Apart-otel",
+      "commercial": "Kommersiya",
       "villa": "Villa"
     },
     "statuses": {
-      "offPlan": "Off-Plan",
-      "underConstruction": "Under Construction",
-      "ready": "Ready"
+      "offPlan": "Layihə mərhələsində",
+      "underConstruction": "Tikintidə",
+      "ready": "Hazır"
     },
     "sortOptions": {
-      "priceAsc": "Price: Low to High",
-      "priceDesc": "Price: High to Low",
-      "yieldDesc": "Yield: High to Low",
-      "deliveryAsc": "Delivery: Earliest"
+      "priceAsc": "Qiymət: Aşağıdan yuxarı",
+      "priceDesc": "Qiymət: Yuxarıdan aşağı",
+      "yieldDesc": "Gəlir: Yuxarıdan aşağı",
+      "deliveryAsc": "Təhvil: Ən yaxın"
     },
     "metrics": {
-      "price": "Price",
-      "pricePerSqm": "Price per m²",
-      "yield": "Projected Yield",
-      "capRate": "Cap Rate",
-      "irr": "IRR",
-      "delivery": "Delivery",
-      "area": "Area"
+      "price": "Qiymət",
+      "pricePerSqm": "m² başına qiymət",
+      "yield": "Proqnozlaşdırılan gəlir",
+      "capRate": "Kapitalizasiya dərəcəsi",
+      "irr": "Daxili gəlir dərəcəsi",
+      "delivery": "Təhvil",
+      "area": "Sahə"
     }
   },
   "projectDetail": {
-    "overview": "Overview",
-    "highlights": "Highlights",
-    "investmentMetrics": "Investment Metrics",
-    "location": "Location",
-    "floorPlans": "Floor Plans",
+    "overview": "Ümumi baxış",
+    "highlights": "Əsas məqamlar",
+    "investmentMetrics": "İnvestisiya göstəriciləri",
+    "location": "Yer",
+    "floorPlans": "Mərtəbə planları",
     "developer": "Developer",
-    "documents": "Documents",
-    "faq": "Frequently Asked Questions",
-    "downloadBrochure": "Download Brochure",
-    "monthlyRent": "Est. Monthly Rent",
-    "occupancy": "Occupancy Assumption",
-    "managementFee": "Management Fee"
+    "documents": "Sənədlər",
+    "faq": "Tez-tez verilən suallar",
+    "downloadBrochure": "Broşuru yüklə",
+    "monthlyRent": "Təxmini aylıq icarə",
+    "occupancy": "Doluluk fərziyyəsi",
+    "managementFee": "İdarəetmə haqqı"
   },
   "requestForm": {
-    "title": "Request Investment Offer",
-    "name": "Full Name",
-    "email": "Email",
-    "phone": "Phone / WhatsApp",
-    "country": "Country",
-    "budget": "Investment Budget",
-    "preferredCity": "Preferred City",
-    "propertyType": "Property Type",
-    "message": "Message (optional)",
-    "consent": "I agree to the processing of my personal data",
-    "submit": "Submit Request",
-    "success": "Thank you! We'll contact you shortly.",
-    "error": "Something went wrong. Please try again."
+    "title": "İnvestisiya təklifi istəyin",
+    "name": "Tam ad",
+    "email": "E-poçt",
+    "phone": "Telefon / WhatsApp",
+    "country": "Ölkə",
+    "budget": "İnvestisiya büdcəsi",
+    "preferredCity": "Üstünlük verilən şəhər",
+    "propertyType": "Əmlak növü",
+    "message": "Mesaj (ixtiyari)",
+    "consent": "Şəxsi məlumatlarımın işlənməsinə razıyam",
+    "submit": "Sorğu göndər",
+    "success": "Təşəkkürlər! Tezliklə sizinlə əlaqə saxlayacağıq.",
+    "error": "Nəsə səhv oldu. Xahiş edirik yenidən cəhd edin."
   },
   "footer": {
-    "company": "Company",
-    "legal": "Legal",
-    "followUs": "Follow Us",
-    "copyright": "© {year} SOLO Estate. All rights reserved.",
-    "terms": "Terms of Service",
-    "privacy": "Privacy Policy"
+    "company": "Şirkət",
+    "legal": "Hüquqi",
+    "followUs": "Bizi izləyin",
+    "copyright": "© {year} SOLO Estate. Bütün hüquqlar qorunur.",
+    "terms": "İstifadə şərtləri",
+    "privacy": "Məxfilik siyasəti"
   }
 }
