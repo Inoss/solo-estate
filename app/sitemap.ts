@@ -51,8 +51,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       urls.push({
         url: `${baseUrl}/${locale}${page}`,
         lastModified: new Date(),
-        changeFrequency: page === '' ? 'daily' : 'weekly',
-        priority: page === '' ? 1.0 : 0.8,
+        changeFrequency: page === '' ? 'daily' : page === '/projects' ? 'daily' : 'weekly',
+        priority: page === '' ? 1.0 : page === '/projects' ? 0.9 : 0.8,
+        alternates: {
+          languages: Object.fromEntries(
+            locales.map((loc) => [loc, `${baseUrl}/${loc}${page}`])
+          ),
+        },
       })
     }
   }
