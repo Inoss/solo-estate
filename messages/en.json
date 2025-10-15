@@ -18,38 +18,81 @@
   },
   "home": {
     "hero": {
+      "badge": "Verified Investment Opportunities",
       "title": "Investment Real Estate in Georgia",
+      "titleHighlight": "with Guaranteed Returns",
       "subtitle": "Verified projects with transparent metrics and guaranteed returns",
-      "cta": "Explore Projects"
-    },
-    "featured": {
-      "title": "Featured Projects",
-      "subtitle": "Handpicked investment opportunities"
-    },
-    "howItWorks": {
-      "title": "How It Works",
-      "step1": {
-        "title": "Consultation",
-        "description": "Discuss your investment goals with our experts"
-      },
-      "step2": {
-        "title": "Project Selection",
-        "description": "Browse verified projects matching your criteria"
-      },
-      "step3": {
-        "title": "Due Diligence",
-        "description": "Complete legal and financial verification"
-      },
-      "step4": {
-        "title": "Investment & Management",
-        "description": "Secure your investment with professional property management"
+      "cta": "Explore Projects",
+      "ctaPrimary": "Explore Projects",
+      "ctaSecondary": "View All Properties",
+      "stats": {
+        "properties": "500+",
+        "propertiesLabel": "Verified Properties",
+        "roi": "30%",
+        "roiLabel": "Average ROI",
+        "verified": "100%",
+        "verifiedLabel": "Verified Developers",
+        "developers": "50+",
+        "developersLabel": "Trusted Partners"
       }
     },
+    "stats": {
+      "title": "Trusted by Investors Worldwide",
+      "titleHighlight": "Proven Track Record",
+      "subtitle": "Real results from real investments",
+      "totalInvestment": "Total Investment Value",
+      "happyInvestors": "Happy Investors",
+      "averageROI": "Average Annual ROI",
+      "activeProjects": "Active Projects",
+      "joinInvestors": "Join 500+ successful investors"
+    },
+    "featured": {
+      "badge": "Top Opportunities",
+      "title": "Featured Projects",
+      "titleHighlight": "Handpicked for You",
+      "subtitle": "Handpicked investment opportunities",
+      "filterAll": "All Properties",
+      "filterInvestment": "Investment",
+      "filterResidence": "Residence",
+      "cityAll": "All Cities",
+      "cityTbilisi": "Tbilisi",
+      "cityBatumi": "Batumi",
+      "viewAll": "View All",
+      "properties": "Properties"
+    },
+    "howItWorks": {
+      "badge": "Simple Process",
+      "title": "How It Works",
+      "titleHighlight": "in 4 Easy Steps",
+      "subtitle": "From consultation to property ownership in just a few simple steps",
+      "step1Title": "Consultation",
+      "step1Desc": "Discuss your investment goals with our experts",
+      "step2Title": "Project Selection",
+      "step2Desc": "Browse verified projects matching your criteria",
+      "step3Title": "Due Diligence",
+      "step3Desc": "Complete legal and financial verification",
+      "step4Title": "Investment & Management",
+      "step4Desc": "Secure your investment with professional property management",
+      "ctaPrimary": "Get Started Now",
+      "ctaSecondary": "View Projects",
+      "ctaNote": "Free consultation • No commitment required"
+    },
     "trustBadges": {
+      "title": "Why Trust",
+      "titleHighlight": "SOLO Estate",
+      "subtitle": "Your trusted partner in Georgian real estate investment",
       "licensed": "Licensed Real Estate Agency",
+      "licensedDesc": "Fully licensed and regulated agency",
       "verified": "All Projects Verified",
+      "verifiedDesc": "100% verified properties and developers",
       "support": "24/7 Support",
-      "transparent": "Transparent Metrics"
+      "supportDesc": "Round-the-clock expert assistance",
+      "transparent": "Transparent Metrics",
+      "transparentDesc": "Clear ROI calculations and projections",
+      "satisfaction": "98% Satisfaction",
+      "satisfactionDesc": "Client satisfaction rate",
+      "rating": "4.9/5 Rating",
+      "ratingDesc": "Average customer rating"
     },
     "leadCapture": {
       "badge": "Exclusive Investment Offers",
