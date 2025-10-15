@@ -2,6 +2,7 @@
 
 import { useTranslations } from 'next-intl'
 import { Shield, Award, Users, Clock, BarChart3, HeadphonesIcon } from 'lucide-react'
+import { BackgroundDecoration } from '@/components/background-decoration'
 
 export function WhyChooseUs() {
   const t = useTranslations('home.whyChooseUs')
@@ -46,9 +47,8 @@ export function WhyChooseUs() {
   ]
 
   return (
-    <section className="py-20 lg:py-28 bg-white relative overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] opacity-50" />
+    <section className="py-20 lg:py-28 bg-muted pattern-diagonal texture-noise relative overflow-hidden">
+      <BackgroundDecoration variant="minimal" />
 
       <div className="mx-auto max-w-7xl px-6 lg:px-8 relative">
         {/* Section Header */}
