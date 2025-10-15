@@ -48,64 +48,14 @@ export function ProjectFilters({ onFilterChange, filters }: ProjectFiltersProps)
   }
 
   return (
-    <div className="bg-card rounded-lg p-6 shadow-sm border">
-      <div className="flex justify-between items-center mb-4">
-        <h3 className="text-lg font-semibold">Filters</h3>
-        <Button variant="ghost" size="sm" onClick={handleReset}>
-          Reset All
-        </Button>
-      </div>
-
-      <div className="space-y-4">
-        {/* Search */}
-        <div>
-          <label className="text-sm font-medium mb-2 block">Search</label>
-          <Input
-            type="text"
-            placeholder="Search projects..."
-            value={filters.search}
-            onChange={(e) => handleChange('search', e.target.value)}
-          />
-        </div>
-
-        {/* Status */}
-        <div>
-          <label className="text-sm font-medium mb-2 block">Status</label>
-          <Select value={filters.status} onValueChange={(value) => handleChange('status', value)}>
-            <SelectTrigger>
-              <SelectValue placeholder="All Statuses" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="all">All Statuses</SelectItem>
-              <SelectItem value="offPlan">Off-Plan</SelectItem>
-              <SelectItem value="underConstruction">Under Construction</SelectItem>
-              <SelectItem value="ready">Ready</SelectItem>
-            </SelectContent>
-          </Select>
-        </div>
-
-        {/* Property Type */}
-        <div>
-          <label className="text-sm font-medium mb-2 block">Property Type</label>
-          <Select value={filters.propertyType} onValueChange={(value) => handleChange('propertyType', value)}>
-            <SelectTrigger>
-              <SelectValue placeholder="All Types" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="all">All Types</SelectItem>
-              <SelectItem value="apartment">Apartment</SelectItem>
-              <SelectItem value="aparthotel">Aparthotel</SelectItem>
-              <SelectItem value="commercial">Commercial</SelectItem>
-              <SelectItem value="villa">Villa</SelectItem>
-            </SelectContent>
-          </Select>
-        </div>
-
+    <div className="space-y-6">
+      {/* Main Horizontal Filters Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {/* City */}
         <div>
-          <label className="text-sm font-medium mb-2 block">City</label>
+          <label className="text-sm font-medium text-muted-foreground mb-2 block">City</label>
           <Select value={filters.city} onValueChange={(value) => handleChange('city', value)}>
-            <SelectTrigger>
+            <SelectTrigger className="w-full bg-white">
               <SelectValue placeholder="All Cities" />
             </SelectTrigger>
             <SelectContent>
@@ -118,51 +68,102 @@ export function ProjectFilters({ onFilterChange, filters }: ProjectFiltersProps)
           </Select>
         </div>
 
-        {/* Price Range */}
+        {/* Property Type */}
         <div>
-          <label className="text-sm font-medium mb-2 block">Price Range (USD)</label>
-          <div className="grid grid-cols-2 gap-2">
-            <Input
-              type="number"
-              placeholder="Min"
-              value={filters.minPrice}
-              onChange={(e) => handleChange('minPrice', e.target.value)}
-            />
-            <Input
-              type="number"
-              placeholder="Max"
-              value={filters.maxPrice}
-              onChange={(e) => handleChange('maxPrice', e.target.value)}
-            />
-          </div>
+          <label className="text-sm font-medium text-muted-foreground mb-2 block">Property Type</label>
+          <Select value={filters.propertyType} onValueChange={(value) => handleChange('propertyType', value)}>
+            <SelectTrigger className="w-full bg-white">
+              <SelectValue placeholder="All Types" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">All Types</SelectItem>
+              <SelectItem value="apartment">Apartment</SelectItem>
+              <SelectItem value="aparthotel">Aparthotel</SelectItem>
+              <SelectItem value="commercial">Commercial</SelectItem>
+              <SelectItem value="villa">Villa</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+
+        {/* Status */}
+        <div>
+          <label className="text-sm font-medium text-muted-foreground mb-2 block">Status</label>
+          <Select value={filters.status} onValueChange={(value) => handleChange('status', value)}>
+            <SelectTrigger className="w-full bg-white">
+              <SelectValue placeholder="All Statuses" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">All Statuses</SelectItem>
+              <SelectItem value="offPlan">Off-Plan</SelectItem>
+              <SelectItem value="underConstruction">Under Construction</SelectItem>
+              <SelectItem value="ready">Ready</SelectItem>
+            </SelectContent>
+          </Select>
         </div>
 
         {/* Minimum Yield */}
         <div>
-          <label className="text-sm font-medium mb-2 block">Minimum Yield (%)</label>
+          <label className="text-sm font-medium text-muted-foreground mb-2 block">Min Yield (%)</label>
           <Input
             type="number"
             placeholder="e.g., 8"
             value={filters.minYield}
             onChange={(e) => handleChange('minYield', e.target.value)}
+            className="bg-white"
           />
         </div>
+      </div>
 
-        {/* Sort By */}
-        <div>
-          <label className="text-sm font-medium mb-2 block">Sort By</label>
-          <Select value={filters.sortBy} onValueChange={(value) => handleChange('sortBy', value)}>
-            <SelectTrigger>
-              <SelectValue />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="newest">Newest First</SelectItem>
-              <SelectItem value="priceLow">Price: Low to High</SelectItem>
-              <SelectItem value="priceHigh">Price: High to Low</SelectItem>
-              <SelectItem value="yieldHigh">Highest Yield</SelectItem>
-            </SelectContent>
-          </Select>
+      {/* Price Range Row */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 items-end">
+        <div className="lg:col-span-2">
+          <label className="text-sm font-medium text-muted-foreground mb-2 block">Price Range (USD)</label>
+          <div className="grid grid-cols-2 gap-3">
+            <Input
+              type="number"
+              placeholder="Min Price"
+              value={filters.minPrice}
+              onChange={(e) => handleChange('minPrice', e.target.value)}
+              className="bg-white"
+            />
+            <Input
+              type="number"
+              placeholder="Max Price"
+              value={filters.maxPrice}
+              onChange={(e) => handleChange('maxPrice', e.target.value)}
+              className="bg-white"
+            />
+          </div>
         </div>
+
+        {/* Search */}
+        <div>
+          <label className="text-sm font-medium text-muted-foreground mb-2 block">Search</label>
+          <Input
+            type="text"
+            placeholder="Search projects..."
+            value={filters.search}
+            onChange={(e) => handleChange('search', e.target.value)}
+            className="bg-white"
+          />
+        </div>
+      </div>
+
+      {/* Action Buttons Row */}
+      <div className="flex items-center gap-3 pt-2">
+        <Button
+          onClick={handleReset}
+          className="gradient-gold text-white hover:opacity-90 px-8 h-11 font-bold shadow-lg"
+        >
+          Find Property
+        </Button>
+        <Button
+          variant="outline"
+          onClick={handleReset}
+          className="border-2 border-border hover:bg-secondary px-6 h-11 font-semibold"
+        >
+          Reset Filters
+        </Button>
       </div>
     </div>
   )
