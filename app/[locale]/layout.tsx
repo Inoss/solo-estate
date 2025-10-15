@@ -8,6 +8,7 @@ import { Footer } from '@/components/footer';
 import { GoogleAnalytics } from '@/components/analytics';
 import { TawkChat } from '@/components/tawk-chat';
 import { CookieConsent } from '@/components/cookie-consent';
+import { StructuredData } from '@/components/structured-data';
 import './globals.css';
 
 const inter = Inter({
@@ -44,10 +45,28 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+  const messages = await getMessages({ locale });
+  const seo = (messages as any).seo || {};
 
   return {
-    title: 'SOLO Estate - Investment Real Estate in Georgia',
-    description: 'Verified investment real estate projects in Georgia with transparent metrics and guaranteed returns',
+    title: seo.title || 'SOLO Estate - Investment Real Estate in Georgia',
+    description: seo.description || 'Verified investment real estate projects in Georgia with transparent metrics and guaranteed returns',
+    keywords: seo.keywords || 'Real Estate Georgia, Apartments Tbilisi, Investment Property, Real Estate Investments',
+    authors: [{ name: 'SOLO Estate' }],
+    creator: 'SOLO Estate',
+    publisher: 'SOLO Estate',
+    alternates: {
+      canonical: `https://solo-estate.com/${locale}`,
+      languages: {
+        'en': 'https://solo-estate.com/en',
+        'ka': 'https://solo-estate.com/ka',
+        'ru': 'https://solo-estate.com/ru',
+        'he': 'https://solo-estate.com/he',
+        'az': 'https://solo-estate.com/az',
+        'hy': 'https://solo-estate.com/hy',
+        'uk': 'https://solo-estate.com/uk',
+      },
+    },
     icons: {
       icon: [
         { url: '/logo.png', sizes: '256x256', type: 'image/png' },
@@ -58,25 +77,42 @@ export async function generateMetadata({
       shortcut: '/logo.png',
     },
     openGraph: {
-      title: 'SOLO Estate - Investment Real Estate',
-      description: 'Verified investment real estate projects in Georgia',
+      title: seo.ogTitle || 'SOLO Estate - Investment Real Estate',
+      description: seo.ogDescription || 'Verified investment real estate projects in Georgia',
       locale: locale,
       type: 'website',
+      url: `https://solo-estate.com/${locale}`,
+      siteName: 'SOLO Estate',
       images: [
         {
-          url: '/logo.png',
+          url: 'https://solo-estate.com/logo.png',
           width: 1200,
           height: 630,
           alt: 'SOLO Estate - Premium Real Estate Investments',
         },
       ],
-      siteName: 'SOLO Estate',
     },
     twitter: {
       card: 'summary_large_image',
-      title: 'SOLO Estate - Investment Real Estate',
-      description: 'Verified investment real estate projects in Georgia',
-      images: ['/logo.png'],
+      title: seo.twitterTitle || 'SOLO Estate - Investment Real Estate',
+      description: seo.twitterDescription || 'Verified investment real estate projects in Georgia',
+      images: ['https://solo-estate.com/logo.png'],
+      creator: '@soloestate',
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
+    },
+    verification: {
+      google: 'your-google-verification-code',
+      yandex: 'your-yandex-verification-code',
     },
   };
 }
@@ -109,6 +145,7 @@ export default async function LocaleLayout({
         <GoogleAnalytics />
         <TawkChat />
         <CookieConsent />
+        <StructuredData locale={locale} />
         <NextIntlClientProvider messages={messages}>
           <Header />
           <main className="min-h-screen">
