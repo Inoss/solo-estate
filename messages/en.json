@@ -1,4 +1,15 @@
 {
+  "seo": {
+    "keywords": "Real Estate Georgia, Real Estate Tbilisi, Apartments in Georgia, Apartments in Tbilisi, Find Real Estate, Real Estate Investments, Property Georgia, Buy Apartment Tbilisi, Investment Property Georgia, Batumi Real Estate, Tbilisi Property, Georgia Property Investment, Buy Real Estate Georgia, Apartments for Sale Tbilisi, Real Estate Investment Opportunities, Property for Sale Georgia, Luxury Apartments Tbilisi, New Construction Georgia, Off-Plan Property Georgia, Rental Property Georgia, Property Management Georgia, Real Estate Agent Georgia, Tbilisi Apartments for Sale, Batumi Apartments, Georgian Real Estate Market, Invest in Georgia Real Estate, Buy Property Tbilisi, Real Estate Developer Georgia, Residential Property Georgia, Commercial Property Georgia, Real Estate Broker Georgia, Property Investment Tbilisi, Apartment Prices Georgia, Real Estate Yield Georgia, ROI Property Georgia, Property Tbilisi City Center, Saburtalo Apartments, Vake Real Estate, Batumi Seaside Property, Georgia Property Portal, Real Estate Listings Georgia, Property Search Georgia, Real Estate Consultant Georgia, Investment Advisor Georgia, Property Financing Georgia, Mortgage Georgia, Real Estate Legal Services, Residence Permit Georgia, Relocation Georgia, Expat Housing Georgia, Foreign Investment Georgia, Property Tax Georgia, Real Estate Returns Georgia, Rental Income Georgia, Property Appreciation Georgia, Real Estate Trends Georgia",
+    "title": "SOLO Estate - Real Estate Georgia | Buy Apartments in Tbilisi & Batumi | Investment Property",
+    "titleShort": "Real Estate Georgia - SOLO Estate",
+    "description": "Find and buy premium real estate in Georgia. Apartments in Tbilisi, Batumi properties, investment opportunities with 30% ROI. Verified developers, transparent pricing. Expert real estate services since 2015.",
+    "descriptionLong": "SOLO Estate - Your trusted partner for real estate investments in Georgia. Buy apartments in Tbilisi, Batumi, and other cities. Premium properties from verified developers with guaranteed returns up to 30% per year. Professional real estate services: property selection, legal consulting, financing, property management. Over 574 verified investment properties available.",
+    "ogTitle": "Buy Real Estate in Georgia | Apartments Tbilisi & Batumi - SOLO Estate",
+    "ogDescription": "Premium real estate in Georgia. 574+ verified properties in Tbilisi and Batumi. Investment apartments with 30% ROI. Expert guidance, transparent pricing, legal support.",
+    "twitterTitle": "Real Estate Georgia - Premium Apartments in Tbilisi & Batumi | SOLO Estate",
+    "twitterDescription": "Invest in Georgia real estate. Verified apartments in Tbilisi & Batumi from $800/m². 30% annual returns. Professional support from property selection to management."
+  },
   "common": {
     "home": "Home",
     "projects": "Projects",
@@ -170,7 +181,10 @@
       "benefit2": "ROI Calculator Included",
       "benefit3": "Instant Results",
       "startButton": "Start Quiz Now",
-      "timeInfo": "⏱️ Takes 2 minutes • 🎁 100% Free • 🔒 No credit card required",
+      "timeInfo": "Takes 2 minutes • 100% Free • No credit card required",
+      "timeIcon": "clock",
+      "freeIcon": "gift",
+      "secureIcon": "shield-check",
       "stepOf": "Step {current} of {total}",
       "percentComplete": "{percent}% Complete",
       "question1": "What type of property are you looking for?",
