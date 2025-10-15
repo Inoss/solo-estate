@@ -207,9 +207,10 @@ export function FAQ() {
   }
 
   return (
-    <section className="relative py-16 lg:py-20 bg-gradient-to-b from-secondary/10 via-background to-secondary/10 overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:20px_20px] opacity-30" />
+    <section className="relative py-16 lg:py-20 bg-white pattern-dots texture-noise overflow-hidden">
+      {/* Decorative geometric elements */}
+      <div className="absolute top-20 right-10 w-64 h-64 bg-accent/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-40 left-10 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
 
       <div className="container mx-auto px-6 lg:px-8 relative z-10">
         {/* Section Header - Compact */}
