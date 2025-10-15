@@ -46,9 +46,10 @@ export function HowItWorks() {
   ]
 
   return (
-    <section className="py-20 lg:py-28 bg-gradient-to-b from-background via-secondary/20 to-background relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))] -z-10" />
+    <section className="py-20 lg:py-28 bg-gradient-premium relative overflow-hidden">
+      {/* Decorative geometric elements */}
+      <div className="absolute top-20 right-10 w-64 h-64 bg-accent/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-40 left-10 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
 
       <div className="mx-auto max-w-7xl px-6 lg:px-8 relative">
         {/* Section Header */}
