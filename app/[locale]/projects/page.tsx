@@ -27,16 +27,30 @@ export default async function ProjectsPage() {
   const projects = await getKorterProjects()
 
   return (
-    <div className="container mx-auto px-4 py-12">
-      <div className="mb-12">
-        <h1 className="text-4xl font-bold mb-4">Investment Properties</h1>
-        <p className="text-lg text-muted-foreground max-w-3xl">
-          Discover {projects.length} real investment opportunities in Georgia's real estate market from korter.ge.
-          Browse apartments, commercial properties, and villas in Tbilisi.
-        </p>
+    <div className="min-h-screen bg-gradient-to-b from-white via-secondary/10 to-white">
+      {/* Hero Header Section */}
+      <div className="relative bg-gradient-to-br from-primary via-primary/95 to-accent overflow-hidden">
+        <div className="absolute inset-0 pattern-dots opacity-10" />
+        <div className="container mx-auto px-6 lg:px-8 py-16 lg:py-20 relative z-10">
+          <div className="max-w-4xl">
+            <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full mb-6 border border-white/30">
+              <span className="text-sm font-bold text-white">Premium Investment Portfolio</span>
+            </div>
+            <h1 className="text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight">
+              Exclusive Real Estate
+              <span className="block mt-2 text-accent">Investment Opportunities</span>
+            </h1>
+            <p className="text-xl text-white/90 max-w-2xl leading-relaxed">
+              Discover {projects.length} carefully curated investment properties in Georgia's most prestigious locations.
+            </p>
+          </div>
+        </div>
       </div>
 
-      <ProjectsList projects={projects} />
+      {/* Main Content */}
+      <div className="container mx-auto px-6 lg:px-8 py-12">
+        <ProjectsList projects={projects} />
+      </div>
     </div>
   )
 }
