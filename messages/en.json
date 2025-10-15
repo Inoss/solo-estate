@@ -515,5 +515,140 @@
     "copyright": "© {year} SOLO Estate. All rights reserved.",
     "terms": "Terms of Service",
     "privacy": "Privacy Policy"
+  },
+  "services": {
+    "title": "Our Services",
+    "description": "Comprehensive real estate services for successful property investment in Georgia. From property selection to legal support and investment consulting.",
+    "hero": {
+      "badge": "Premium Real Estate Services",
+      "title": "Your Complete Real Estate Solution",
+      "subtitle": "Professional services covering every aspect of property investment in Georgia - from selection to ownership and beyond"
+    },
+    "ourServicesBadge": "What We Offer",
+    "ourServices": "Comprehensive Services",
+    "servicesSubtitle": "Everything you need for successful real estate investment in one place",
+    "newConstruction": {
+      "title": "New Construction Sales",
+      "description": "Premium apartments in newly built residential complexes with various completion stages to match your preferences.",
+      "feature1": "White frame apartments - for custom interior design",
+      "feature2": "Green frame properties - with basic finishing",
+      "feature3": "Turnkey solutions - ready to move in",
+      "feature4": "Direct developer prices and payment plans"
+    },
+    "secondaryMarket": {
+      "title": "Secondary Market Sales",
+      "description": "Carefully selected pre-owned properties with verified documentation and immediate availability.",
+      "feature1": "Verified ownership and legal documents",
+      "feature2": "Ready for immediate occupancy",
+      "feature3": "Competitive market pricing"
+    },
+    "legalConsulting": {
+      "title": "Legal Consulting",
+      "description": "Professional legal support to ensure secure and compliant property transactions.",
+      "feature1": "Consultation with experienced real estate lawyers",
+      "feature2": "Complete document verification and due diligence",
+      "feature3": "Property registration assistance",
+      "feature4": "Contract review and legal protection"
+    },
+    "funding": {
+      "title": "Funding & Bank Loans",
+      "description": "Flexible financing solutions including bank mortgages and minimal deposit options.",
+      "feature1": "Access to competitive bank loan rates",
+      "feature2": "Minimal down payment options available",
+      "feature3": "0% interest installment plans from developers",
+      "feature4": "Complete mortgage application support"
+    },
+    "investmentConsulting": {
+      "title": "Investment Consulting",
+      "description": "Expert analysis and due diligence to ensure sound investment decisions.",
+      "feature1": "Comprehensive property evaluation",
+      "feature2": "Full due diligence and market analysis",
+      "feature3": "ROI projections and risk assessment",
+      "feature4": "Investment strategy development"
+    },
+    "investmentCalculator": {
+      "title": "Investment Calculator",
+      "description": "Detailed investment planning with accurate ROI calculations and financial projections.",
+      "feature1": "Custom investment plan creation",
+      "feature2": "Accurate ROI calculations",
+      "feature3": "Cash flow and profitability analysis"
+    },
+    "internationalTransactions": {
+      "title": "International Transactions",
+      "description": "Secure and efficient international money transfer solutions for property purchases.",
+      "feature1": "SWIFT transfer assistance",
+      "feature2": "Multi-currency transaction support",
+      "feature3": "Secure and compliant money transfers"
+    },
+    "cryptoAcceptance": {
+      "title": "Crypto Payments",
+      "description": "Accept cryptocurrency payments through our licensed VASP partner for maximum convenience.",
+      "feature1": "Bitcoin, Ethereum, USDT accepted",
+      "feature2": "Secure transactions via licensed VASP",
+      "feature3": "Competitive exchange rates"
+    },
+    "residencePermit": {
+      "title": "Residence Permit Assistance",
+      "description": "Complete support for obtaining Georgian residence permits through property investment.",
+      "feature1": "Residence permit application guidance",
+      "feature2": "Document preparation and submission",
+      "feature3": "Legal consultation for immigration",
+      "feature4": "Fast-track processing support"
+    },
+    "vipService": {
+      "title": "VIP Concierge Service",
+      "description": "Premium white-glove service providing complete assistance from arrival to property ownership and beyond.",
+      "feature1": "VIP airport meet & greet with luxury transfer",
+      "feature2": "Personal guide and translator services",
+      "feature3": "Full concierge support throughout your stay",
+      "feature4": "Exclusive property tours and priority viewings"
+    },
+    "bankAccount": {
+      "title": "Bank Account Opening",
+      "description": "Streamlined assistance for opening Georgian bank accounts through our network of banking partners and brokers.",
+      "feature1": "Direct access to trusted banking partners",
+      "feature2": "Assistance with required documentation",
+      "feature3": "Fast-track account opening process",
+      "feature4": "Multi-currency account options available"
+    },
+    "liquidity": {
+      "title": "Liquidity & Exit Strategy",
+      "description": "Professional support for property resale and profit realization when you're ready to exit your investment.",
+      "feature1": "Market analysis and optimal pricing strategy",
+      "feature2": "Professional marketing and buyer search",
+      "feature3": "Negotiation and transaction management",
+      "feature4": "Maximum profit realization assistance"
+    },
+    "process": {
+      "badge": "How We Work",
+      "title": "Our Service Process",
+      "subtitle": "A proven, step-by-step approach to successful property acquisition",
+      "step1": {
+        "title": "Initial Consultation",
+        "description": "We discuss your investment goals, budget, and preferences to create a tailored property search strategy."
+      },
+      "step2": {
+        "title": "Property Selection",
+        "description": "Receive a curated selection of properties that match your criteria, complete with detailed analysis."
+      },
+      "step3": {
+        "title": "Due Diligence",
+        "description": "Our legal team conducts thorough verification of all documents, ownership, and property status."
+      },
+      "step4": {
+        "title": "Financing & Documentation",
+        "description": "We arrange financing options and handle all paperwork for a smooth transaction process."
+      },
+      "step5": {
+        "title": "Closing & Support",
+        "description": "Complete the purchase and receive ongoing support for property management and optimization."
+      }
+    },
+    "cta": {
+      "title": "Ready to Start Your Investment Journey?",
+      "subtitle": "Get a free consultation with our experts and discover the perfect property opportunities in Georgia",
+      "button": "Get Free Consultation",
+      "secondaryButton": "View Properties"
+    }
   }
 }
