@@ -48,11 +48,35 @@ export async function generateMetadata({
   return {
     title: 'SOLO Estate - Investment Real Estate in Georgia',
     description: 'Verified investment real estate projects in Georgia with transparent metrics and guaranteed returns',
+    icons: {
+      icon: [
+        { url: '/logo.png', sizes: '256x256', type: 'image/png' },
+      ],
+      apple: [
+        { url: '/logo.png', sizes: '256x256', type: 'image/png' },
+      ],
+      shortcut: '/logo.png',
+    },
     openGraph: {
       title: 'SOLO Estate - Investment Real Estate',
       description: 'Verified investment real estate projects in Georgia',
       locale: locale,
       type: 'website',
+      images: [
+        {
+          url: '/logo.png',
+          width: 1200,
+          height: 630,
+          alt: 'SOLO Estate - Premium Real Estate Investments',
+        },
+      ],
+      siteName: 'SOLO Estate',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: 'SOLO Estate - Investment Real Estate',
+      description: 'Verified investment real estate projects in Georgia',
+      images: ['/logo.png'],
     },
   };
 }
