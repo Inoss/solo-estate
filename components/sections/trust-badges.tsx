@@ -2,6 +2,7 @@
 
 import { useTranslations } from 'next-intl'
 import { Award, ShieldCheck, Headphones, BarChart3 } from 'lucide-react'
+import { BackgroundDecoration } from '@/components/background-decoration'
 
 export function TrustBadges() {
   const t = useTranslations('home.trustBadges')
@@ -30,17 +31,16 @@ export function TrustBadges() {
   ]
 
   return (
-    <section className="py-16 lg:py-20 bg-gradient-to-br from-secondary/30 via-background to-accent/5 relative overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(201,169,97,0.08),transparent_70%)]" />
+    <section className="py-16 lg:py-20 bg-gradient-dark-premium relative overflow-hidden">
+      <BackgroundDecoration variant="accent" />
 
       <div className="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <h3 className="text-2xl lg:text-3xl font-bold text-foreground mb-3">
+          <h3 className="text-2xl lg:text-3xl font-bold text-white mb-3">
             {t('title')} <span className="text-accent">{t('titleHighlight')}</span>
           </h3>
-          <p className="text-muted-foreground">{t('subtitle')}</p>
+          <p className="text-white/80">{t('subtitle')}</p>
         </div>
 
         {/* Trust Badges Grid */}
@@ -79,20 +79,20 @@ export function TrustBadges() {
               <span className="text-white font-bold text-lg">98%</span>
             </div>
             <div className="text-left">
-              <div className="font-bold text-foreground">{t('satisfaction')}</div>
-              <div className="text-sm text-muted-foreground">{t('satisfactionDesc')}</div>
+              <div className="font-bold text-white">{t('satisfaction')}</div>
+              <div className="text-sm text-white/70">{t('satisfactionDesc')}</div>
             </div>
           </div>
 
-          <div className="hidden sm:block w-px h-12 bg-border" />
+          <div className="hidden sm:block w-px h-12 bg-white/20" />
 
           <div className="flex items-center gap-3">
             <div className="w-12 h-12 rounded-full bg-gradient-to-br from-accent to-yellow-500 flex items-center justify-center shadow-lg">
               <span className="text-white font-bold text-lg">A+</span>
             </div>
             <div className="text-left">
-              <div className="font-bold text-foreground">{t('rating')}</div>
-              <div className="text-sm text-muted-foreground">{t('ratingDesc')}</div>
+              <div className="font-bold text-white">{t('rating')}</div>
+              <div className="text-sm text-white/70">{t('ratingDesc')}</div>
             </div>
           </div>
         </div>
