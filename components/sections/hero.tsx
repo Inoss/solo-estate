@@ -22,6 +22,17 @@ export function Hero() {
           className="object-cover"
           sizes="100vw"
         />
+
+        {/* Subtle Logo Watermark - Top Right */}
+        <div className="absolute top-12 right-12 z-10 opacity-15 hidden lg:block">
+          <Image
+            src="/logo.png"
+            alt="SOLO Estate"
+            width={250}
+            height={72}
+            className="h-20 w-auto drop-shadow-2xl"
+          />
+        </div>
       </div>
 
       {/* Enhanced Dark Overlay with Gradient */}
