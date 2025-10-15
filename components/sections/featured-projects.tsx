@@ -72,9 +72,13 @@ export function FeaturedProjects({ projects }: FeaturedProjectsProps) {
   })
 
   return (
-    <section className="py-20 lg:py-28 bg-gradient-to-b from-background via-secondary/10 to-background relative">
+    <section className="py-20 lg:py-28 bg-white texture-noise relative overflow-hidden">
       {/* Background Pattern */}
-      <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:20px_20px] opacity-30" />
+      <div className="absolute inset-0 pattern-dots opacity-50" />
+
+      {/* Decorative geometric elements */}
+      <div className="absolute top-20 right-10 w-64 h-64 bg-accent/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-40 left-10 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
 
       <div className="mx-auto max-w-7xl px-6 lg:px-8 relative">
         {/* Section Header */}
@@ -94,70 +98,72 @@ export function FeaturedProjects({ projects }: FeaturedProjectsProps) {
           </p>
         </div>
 
-        {/* Filter Tabs */}
-        <div className="mb-10">
-          <div className="flex flex-wrap items-center justify-center gap-3 mb-6">
-            {filters.map((filter) => {
-              const Icon = filter.icon
-              return (
+        {/* Horizontal Filter Bar - BD Group Style */}
+        <div className="mb-12 bg-white rounded-2xl shadow-lg border border-border/50 p-6">
+          <div className="flex flex-wrap items-center justify-between gap-4">
+            {/* Purpose Filters */}
+            <div className="flex flex-wrap items-center gap-3">
+              {filters.map((filter) => {
+                const Icon = filter.icon
+                return (
+                  <button
+                    key={filter.id}
+                    onClick={() => setActiveFilter(filter.id)}
+                    className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-bold text-sm uppercase tracking-wide transition-all duration-300 ${
+                      activeFilter === filter.id
+                        ? 'bg-gradient-to-r from-accent to-yellow-500 text-white shadow-lg'
+                        : 'bg-secondary/50 text-foreground hover:bg-secondary'
+                    }`}
+                  >
+                    <Icon className="h-4 w-4" />
+                    {filter.label}
+                  </button>
+                )
+              })}
+            </div>
+
+            {/* City Filters */}
+            <div className="flex flex-wrap items-center gap-2">
+              {cities.map((city) => (
                 <button
-                  key={filter.id}
-                  onClick={() => setActiveFilter(filter.id)}
-                  className={`inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm transition-all duration-300 ${
-                    activeFilter === filter.id
-                      ? 'bg-gradient-to-r from-accent to-yellow-500 text-white shadow-xl scale-105'
-                      : 'bg-white text-foreground hover:bg-secondary border border-border/50 shadow-sm hover:shadow-md'
+                  key={city.id}
+                  onClick={() => setActiveCity(city.id)}
+                  className={`px-4 py-2.5 rounded-lg font-bold text-sm uppercase tracking-wide transition-all duration-300 ${
+                    activeCity === city.id
+                      ? 'bg-primary text-white shadow-md'
+                      : 'bg-secondary/50 text-foreground hover:bg-secondary'
                   }`}
                 >
-                  <Icon className="h-4 w-4" />
-                  {filter.label}
+                  {city.label}
                 </button>
-              )
-            })}
-          </div>
-
-          {/* City Filter */}
-          <div className="flex flex-wrap items-center justify-center gap-2">
-            <MapPin className="h-4 w-4 text-muted-foreground" />
-            {cities.map((city) => (
-              <button
-                key={city.id}
-                onClick={() => setActiveCity(city.id)}
-                className={`px-4 py-2 rounded-lg font-medium text-sm transition-all duration-300 ${
-                  activeCity === city.id
-                    ? 'bg-primary text-white shadow-md'
-                    : 'bg-white text-foreground hover:bg-secondary border border-border/50'
-                }`}
-              >
-                {city.label}
-              </button>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
 
-        {/* Projects Grid */}
+        {/* Projects Grid - 3 columns like BD Group */}
         {filteredProjects.length > 0 ? (
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 mb-16">
-            {filteredProjects.map((project) => (
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 mb-12">
+            {filteredProjects.slice(0, 6).map((project) => (
               <ProjectCard key={project._id} project={project} />
             ))}
           </div>
         ) : (
-          <div className="text-center py-16">
+          <div className="text-center py-16 bg-white rounded-2xl border border-border/50">
             <p className="text-lg text-muted-foreground">
               {t('noResults')}
             </p>
           </div>
         )}
 
-        {/* View All Button */}
+        {/* Show More Button - BD Group Style */}
         <div className="text-center">
           <Link href={`/${locale}/projects`}>
             <Button
               size="lg"
-              className="gradient-gold text-white hover:opacity-90 px-10 py-7 h-auto text-lg font-bold shadow-2xl hover:shadow-3xl transition-all duration-300 group"
+              className="gradient-gold text-white hover:opacity-90 px-10 py-6 h-auto text-base font-bold shadow-xl hover:shadow-2xl transition-all duration-300 group rounded-xl"
             >
-              <span>{t('viewAll')} {projects.length} {t('properties')}</span>
+              <span>Show more</span>
               <span className="ml-3 text-xl group-hover:translate-x-1 transition-transform inline-block">→</span>
             </Button>
           </Link>
