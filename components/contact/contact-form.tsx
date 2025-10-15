@@ -62,7 +62,7 @@ export function ContactForm({ locale }: { locale: string }) {
   }
 
   return (
-    <Card>
+    <Card className="border-accent/20 hover:border-accent/30 transition-all duration-300 shadow-lg">
       <CardContent className="p-8">
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           {/* Name */}
@@ -153,7 +153,7 @@ export function ContactForm({ locale }: { locale: string }) {
           {/* Submit Button */}
           <Button
             type="submit"
-            className="w-full"
+            className="w-full gradient-gold text-white hover:opacity-90 transition-all duration-300 shadow-xl hover:shadow-2xl"
             size="lg"
             disabled={isSubmitting}
           >
