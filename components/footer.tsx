@@ -33,18 +33,24 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-6 py-12 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand */}
-          <div className="col-span-1">
-            <Link href={`/${locale}`} className="inline-block mb-4">
-              <Image
-                src="/logo.png"
-                alt="SOLO Estate"
-                width={140}
-                height={40}
-                className="h-10 w-auto"
-              />
+          <div className="col-span-1 md:col-span-2">
+            <Link href={`/${locale}`} className="inline-block mb-6 group">
+              <div className="relative">
+                <Image
+                  src="/logo.png"
+                  alt="SOLO Estate"
+                  width={200}
+                  height={58}
+                  className="h-14 w-auto transition-all duration-300 group-hover:scale-105 drop-shadow-[0_0_10px_rgba(202,138,4,0.3)]"
+                />
+                <div className="absolute inset-0 bg-amber-400/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </div>
             </Link>
-            <p className="text-sm text-muted-foreground">
-              Investment Real Estate in Georgia
+            <p className="text-base text-muted-foreground mb-3 font-medium">
+              Premium Investment Real Estate in Georgia
+            </p>
+            <p className="text-sm text-muted-foreground/80 leading-relaxed">
+              Your trusted partner for exclusive property investments in Tbilisi, Batumi, and beyond.
             </p>
           </div>
 
