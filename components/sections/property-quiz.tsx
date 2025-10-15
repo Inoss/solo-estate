@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { useTranslations } from 'next-intl'
 import { Button } from '@/components/ui/button'
 import {
   Home,
@@ -33,6 +34,7 @@ interface QuizData {
 }
 
 export function PropertyQuiz() {
+  const t = useTranslations('home.propertyQuiz')
   const [isOpen, setIsOpen] = useState(false)
   const [currentStep, setCurrentStep] = useState(1)
   const [quizData, setQuizData] = useState<QuizData>({
@@ -102,27 +104,27 @@ export function PropertyQuiz() {
             {/* Badge */}
             <div className="inline-flex items-center gap-2 bg-white backdrop-blur-sm px-6 py-3 rounded-full border-2 border-accent/30 shadow-xl mb-6">
               <Sparkles className="h-5 w-5 text-accent" />
-              <span className="text-sm font-bold text-accent">Free Property Selection</span>
+              <span className="text-sm font-bold text-accent">{t('badge')}</span>
             </div>
 
             {/* Heading */}
             <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6 leading-tight">
-              Answer 7 Questions & Get
+              {t('title')}
               <span className="block mt-2 bg-gradient-to-r from-accent to-yellow-500 bg-clip-text text-transparent">
-                5 Perfect Properties for You
+                {t('titleHighlight')}
               </span>
             </h2>
 
             <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">
-              Our AI-powered system will match you with the best properties based on your preferences, budget, and investment goals. Takes only 2 minutes!
+              {t('subtitle')}
             </p>
 
             {/* Benefits Grid */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
               {[
-                { icon: CheckCircle2, text: 'Verified Properties Only' },
-                { icon: TrendingUp, text: 'ROI Calculator Included' },
-                { icon: Sparkles, text: 'Instant Results' },
+                { icon: CheckCircle2, text: t('benefit1') },
+                { icon: TrendingUp, text: t('benefit2') },
+                { icon: Sparkles, text: t('benefit3') },
               ].map((item, idx) => (
                 <div
                   key={idx}
@@ -140,12 +142,12 @@ export function PropertyQuiz() {
               onClick={() => setIsOpen(true)}
               className="gradient-gold text-white hover:opacity-90 px-12 py-8 h-auto text-xl font-bold shadow-2xl hover:shadow-3xl transition-all duration-300 group rounded-2xl"
             >
-              <span>Start Quiz Now</span>
+              <span>{t('startButton')}</span>
               <ArrowRight className="ml-3 h-6 w-6 transition-transform group-hover:translate-x-1" />
             </Button>
 
             <p className="mt-6 text-sm text-muted-foreground">
-              ⏱️ Takes 2 minutes • 🎁 100% Free • 🔒 No credit card required
+              {t('timeInfo')}
             </p>
           </div>
         </div>
@@ -163,21 +165,20 @@ export function PropertyQuiz() {
             </div>
 
             <h2 className="text-4xl font-bold text-foreground mb-4">
-              Perfect! We're Preparing Your Selection
+              {t('successTitle')}
             </h2>
             <p className="text-xl text-muted-foreground mb-8">
-              Our experts are analyzing 1000+ properties to find the perfect 5 matches for you.
-              You'll receive your personalized selection within 15 minutes via WhatsApp or email.
+              {t('successMessage')}
             </p>
 
             <div className="bg-white rounded-2xl p-8 shadow-xl border border-border/50 mb-8">
-              <h3 className="font-bold text-lg mb-4">What happens next?</h3>
+              <h3 className="font-bold text-lg mb-4">{t('nextStepsTitle')}</h3>
               <div className="space-y-4 text-left">
                 {[
-                  'Our AI analyzes your preferences against our database',
-                  'Expert review of top 10 matches',
-                  'You receive 5 best properties with full details',
-                  'Free 30-min consultation with our specialist',
+                  t('nextStep1'),
+                  t('nextStep2'),
+                  t('nextStep3'),
+                  t('nextStep4'),
                 ].map((step, idx) => (
                   <div key={idx} className="flex items-start gap-3">
                     <div className="flex-shrink-0 w-6 h-6 rounded-full bg-accent text-white flex items-center justify-center text-sm font-bold">
@@ -199,7 +200,7 @@ export function PropertyQuiz() {
               variant="outline"
               className="px-8 py-6 h-auto text-lg"
             >
-              Close
+              {t('closeButton')}
             </Button>
           </div>
         </div>
@@ -215,10 +216,10 @@ export function PropertyQuiz() {
           <div className="bg-secondary p-6">
             <div className="flex items-center justify-between mb-3">
               <span className="text-sm font-semibold text-foreground">
-                Step {currentStep} of {totalSteps}
+                {t('stepOf', { current: currentStep, total: totalSteps })}
               </span>
               <span className="text-sm text-muted-foreground">
-                {Math.round((currentStep / totalSteps) * 100)}% Complete
+                {t('percentComplete', { percent: Math.round((currentStep / totalSteps) * 100) })}
               </span>
             </div>
             <div className="w-full bg-border rounded-full h-3 overflow-hidden">
@@ -237,17 +238,17 @@ export function PropertyQuiz() {
                 <div className="text-center mb-8">
                   <Building2 className="h-16 w-16 text-accent mx-auto mb-4" />
                   <h3 className="text-3xl font-bold text-foreground mb-3">
-                    What type of property are you looking for?
+                    {t('question1')}
                   </h3>
-                  <p className="text-muted-foreground">Select one option</p>
+                  <p className="text-muted-foreground">{t('question1Subtitle')}</p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {[
-                    { value: 'apartment', label: 'Apartment', icon: Home },
-                    { value: 'house', label: 'House / Villa', icon: Home },
-                    { value: 'commercial', label: 'Commercial Property', icon: Briefcase },
-                    { value: 'land', label: 'Land / Plot', icon: MapPin },
+                    { value: 'apartment', label: t('type1'), icon: Home },
+                    { value: 'house', label: t('type2'), icon: Home },
+                    { value: 'commercial', label: t('type3'), icon: Briefcase },
+                    { value: 'land', label: t('type4'), icon: MapPin },
                   ].map((option) => {
                     const Icon = option.icon
                     return (
@@ -275,18 +276,18 @@ export function PropertyQuiz() {
                 <div className="text-center mb-8">
                   <DollarSign className="h-16 w-16 text-accent mx-auto mb-4" />
                   <h3 className="text-3xl font-bold text-foreground mb-3">
-                    What's your budget?
+                    {t('question2')}
                   </h3>
-                  <p className="text-muted-foreground">Select your price range</p>
+                  <p className="text-muted-foreground">{t('question2Subtitle')}</p>
                 </div>
 
                 <div className="grid grid-cols-1 gap-3">
                   {[
-                    'Under $50,000',
-                    '$50,000 - $100,000',
-                    '$100,000 - $200,000',
-                    '$200,000 - $500,000',
-                    'Above $500,000',
+                    t('budget1'),
+                    t('budget2'),
+                    t('budget3'),
+                    t('budget4'),
+                    t('budget5'),
                   ].map((option) => (
                     <button
                       key={option}
@@ -310,19 +311,19 @@ export function PropertyQuiz() {
                 <div className="text-center mb-8">
                   <MapPin className="h-16 w-16 text-accent mx-auto mb-4" />
                   <h3 className="text-3xl font-bold text-foreground mb-3">
-                    Where do you want to buy?
+                    {t('question3')}
                   </h3>
-                  <p className="text-muted-foreground">Choose preferred location</p>
+                  <p className="text-muted-foreground">{t('question3Subtitle')}</p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {[
-                    'Tbilisi - City Center',
-                    'Tbilisi - Saburtalo',
-                    'Tbilisi - Vake',
-                    'Batumi - Seafront',
-                    'Batumi - City Center',
-                    'Other Location',
+                    t('location1'),
+                    t('location2'),
+                    t('location3'),
+                    t('location4'),
+                    t('location5'),
+                    t('location6'),
                   ].map((option) => (
                     <button
                       key={option}
@@ -344,19 +345,19 @@ export function PropertyQuiz() {
             {currentStep === 4 && (
               <div className="space-y-6 animate-fade-in">
                 <div className="text-center mb-8">
-                  <Target className="h-16 w-16 text-accent mx-auto mb-4" />
+                  <TrendingUp className="h-16 w-16 text-accent mx-auto mb-4" />
                   <h3 className="text-3xl font-bold text-foreground mb-3">
-                    What's your purchase goal?
+                    {t('question4')}
                   </h3>
-                  <p className="text-muted-foreground">Select your main purpose</p>
+                  <p className="text-muted-foreground">{t('question4Subtitle')}</p>
                 </div>
 
                 <div className="grid grid-cols-1 gap-4">
                   {[
-                    { value: 'investment', label: 'Investment / Rental Income', icon: TrendingUp },
-                    { value: 'residence', label: 'Personal Residence', icon: Home },
-                    { value: 'relocation', label: 'Relocation / Moving', icon: Users },
-                    { value: 'permit', label: 'Residence Permit', icon: CheckCircle2 },
+                    { value: 'investment', label: t('purpose1'), icon: TrendingUp },
+                    { value: 'residence', label: t('purpose2'), icon: Home },
+                    { value: 'relocation', label: t('purpose3'), icon: Users },
+                    { value: 'permit', label: t('purpose4'), icon: CheckCircle2 },
                   ].map((option) => {
                     const Icon = option.icon
                     return (
@@ -384,17 +385,17 @@ export function PropertyQuiz() {
                 <div className="text-center mb-8">
                   <Calendar className="h-16 w-16 text-accent mx-auto mb-4" />
                   <h3 className="text-3xl font-bold text-foreground mb-3">
-                    When do you want to buy?
+                    {t('question5')}
                   </h3>
-                  <p className="text-muted-foreground">Select your timeline</p>
+                  <p className="text-muted-foreground">{t('question5Subtitle')}</p>
                 </div>
 
                 <div className="grid grid-cols-1 gap-3">
                   {[
-                    'Immediately (within 1 month)',
-                    'Soon (1-3 months)',
-                    'This year (3-12 months)',
-                    'Just exploring options',
+                    t('timeline1'),
+                    t('timeline2'),
+                    t('timeline3'),
+                    t('timeline4'),
                   ].map((option) => (
                     <button
                       key={option}
@@ -418,19 +419,19 @@ export function PropertyQuiz() {
                 <div className="text-center mb-8">
                   <Home className="h-16 w-16 text-accent mx-auto mb-4" />
                   <h3 className="text-3xl font-bold text-foreground mb-3">
-                    What size do you need?
+                    {t('question6')}
                   </h3>
-                  <p className="text-muted-foreground">Select property size</p>
+                  <p className="text-muted-foreground">{t('question6Subtitle')}</p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {[
-                    'Studio (20-40 m²)',
-                    '1 Bedroom (40-60 m²)',
-                    '2 Bedrooms (60-90 m²)',
-                    '3+ Bedrooms (90+ m²)',
-                    'Large Property (150+ m²)',
-                    'Flexible / Any size',
+                    t('size1'),
+                    t('size2'),
+                    t('size3'),
+                    t('size4'),
+                    t('size5'),
+                    t('size6'),
                   ].map((option) => (
                     <button
                       key={option}
@@ -454,21 +455,21 @@ export function PropertyQuiz() {
                 <div className="text-center mb-8">
                   <Sparkles className="h-16 w-16 text-accent mx-auto mb-4" />
                   <h3 className="text-3xl font-bold text-foreground mb-3">
-                    Almost done! How can we reach you?
+                    {t('question7')}
                   </h3>
-                  <p className="text-muted-foreground">We'll send your personalized property selection</p>
+                  <p className="text-muted-foreground">{t('question7Subtitle')}</p>
                 </div>
 
                 <div className="space-y-4">
                   <div>
                     <label className="block text-sm font-semibold text-foreground mb-2">
-                      Your Name *
+                      {t('nameLabel')}
                     </label>
                     <input
                       type="text"
                       value={quizData.contact.name}
                       onChange={(e) => updateContact('name', e.target.value)}
-                      placeholder="John Doe"
+                      placeholder={t('namePlaceholder')}
                       className="w-full px-4 py-3 border-2 border-border rounded-xl focus:border-accent focus:outline-none transition-colors"
                       required
                     />
@@ -476,13 +477,13 @@ export function PropertyQuiz() {
 
                   <div>
                     <label className="block text-sm font-semibold text-foreground mb-2">
-                      Phone Number *
+                      {t('phoneLabel')}
                     </label>
                     <input
                       type="tel"
                       value={quizData.contact.phone}
                       onChange={(e) => updateContact('phone', e.target.value)}
-                      placeholder="+995 555 123 456"
+                      placeholder={t('phonePlaceholder')}
                       className="w-full px-4 py-3 border-2 border-border rounded-xl focus:border-accent focus:outline-none transition-colors"
                       required
                     />
@@ -490,13 +491,13 @@ export function PropertyQuiz() {
 
                   <div>
                     <label className="block text-sm font-semibold text-foreground mb-2">
-                      Email Address *
+                      {t('emailLabel')}
                     </label>
                     <input
                       type="email"
                       value={quizData.contact.email}
                       onChange={(e) => updateContact('email', e.target.value)}
-                      placeholder="john@example.com"
+                      placeholder={t('emailPlaceholder')}
                       className="w-full px-4 py-3 border-2 border-border rounded-xl focus:border-accent focus:outline-none transition-colors"
                       required
                     />
@@ -506,8 +507,7 @@ export function PropertyQuiz() {
                     <div className="flex items-start gap-3">
                       <CheckCircle2 className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" />
                       <div className="text-sm text-foreground">
-                        By submitting, you agree to receive property recommendations via WhatsApp/Email.
-                        We respect your privacy and won't spam.
+                        {t('consentText')}
                       </div>
                     </div>
                   </div>
@@ -526,7 +526,7 @@ export function PropertyQuiz() {
                     className="px-6"
                   >
                     <ArrowLeft className="mr-2 h-5 w-5" />
-                    Back
+                    {t('backButton')}
                   </Button>
                 )}
                 <Button
@@ -534,7 +534,7 @@ export function PropertyQuiz() {
                   variant="ghost"
                   size="lg"
                 >
-                  Close
+                  {t('closeButton')}
                 </Button>
               </div>
 
@@ -552,7 +552,7 @@ export function PropertyQuiz() {
                   }
                   className="gradient-gold text-white px-8"
                 >
-                  Next
+                  {t('nextButton')}
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               ) : (
@@ -566,7 +566,7 @@ export function PropertyQuiz() {
                   }
                   className="gradient-gold text-white px-8"
                 >
-                  Get My Properties
+                  {t('submitButton')}
                   <Sparkles className="ml-2 h-5 w-5" />
                 </Button>
               )}

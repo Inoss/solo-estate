@@ -48,16 +48,16 @@ export function FeaturedProjects({ projects }: FeaturedProjectsProps) {
 
   // Filter tabs
   const filters = [
-    { id: 'all', label: 'All Properties', icon: Building },
-    { id: 'investment', label: 'For Investing', icon: TrendingUp },
-    { id: 'residence', label: 'For Residence', icon: Home },
+    { id: 'all', label: t('filterAll'), icon: Building },
+    { id: 'investment', label: t('filterInvestment'), icon: TrendingUp },
+    { id: 'residence', label: t('filterResidence'), icon: Home },
   ]
 
   // City filters
   const cities = [
-    { id: 'all', label: 'All Cities' },
-    { id: 'Tbilisi', label: 'Tbilisi' },
-    { id: 'Batumi', label: 'Batumi' },
+    { id: 'all', label: t('cityAll') },
+    { id: 'Tbilisi', label: t('cityTbilisi') },
+    { id: 'Batumi', label: t('cityBatumi') },
   ]
 
   // Filter projects
@@ -81,17 +81,16 @@ export function FeaturedProjects({ projects }: FeaturedProjectsProps) {
         <div className="mx-auto max-w-3xl text-center mb-12">
           <div className="inline-flex items-center rounded-full bg-gradient-to-r from-accent/20 to-yellow-500/20 backdrop-blur-sm px-5 py-2.5 text-sm font-bold text-accent mb-6 border border-accent/30">
             <TrendingUp className="h-4 w-4 mr-2" />
-            Look at the TOP new buildings with a 30% yield per annum
+            {t('badge')}
           </div>
           <h2 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl mb-6">
-            Premium Investment
+            {t('title')}
             <span className="block mt-2 bg-gradient-to-r from-accent to-yellow-500 bg-clip-text text-transparent">
-              Opportunities
+              {t('titleHighlight')}
             </span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Carefully vetted properties with verified returns, complete due diligence,
-            and transparent financial projections
+            {t('subtitle')}
           </p>
         </div>
 
@@ -146,7 +145,7 @@ export function FeaturedProjects({ projects }: FeaturedProjectsProps) {
         ) : (
           <div className="text-center py-16">
             <p className="text-lg text-muted-foreground">
-              No properties found matching your filters. Try selecting different options.
+              {t('noResults')}
             </p>
           </div>
         )}
@@ -158,7 +157,7 @@ export function FeaturedProjects({ projects }: FeaturedProjectsProps) {
               size="lg"
               className="gradient-gold text-white hover:opacity-90 px-10 py-7 h-auto text-lg font-bold shadow-2xl hover:shadow-3xl transition-all duration-300 group"
             >
-              <span>View All {projects.length} Properties</span>
+              <span>{t('viewAll')} {projects.length} {t('properties')}</span>
               <span className="ml-3 text-xl group-hover:translate-x-1 transition-transform inline-block">→</span>
             </Button>
           </Link>

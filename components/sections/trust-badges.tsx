@@ -10,22 +10,22 @@ export function TrustBadges() {
     {
       title: t('licensed'),
       icon: Award,
-      description: 'Fully licensed and regulated',
+      description: t('licensedDesc'),
     },
     {
       title: t('verified'),
       icon: ShieldCheck,
-      description: 'Every property verified',
+      description: t('verifiedDesc'),
     },
     {
       title: t('support'),
       icon: Headphones,
-      description: 'Always here to help',
+      description: t('supportDesc'),
     },
     {
       title: t('transparent'),
       icon: BarChart3,
-      description: 'Clear and honest data',
+      description: t('transparentDesc'),
     },
   ]
 
@@ -38,9 +38,9 @@ export function TrustBadges() {
         {/* Section Header */}
         <div className="text-center mb-12">
           <h3 className="text-2xl lg:text-3xl font-bold text-foreground mb-3">
-            Why Trust <span className="text-accent">SOLO Estate</span>
+            {t('title')} <span className="text-accent">{t('titleHighlight')}</span>
           </h3>
-          <p className="text-muted-foreground">Your confidence is our foundation</p>
+          <p className="text-muted-foreground">{t('subtitle')}</p>
         </div>
 
         {/* Trust Badges Grid */}
@@ -79,8 +79,8 @@ export function TrustBadges() {
               <span className="text-white font-bold text-lg">98%</span>
             </div>
             <div className="text-left">
-              <div className="font-bold text-foreground">Client Satisfaction</div>
-              <div className="text-sm text-muted-foreground">Based on 500+ reviews</div>
+              <div className="font-bold text-foreground">{t('satisfaction')}</div>
+              <div className="text-sm text-muted-foreground">{t('satisfactionDesc')}</div>
             </div>
           </div>
 
@@ -91,8 +91,8 @@ export function TrustBadges() {
               <span className="text-white font-bold text-lg">A+</span>
             </div>
             <div className="text-left">
-              <div className="font-bold text-foreground">Industry Rating</div>
-              <div className="text-sm text-muted-foreground">Top rated agency</div>
+              <div className="font-bold text-foreground">{t('rating')}</div>
+              <div className="text-sm text-muted-foreground">{t('ratingDesc')}</div>
             </div>
           </div>
         </div>

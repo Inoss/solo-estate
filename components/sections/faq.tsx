@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { useTranslations } from 'next-intl'
 import { Button } from '@/components/ui/button'
 import {
   ChevronDown,
@@ -29,172 +30,173 @@ interface FAQ {
 }
 
 export function FAQ() {
+  const t = useTranslations('home.faq')
   const [openId, setOpenId] = useState<number | null>(1)
 
   const faqs: FAQ[] = [
     {
       id: 1,
-      question: 'Is it possible to buy an apartment remotely?',
-      answer: 'Yes! You can purchase property in Georgia completely remotely without visiting the country. We provide comprehensive online services to make the process seamless.',
+      question: t('q1'),
+      answer: t('a1'),
       details: [
-        'Virtual property tours with 360° views and live video calls',
-        'Digital document signing with full legal validity',
-        'Remote notarization services available',
-        'SWIFT and cryptocurrency payment options',
-        'Power of attorney can be arranged if needed',
-        'Our team handles all on-ground procedures for you'
+        t('q1d1'),
+        t('q1d2'),
+        t('q1d3'),
+        t('q1d4'),
+        t('q1d5'),
+        t('q1d6')
       ],
       icon: Globe,
-      category: 'Buying Process'
+      category: t('category1')
     },
     {
       id: 2,
-      question: 'What are the ways to pay for real estate in Georgia?',
-      answer: 'Georgia offers flexible payment options including cash, bank transfers, cryptocurrency, installments, and mortgages to accommodate international investors.',
+      question: t('q2'),
+      answer: t('a2'),
       details: [
-        'Cash payment in USD, EUR, or GEL',
-        'SWIFT international bank transfers',
-        'Cryptocurrency payments (Bitcoin, Ethereum, USDT)',
-        '0% interest installment plans from developers',
-        'Bank mortgages with competitive rates (8-12% annually)',
-        'Mixed payment methods are acceptable',
-        'Escrow services available for security'
+        t('q2d1'),
+        t('q2d2'),
+        t('q2d3'),
+        t('q2d4'),
+        t('q2d5'),
+        t('q2d6'),
+        t('q2d7')
       ],
       icon: CreditCard,
-      category: 'Financial'
+      category: t('category2')
     },
     {
       id: 3,
-      question: 'How to choose the right property in Georgia?',
-      answer: 'Our expert team analyzes your goals, budget, and preferences across 6 key parameters to find properties that perfectly match your investment objectives.',
+      question: t('q3'),
+      answer: t('a3'),
       details: [
-        'Define your purpose: investment, residence, or relocation',
-        'Determine budget: new builds from $800/m², resale from $1,200/m²',
-        'Choose location: Tbilisi (capital), Batumi (seaside), or mountain areas',
-        'Consider rental yield potential (10-30% annually)',
-        'Evaluate developer reputation and construction quality',
-        'Check nearby infrastructure and future development plans',
-        'Review legal status and ownership documents',
-        'We provide detailed analysis reports for each option'
+        t('q3d1'),
+        t('q3d2'),
+        t('q3d3'),
+        t('q3d4'),
+        t('q3d5'),
+        t('q3d6'),
+        t('q3d7'),
+        t('q3d8')
       ],
       icon: Home,
-      category: 'Buying Process'
+      category: t('category1')
     },
     {
       id: 4,
-      question: 'Can I get Georgian citizenship after buying real estate?',
-      answer: 'Real estate purchase alone does not grant citizenship, but it can help you obtain a residence permit which is the first step toward citizenship.',
+      question: t('q4'),
+      answer: t('a4'),
       details: [
-        'Residence permit available for property owners (annual renewal)',
-        'Investment of $100,000+ in property qualifies for residence',
-        'After 5 years of legal residence, you can apply for citizenship',
-        'Dual citizenship is allowed in Georgia',
-        'Citizenship requires language test and integration exam',
-        'Real estate ownership is a strong supporting factor',
-        'We assist with all residence permit applications'
+        t('q4d1'),
+        t('q4d2'),
+        t('q4d3'),
+        t('q4d4'),
+        t('q4d5'),
+        t('q4d6'),
+        t('q4d7')
       ],
       icon: FileCheck,
-      category: 'Legal'
+      category: t('category3')
     },
     {
       id: 5,
-      question: 'What are the real estate taxes in Georgia?',
-      answer: 'Georgia has one of the most favorable tax systems in the world for property owners, with very low annual taxes and no capital gains tax.',
+      question: t('q5'),
+      answer: t('a5'),
       details: [
-        'Annual property tax: 0.05% - 1% of cadastral value (extremely low)',
-        'No capital gains tax when selling property',
-        'No wealth tax or inheritance tax',
-        'Rental income tax: 5% flat rate (one of the lowest globally)',
-        'VAT: 0% on residential property sales',
-        'One-time registration fee: approximately $50',
-        'Foreign and local owners pay the same rates'
+        t('q5d1'),
+        t('q5d2'),
+        t('q5d3'),
+        t('q5d4'),
+        t('q5d5'),
+        t('q5d6'),
+        t('q5d7')
       ],
       icon: Receipt,
-      category: 'Financial'
+      category: t('category2')
     },
     {
       id: 6,
-      question: 'How do I get a loan or mortgage in Georgia?',
-      answer: 'Both local and international buyers can access mortgages from Georgian banks, with competitive rates and flexible terms available.',
+      question: t('q6'),
+      answer: t('a6'),
       details: [
-        'Mortgage available for foreigners and residents',
-        'Interest rates: 8-12% annually (depends on bank and profile)',
-        'Down payment: typically 20-30% of property value',
-        'Loan term: up to 20-25 years',
-        'Required documents: passport, income proof, employment verification',
-        'Some banks offer pre-approval within 3-5 days',
-        'We partner with major banks to facilitate your application',
-        'Alternative: 0% developer installment plans (no bank needed)'
+        t('q6d1'),
+        t('q6d2'),
+        t('q6d3'),
+        t('q6d4'),
+        t('q6d5'),
+        t('q6d6'),
+        t('q6d7'),
+        t('q6d8')
       ],
       icon: Building2,
-      category: 'Financial'
+      category: t('category2')
     },
     {
       id: 7,
-      question: 'How long does the property purchase process take?',
-      answer: 'The entire process can be completed in as little as 1-5 days if all documents are ready, making Georgia one of the fastest markets globally.',
+      question: t('q7'),
+      answer: t('a7'),
       details: [
-        'Property selection: 1-3 days with our expert team',
-        'Document preparation: 1-2 days',
-        'Due diligence and verification: 1 day',
-        'Contract signing and registration: 1 day',
-        'Total timeline: 1-5 days on average',
-        'Can be done remotely without visiting Georgia',
-        'We expedite all processes for our clients'
+        t('q7d1'),
+        t('q7d2'),
+        t('q7d3'),
+        t('q7d4'),
+        t('q7d5'),
+        t('q7d6'),
+        t('q7d7')
       ],
       icon: Clock,
-      category: 'Buying Process'
+      category: t('category1')
     },
     {
       id: 8,
-      question: 'What ROI can I expect from rental properties?',
-      answer: 'Georgia offers exceptional rental yields, especially in Tbilisi and Batumi, with annual returns ranging from 10% to 30% depending on property type and location.',
+      question: t('q8'),
+      answer: t('a8'),
       details: [
-        'Long-term rentals: 8-12% annual yield',
-        'Short-term vacation rentals: 15-30% annual yield',
-        'Tbilisi city center: highest demand for long-term',
-        'Batumi seaside: excellent for vacation rentals',
-        'New developments: typically higher yields than resale',
-        'We provide property management services',
-        'Guaranteed rental programs available for some projects',
-        'Capital appreciation: 5-15% annually in prime locations'
+        t('q8d1'),
+        t('q8d2'),
+        t('q8d3'),
+        t('q8d4'),
+        t('q8d5'),
+        t('q8d6'),
+        t('q8d7'),
+        t('q8d8')
       ],
       icon: TrendingUp,
-      category: 'Investment'
+      category: t('category4')
     },
     {
       id: 9,
-      question: 'Is it safe to buy property in Georgia as a foreigner?',
-      answer: 'Georgia has a transparent, secure legal system with full foreign ownership rights and strong property protection laws.',
+      question: t('q9'),
+      answer: t('a9'),
       details: [
-        'Foreigners have 100% ownership rights (same as locals)',
-        'Property rights protected by law and international treaties',
-        'Public registry system ensures title transparency',
-        'Low corruption levels and rule of law',
-        'Notary system provides additional security',
-        'Title insurance available for extra protection',
-        'We conduct full legal due diligence on every property',
-        'Georgia ranks high in World Bank "Ease of Doing Business"'
+        t('q9d1'),
+        t('q9d2'),
+        t('q9d3'),
+        t('q9d4'),
+        t('q9d5'),
+        t('q9d6'),
+        t('q9d7'),
+        t('q9d8')
       ],
       icon: Shield,
-      category: 'Legal'
+      category: t('category3')
     },
     {
       id: 10,
-      question: 'What about property management and maintenance?',
-      answer: 'We offer comprehensive property management services to handle everything from tenant search to maintenance, ensuring hassle-free ownership.',
+      question: t('q10'),
+      answer: t('a10'),
       details: [
-        'Full property management services available',
-        'Tenant search and screening',
-        'Rent collection and financial reporting',
-        'Property maintenance and repairs',
-        'Utility bill management',
-        'Annual inspections and compliance',
-        'Management fees: typically 8-10% of rental income',
-        '24/7 emergency support for tenants and owners'
+        t('q10d1'),
+        t('q10d2'),
+        t('q10d3'),
+        t('q10d4'),
+        t('q10d5'),
+        t('q10d6'),
+        t('q10d7'),
+        t('q10d8')
       ],
       icon: Home,
-      category: 'Services'
+      category: t('category5')
     }
   ]
 
@@ -215,19 +217,19 @@ export function FAQ() {
           {/* Badge */}
           <div className="inline-flex items-center gap-2 bg-gradient-to-r from-accent/20 to-yellow-500/20 backdrop-blur-sm px-4 py-2 rounded-full border border-accent/30 shadow-lg mb-4">
             <HelpCircle className="h-4 w-4 text-accent" />
-            <span className="text-xs font-bold text-accent">Got Questions? We Have Answers</span>
+            <span className="text-xs font-bold text-accent">{t('badge')}</span>
           </div>
 
           {/* Heading - Smaller */}
           <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-3 leading-tight">
-            Frequently Asked
+            {t('title')}
             <span className="inline-block ml-2 bg-gradient-to-r from-accent to-yellow-500 bg-clip-text text-transparent">
-              Questions
+              {t('titleHighlight')}
             </span>
           </h2>
 
           <p className="text-base text-muted-foreground leading-relaxed">
-            Everything you need to know about buying property in Georgia
+            {t('subtitle')}
           </p>
         </div>
 
@@ -299,7 +301,7 @@ export function FAQ() {
                         ))}
                         {faq.details.length > 4 && (
                           <div className="text-[10px] text-accent font-semibold pt-1">
-                            +{faq.details.length - 4} more benefits
+                            {t('moreBenefits', { count: faq.details.length - 4 })}
                           </div>
                         )}
                       </div>
@@ -321,10 +323,10 @@ export function FAQ() {
 
             <div className="relative z-10 text-center text-white">
               <h3 className="text-2xl lg:text-3xl font-bold mb-2">
-                Still Have Questions?
+                {t('ctaTitle')}
               </h3>
               <p className="text-sm text-white/90 mb-6 max-w-2xl mx-auto">
-                24/7 expert support • {'<'}5min response time • 100% satisfaction
+                {t('ctaSubtitle')}
               </p>
 
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
@@ -333,14 +335,14 @@ export function FAQ() {
                   className="bg-white text-primary hover:bg-white/90 px-6 py-5 h-auto font-bold shadow-lg transition-all duration-300 group"
                 >
                   <MessageCircle className="mr-2 h-4 w-4" />
-                  <span>Chat with Expert</span>
+                  <span>{t('ctaButton1')}</span>
                 </Button>
                 <Button
                   size="default"
                   variant="outline"
                   className="bg-transparent border-2 border-white text-white hover:bg-white/10 px-6 py-5 h-auto font-bold transition-all duration-300"
                 >
-                  <span>Schedule Call</span>
+                  <span>{t('ctaButton2')}</span>
                 </Button>
               </div>
             </div>

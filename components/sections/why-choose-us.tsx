@@ -1,43 +1,46 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
 import { Shield, Award, Users, Clock, BarChart3, HeadphonesIcon } from 'lucide-react'
 
 export function WhyChooseUs() {
+  const t = useTranslations('home.whyChooseUs')
+
   const benefits = [
     {
       icon: Shield,
-      title: '100% Verified Properties',
-      description: 'Every property undergoes rigorous verification. Legal documents, developer credentials, and construction quality all checked.',
+      title: t('benefit1Title'),
+      description: t('benefit1Desc'),
       gradient: 'from-accent via-accent/80 to-accent/60',
     },
     {
       icon: Award,
-      title: 'Expert Guidance',
-      description: 'Work with licensed real estate professionals who have 10+ years of experience in Georgian property market.',
+      title: t('benefit2Title'),
+      description: t('benefit2Desc'),
       gradient: 'from-accent via-accent/80 to-accent/60',
     },
     {
       icon: BarChart3,
-      title: 'Transparent Returns',
-      description: 'No hidden fees. Clear ROI projections based on actual market data and historical performance.',
+      title: t('benefit3Title'),
+      description: t('benefit3Desc'),
       gradient: 'from-accent via-accent/80 to-accent/60',
     },
     {
       icon: Users,
-      title: '500+ Happy Investors',
-      description: 'Join a community of successful investors who trust us with their real estate investments.',
+      title: t('benefit4Title'),
+      description: t('benefit4Desc'),
       gradient: 'from-accent via-accent/80 to-accent/60',
     },
     {
       icon: Clock,
-      title: 'Fast Process',
-      description: 'From consultation to property purchase in as little as 7 days. We handle all paperwork and legalities.',
+      title: t('benefit5Title'),
+      description: t('benefit5Desc'),
       gradient: 'from-accent via-accent/80 to-accent/60',
     },
     {
       icon: HeadphonesIcon,
-      title: '24/7 Support',
-      description: 'Round-the-clock customer support in multiple languages. We are here whenever you need us.',
+      title: t('benefit6Title'),
+      description: t('benefit6Desc'),
       gradient: 'from-accent via-accent/80 to-accent/60',
     },
   ]
@@ -52,16 +55,16 @@ export function WhyChooseUs() {
         <div className="mx-auto max-w-3xl text-center mb-16">
           <div className="inline-flex items-center rounded-full bg-accent/10 px-4 py-2 text-sm font-semibold text-accent mb-4">
             <Award className="h-4 w-4 mr-2" />
-            Why Investors Choose Us
+            {t('badge')}
           </div>
           <h2 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl mb-6">
-            Your Success is
+            {t('title')}
             <span className="block mt-2 bg-gradient-to-r from-accent to-yellow-500 bg-clip-text text-transparent">
-              Our Priority
+              {t('titleHighlight')}
             </span>
           </h2>
           <p className="text-xl text-muted-foreground">
-            We combine local expertise, transparent processes, and proven results to make your real estate investment journey seamless and profitable.
+            {t('subtitle')}
           </p>
         </div>
 
@@ -99,20 +102,20 @@ export function WhyChooseUs() {
         {/* Stats Bar */}
         <div className="mt-16 grid grid-cols-2 gap-6 md:grid-cols-4 bg-gradient-to-br from-primary to-primary/90 rounded-2xl p-8 text-white shadow-xl">
           <div className="text-center">
-            <div className="text-4xl font-bold mb-2">574+</div>
-            <div className="text-sm opacity-90">Verified Properties</div>
+            <div className="text-4xl font-bold mb-2">{t('stat1')}</div>
+            <div className="text-sm opacity-90">{t('stat1Desc')}</div>
           </div>
           <div className="text-center">
-            <div className="text-4xl font-bold mb-2">$50M+</div>
-            <div className="text-sm opacity-90">Property Value</div>
+            <div className="text-4xl font-bold mb-2">{t('stat2')}</div>
+            <div className="text-sm opacity-90">{t('stat2Desc')}</div>
           </div>
           <div className="text-center">
-            <div className="text-4xl font-bold mb-2">333</div>
-            <div className="text-sm opacity-90">Trusted Developers</div>
+            <div className="text-4xl font-bold mb-2">{t('stat3')}</div>
+            <div className="text-sm opacity-90">{t('stat3Desc')}</div>
           </div>
           <div className="text-center">
-            <div className="text-4xl font-bold mb-2">98%</div>
-            <div className="text-sm opacity-90">Client Satisfaction</div>
+            <div className="text-4xl font-bold mb-2">{t('stat4')}</div>
+            <div className="text-sm opacity-90">{t('stat4Desc')}</div>
           </div>
         </div>
       </div>

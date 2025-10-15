@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { useTranslations } from 'next-intl'
 import { Button } from '@/components/ui/button'
 import {
   FileText,
@@ -21,79 +22,80 @@ import {
 } from 'lucide-react'
 
 export function PurchaseProcess() {
+  const t = useTranslations('home.purchaseProcess')
   const [activeStep, setActiveStep] = useState<number | null>(null)
 
   const steps = [
     {
-      number: '01',
-      title: 'Leave an Application',
-      subtitle: 'Tell Us Your Vision',
-      description: 'Share your requirements: property type, budget range, preferred location, and timeline. Our experts analyze your needs to create a personalized search strategy.',
+      number: t('step1Number'),
+      title: t('step1Title'),
+      subtitle: t('step1Subtitle'),
+      description: t('step1Desc'),
       details: [
-        'Property type and specifications',
-        'Estimated budget and payment preferences',
-        'Suitable terms and conditions',
-        'Investment goals and timeline'
+        t('step1Detail1'),
+        t('step1Detail2'),
+        t('step1Detail3'),
+        t('step1Detail4')
       ],
       icon: FileText,
       gradient: 'from-accent via-accent/90 to-accent/70',
       bgColor: 'bg-accent/10'
     },
     {
-      number: '02',
-      title: 'Receive Tailored Offers',
-      subtitle: 'Handpicked Selection',
-      description: 'We curate a selection of properties that perfectly match your criteria. Each option is verified, analyzed, and presented with complete transparency.',
+      number: t('step2Number'),
+      title: t('step2Title'),
+      subtitle: t('step2Subtitle'),
+      description: t('step2Desc'),
       details: [
-        'Maximum variants matching your criteria',
-        'Detailed property analysis and reports',
-        'ROI calculations and projections',
-        'You select the most suitable options'
+        t('step2Detail1'),
+        t('step2Detail2'),
+        t('step2Detail3'),
+        t('step2Detail4')
       ],
       icon: Search,
       gradient: 'from-accent via-accent/90 to-accent/70',
       bgColor: 'bg-accent/10'
     },
     {
-      number: '03',
-      title: 'Property Viewings',
-      subtitle: 'See Your Future Home',
-      description: 'Experience properties in person or virtually. We arrange live viewings, site visits with developers, and comprehensive online presentations for remote clients.',
+      number: t('step3Number'),
+      title: t('step3Title'),
+      subtitle: t('step3Subtitle'),
+      description: t('step3Desc'),
       details: [
-        'Live viewings of selected properties',
-        'Construction site visits with developers',
-        'Online presentations if needed',
-        'Professional photography and videos'
+        t('step3Detail1'),
+        t('step3Detail2'),
+        t('step3Detail3'),
+        t('step3Detail4')
       ],
       icon: Eye,
       gradient: 'from-accent via-accent/90 to-accent/70',
       bgColor: 'bg-accent/10'
     },
     {
-      number: '04',
-      title: 'Contract & Financing',
-      subtitle: 'Secure Your Investment',
-      description: 'We handle all paperwork and financial arrangements. From contract negotiation to mortgage processing, we ensure a smooth, secure transaction.',
+      number: t('step4Number'),
+      title: t('step4Title'),
+      subtitle: t('step4Subtitle'),
+      description: t('step4Desc'),
       details: [
-        'Sales contract preparation and review',
-        'Secure money transfer arrangements',
-        'Mortgage and installment plan setup',
-        'Legal documentation support'
+        t('step4Detail1'),
+        t('step4Detail2'),
+        t('step4Detail3'),
+        t('step4Detail4')
       ],
       icon: FileCheck,
       gradient: 'from-accent via-accent/90 to-accent/70',
       bgColor: 'bg-accent/10'
     },
     {
-      number: '05',
-      title: 'Welcome Home',
-      subtitle: 'Your Investment Success',
-      description: 'Congratulations! You are now the owner of premium real estate with strong rental potential and capital appreciation prospects.',
+      number: t('step5Number'),
+      title: t('step5Title'),
+      subtitle: t('step5Subtitle'),
+      description: t('step5Desc'),
       details: [
-        'Liquid real estate ownership',
-        'Income potential from 30% per year',
-        'Property management assistance',
-        'Ongoing support and consultation'
+        t('step5Detail1'),
+        t('step5Detail2'),
+        t('step5Detail3'),
+        t('step5Detail4')
       ],
       icon: Trophy,
       gradient: 'from-accent to-accent/70',
@@ -104,34 +106,34 @@ export function PurchaseProcess() {
   const premiumServices = [
     {
       icon: Plane,
-      title: 'VIP Airport Service',
-      description: 'Complimentary pickup and hotel transfer',
+      title: t('vip1Title'),
+      description: t('vip1Desc'),
       color: 'from-accent via-accent/80 to-accent/60'
     },
     {
       icon: User,
-      title: 'Personal Manager',
-      description: 'Dedicated expert guides you through everything',
+      title: t('vip2Title'),
+      description: t('vip2Desc'),
       color: 'from-accent via-accent/80 to-accent/60'
     },
     {
       icon: Building,
-      title: 'Office Consultation',
-      description: 'In-depth discussion of all details',
+      title: t('vip3Title'),
+      description: t('vip3Desc'),
       color: 'from-accent via-accent/80 to-accent/60'
     },
     {
       icon: MapPin,
-      title: 'Guided Tours',
-      description: 'Priority property and sightseeing tours',
+      title: t('vip4Title'),
+      description: t('vip4Desc'),
       color: 'from-accent via-accent/80 to-accent/60'
     }
   ]
 
   const guarantees = [
-    { icon: Clock, text: '24/7 Support', subtext: 'Available anytime' },
-    { icon: Shield, text: '100% Secure', subtext: 'Legal protection' },
-    { icon: Star, text: 'Top Properties', subtext: 'Verified only' }
+    { icon: Clock, text: t('guarantee1'), subtext: t('guarantee1Sub') },
+    { icon: Shield, text: t('guarantee2'), subtext: t('guarantee2Sub') },
+    { icon: Star, text: t('guarantee3'), subtext: t('guarantee3Sub') }
   ]
 
   return (
@@ -149,19 +151,19 @@ export function PurchaseProcess() {
           {/* Badge */}
           <div className="inline-flex items-center gap-2 bg-gradient-to-r from-accent/20 to-yellow-500/20 backdrop-blur-sm px-6 py-3 rounded-full border border-accent/30 shadow-lg mb-6">
             <Sparkles className="h-5 w-5 text-accent" />
-            <span className="text-sm font-bold text-accent">Our Proven Method</span>
+            <span className="text-sm font-bold text-accent">{t('badge')}</span>
           </div>
 
           {/* Heading */}
           <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6 leading-tight">
-            Purchase Your Dream Property
+            {t('title')}
             <span className="block mt-2 bg-gradient-to-r from-accent to-yellow-500 bg-clip-text text-transparent">
-              In Just 5 Simple Steps
+              {t('titleHighlight')}
             </span>
           </h2>
 
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-8">
-            We are not an advertising board. We work with each client individually, taking into account all your wishes and requirements.
+            {t('subtitle')}
           </p>
 
           {/* Guarantees */}
@@ -272,13 +274,13 @@ export function PurchaseProcess() {
               <div className="text-center mb-10">
                 <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-5 py-2 rounded-full mb-4 border border-white/30">
                   <Star className="h-5 w-5 text-white" />
-                  <span className="text-sm font-bold text-white">Premium Experience</span>
+                  <span className="text-sm font-bold text-white">{t('vipBadge')}</span>
                 </div>
                 <h3 className="text-3xl lg:text-4xl font-bold text-white mb-4">
-                  We Provide VIP Service at Your Request
+                  {t('vipTitle')}
                 </h3>
                 <p className="text-xl text-white/90 max-w-2xl mx-auto">
-                  Experience world-class hospitality and personalized attention throughout your property journey
+                  {t('vipSubtitle')}
                 </p>
               </div>
 
@@ -304,7 +306,7 @@ export function PurchaseProcess() {
                   size="lg"
                   className="bg-white text-primary hover:bg-white/90 px-10 py-7 h-auto text-lg font-bold shadow-xl hover:shadow-2xl transition-all duration-300 group"
                 >
-                  <span>Get Premium Offers</span>
+                  <span>{t('ctaButton1')}</span>
                   <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </Button>
                 <Button
@@ -313,7 +315,7 @@ export function PurchaseProcess() {
                   className="bg-transparent border-2 border-white text-white hover:bg-white/10 px-10 py-7 h-auto text-lg font-bold transition-all duration-300"
                 >
                   <FileText className="mr-2 h-5 w-5" />
-                  <span>Apply Now</span>
+                  <span>{t('ctaButton2')}</span>
                 </Button>
               </div>
             </div>
@@ -329,21 +331,21 @@ export function PurchaseProcess() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="bg-white rounded-2xl p-8 shadow-lg border border-border/50 text-center hover:shadow-xl transition-shadow">
               <div className="text-5xl font-bold bg-gradient-to-r from-accent to-accent/70 bg-clip-text text-transparent mb-2">
-                500+
+                {t('stat1')}
               </div>
-              <div className="text-sm text-muted-foreground font-semibold">Happy Homeowners</div>
+              <div className="text-sm text-muted-foreground font-semibold">{t('stat1Desc')}</div>
             </div>
             <div className="bg-white rounded-2xl p-8 shadow-lg border border-border/50 text-center hover:shadow-xl transition-shadow">
               <div className="text-5xl font-bold bg-gradient-to-r from-accent to-accent/70 bg-clip-text text-transparent mb-2">
-                1-5 Days
+                {t('stat2')}
               </div>
-              <div className="text-sm text-muted-foreground font-semibold">Average Process Time</div>
+              <div className="text-sm text-muted-foreground font-semibold">{t('stat2Desc')}</div>
             </div>
             <div className="bg-white rounded-2xl p-8 shadow-lg border border-border/50 text-center hover:shadow-xl transition-shadow">
               <div className="text-5xl font-bold bg-gradient-to-r from-accent to-accent/70 bg-clip-text text-transparent mb-2">
-                30%+
+                {t('stat3')}
               </div>
-              <div className="text-sm text-muted-foreground font-semibold">Annual ROI Potential</div>
+              <div className="text-sm text-muted-foreground font-semibold">{t('stat3Desc')}</div>
             </div>
           </div>
         </div>

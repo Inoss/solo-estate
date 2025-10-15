@@ -1,33 +1,36 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
 import { AnimatedCounter } from '@/components/animated-counter'
 import { TrendingUp, Users, Building2, DollarSign } from 'lucide-react'
 
 export function Stats() {
+  const t = useTranslations('home.stats')
+
   const stats = [
     {
       value: 50,
       suffix: 'M+',
       prefix: '$',
-      label: 'Total Investment Value',
+      label: t('totalInvestment'),
       icon: DollarSign,
     },
     {
       value: 500,
       suffix: '+',
-      label: 'Happy Investors',
+      label: t('happyInvestors'),
       icon: Users,
     },
     {
       value: 12.5,
       suffix: '%',
-      label: 'Average Annual ROI',
+      label: t('averageROI'),
       icon: TrendingUp,
     },
     {
       value: 100,
       suffix: '+',
-      label: 'Active Projects',
+      label: t('activeProjects'),
       icon: Building2,
     },
   ]
@@ -43,9 +46,9 @@ export function Stats() {
       <div className="container mx-auto px-6 lg:px-8 relative z-10">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
-            Trusted by <span className="text-accent">Investors Worldwide</span>
+            {t('title')} <span className="text-accent">{t('titleHighlight')}</span>
           </h2>
-          <p className="text-white/80 text-lg">Real results, real growth, real opportunities</p>
+          <p className="text-white/80 text-lg">{t('subtitle')}</p>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
@@ -95,7 +98,7 @@ export function Stats() {
               ))}
             </div>
             <span className="text-white font-semibold text-sm ml-2">
-              Join 500+ successful investors
+              {t('joinInvestors')}
             </span>
           </div>
         </div>

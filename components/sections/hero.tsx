@@ -49,21 +49,20 @@ export function Hero() {
           {/* Premium Badge */}
           <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-accent/20 backdrop-blur-sm px-5 py-2 text-sm font-semibold text-accent border border-accent/30 shadow-lg animate-fade-in">
             <Shield className="h-4 w-4" />
-            <span>Premium Real Estate Investment Platform</span>
+            <span>{t('badge')}</span>
           </div>
 
           {/* Main Heading */}
           <h1 className="mb-6 text-5xl font-bold tracking-tight text-white sm:text-6xl lg:text-7xl leading-tight animate-fade-in">
-            Invest in Georgia's
+            {t('title')}
             <span className="block mt-2 bg-gradient-to-r from-accent via-yellow-300 to-accent bg-clip-text text-transparent">
-              Premier Properties
+              {t('titleHighlight')}
             </span>
           </h1>
 
           {/* Subheading */}
           <p className="mb-10 text-xl text-gray-200 max-w-2xl leading-relaxed animate-fade-in">
-            Discover exclusive real estate opportunities in Tbilisi. From luxury apartments to commercial spaces,
-            find verified investments with transparent returns and guaranteed quality.
+            {t('subtitle')}
           </p>
 
           {/* CTA Buttons */}
@@ -73,7 +72,7 @@ export function Hero() {
                 size="lg"
                 className="w-full sm:w-auto gradient-gold text-white hover:opacity-90 transition-all duration-300 shadow-xl hover:shadow-2xl px-8 py-7 h-auto text-lg font-bold group"
               >
-                <span>Explore 574 Properties</span>
+                <span>{t('ctaPrimary')}</span>
                 <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Button>
             </Link>
@@ -84,7 +83,7 @@ export function Hero() {
                 variant="outline"
                 className="w-full sm:w-auto glass text-white border-white/30 hover:bg-white/20 transition-all duration-300 px-8 py-7 h-auto text-lg font-semibold"
               >
-                <span>Get Free Consultation</span>
+                <span>{t('ctaSecondary')}</span>
               </Button>
             </Link>
           </div>
@@ -97,8 +96,8 @@ export function Hero() {
                   <Building2 className="h-6 w-6 text-accent" />
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-white">574+</div>
-                  <div className="text-sm text-gray-300">Premium Properties</div>
+                  <div className="text-2xl font-bold text-white">{t('stats.properties')}</div>
+                  <div className="text-sm text-gray-300">{t('stats.propertiesLabel')}</div>
                 </div>
               </div>
             </div>
@@ -109,8 +108,8 @@ export function Hero() {
                   <TrendingUp className="h-6 w-6 text-accent" />
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-white">8-12%</div>
-                  <div className="text-sm text-gray-300">Average ROI</div>
+                  <div className="text-2xl font-bold text-white">{t('stats.roi')}</div>
+                  <div className="text-sm text-gray-300">{t('stats.roiLabel')}</div>
                 </div>
               </div>
             </div>
@@ -121,8 +120,8 @@ export function Hero() {
                   <Shield className="h-6 w-6 text-accent" />
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-white">100%</div>
-                  <div className="text-sm text-gray-300">Verified Projects</div>
+                  <div className="text-2xl font-bold text-white">{t('stats.verified')}</div>
+                  <div className="text-sm text-gray-300">{t('stats.verifiedLabel')}</div>
                 </div>
               </div>
             </div>
@@ -133,8 +132,8 @@ export function Hero() {
                   <Users className="h-6 w-6 text-accent" />
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-white">333</div>
-                  <div className="text-sm text-gray-300">Top Developers</div>
+                  <div className="text-2xl font-bold text-white">{t('stats.developers')}</div>
+                  <div className="text-sm text-gray-300">{t('stats.developersLabel')}</div>
                 </div>
               </div>
             </div>

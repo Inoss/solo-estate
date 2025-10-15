@@ -1,13 +1,13 @@
 'use client'
 
 import { useState } from 'react'
-import { useLocale } from 'next-intl'
+import { useTranslations } from 'next-intl'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Star, TrendingUp, Home, CreditCard, ArrowRight, CheckCircle2, Sparkles } from 'lucide-react'
 
 export function LeadCapture() {
-  const locale = useLocale()
+  const t = useTranslations('home.leadCapture')
   const [phone, setPhone] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
@@ -56,19 +56,19 @@ export function LeadCapture() {
               {/* Badge */}
               <div className="inline-flex items-center gap-2 bg-accent/20 backdrop-blur-md px-5 py-2.5 rounded-full border border-accent/40 shadow-xl">
                 <Sparkles className="h-4 w-4 text-accent" />
-                <span className="text-sm font-bold text-accent">Exclusive Investment Offers</span>
+                <span className="text-sm font-bold text-accent">{t('badge')}</span>
               </div>
 
               {/* Heading */}
               <div>
                 <h2 className="text-4xl lg:text-5xl font-bold mb-4 leading-tight">
-                  Get TOP-10 Property Offers
+                  {t('title')}
                   <span className="block mt-2 bg-gradient-to-r from-accent via-yellow-300 to-accent bg-clip-text text-transparent">
-                    Selected for You
+                    {t('titleHighlight')}
                   </span>
                 </h2>
                 <p className="text-xl text-gray-300 leading-relaxed">
-                  Handpicked investment opportunities in Tbilisi & Batumi with verified returns
+                  {t('subtitle')}
                 </p>
               </div>
 
@@ -79,8 +79,8 @@ export function LeadCapture() {
                     <TrendingUp className="h-6 w-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-lg mb-1">Price from $800/m²</h3>
-                    <p className="text-sm text-gray-300">Premium locations at competitive prices</p>
+                    <h3 className="font-bold text-lg mb-1">{t('priceTitle')}</h3>
+                    <p className="text-sm text-gray-300">{t('priceDesc')}</p>
                   </div>
                 </div>
 
@@ -89,8 +89,8 @@ export function LeadCapture() {
                     <Home className="h-6 w-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-lg mb-1">With & Without Finishing</h3>
-                    <p className="text-sm text-gray-300">Choose your preferred completion level</p>
+                    <h3 className="font-bold text-lg mb-1">{t('finishingTitle')}</h3>
+                    <p className="text-sm text-gray-300">{t('finishingDesc')}</p>
                   </div>
                 </div>
 
@@ -99,8 +99,8 @@ export function LeadCapture() {
                     <CreditCard className="h-6 w-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-lg mb-1">0% Interest Installments</h3>
-                    <p className="text-sm text-gray-300">Flexible payment plans available</p>
+                    <h3 className="font-bold text-lg mb-1">{t('installmentTitle')}</h3>
+                    <p className="text-sm text-gray-300">{t('installmentDesc')}</p>
                   </div>
                 </div>
               </div>
@@ -118,8 +118,8 @@ export function LeadCapture() {
                   ))}
                 </div>
                 <div className="text-sm">
-                  <div className="font-bold">500+ Happy Investors</div>
-                  <div className="text-gray-300">Joined this month</div>
+                  <div className="font-bold">{t('investorsCount')}</div>
+                  <div className="text-gray-300">{t('investorsJoined')}</div>
                 </div>
               </div>
             </div>
@@ -134,10 +134,10 @@ export function LeadCapture() {
                       <Star className="h-8 w-8 text-white" />
                     </div>
                     <h3 className="text-2xl font-bold text-foreground mb-2">
-                      Get Your Free Selection
+                      {t('formTitle')}
                     </h3>
                     <p className="text-muted-foreground">
-                      Enter your phone number and receive personalized offers in 5 minutes
+                      {t('formSubtitle')}
                     </p>
                   </div>
 
@@ -145,19 +145,19 @@ export function LeadCapture() {
                   <form onSubmit={handleSubmit} className="space-y-5">
                     <div>
                       <label htmlFor="phone" className="block text-sm font-semibold text-foreground mb-2">
-                        Your Phone Number
+                        {t('phoneLabel')}
                       </label>
                       <Input
                         id="phone"
                         type="tel"
-                        placeholder="+7 (___) ___-__-__"
+                        placeholder={t('phonePlaceholder')}
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
                         required
                         className="h-14 text-lg border-2 border-border/50 focus:border-accent rounded-xl"
                       />
                       <p className="text-xs text-muted-foreground mt-2">
-                        We'll send you offers via WhatsApp or Telegram
+                        {t('phoneHint')}
                       </p>
                     </div>
 
@@ -167,10 +167,10 @@ export function LeadCapture() {
                       className="w-full h-14 text-lg font-bold gradient-gold text-white hover:opacity-90 transition-all duration-300 shadow-xl hover:shadow-2xl group rounded-xl"
                     >
                       {isSubmitting ? (
-                        <span>Sending...</span>
+                        <span>{t('submitting')}</span>
                       ) : (
                         <>
-                          <span>Get TOP-10 Offers</span>
+                          <span>{t('submitButton')}</span>
                           <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                         </>
                       )}
@@ -178,7 +178,7 @@ export function LeadCapture() {
 
                     {/* Privacy Notice */}
                     <p className="text-xs text-center text-muted-foreground">
-                      By submitting, you agree to our Privacy Policy. We respect your data.
+                      {t('privacyNotice')}
                     </p>
                   </form>
 
@@ -186,15 +186,15 @@ export function LeadCapture() {
                   <div className="mt-6 pt-6 border-t border-border/50 space-y-3">
                     <div className="flex items-center gap-3 text-sm">
                       <CheckCircle2 className="h-5 w-5 text-green-500 flex-shrink-0" />
-                      <span className="text-foreground">No spam, ever</span>
+                      <span className="text-foreground">{t('benefit1')}</span>
                     </div>
                     <div className="flex items-center gap-3 text-sm">
                       <CheckCircle2 className="h-5 w-5 text-green-500 flex-shrink-0" />
-                      <span className="text-foreground">Free consultation included</span>
+                      <span className="text-foreground">{t('benefit2')}</span>
                     </div>
                     <div className="flex items-center gap-3 text-sm">
                       <CheckCircle2 className="h-5 w-5 text-green-500 flex-shrink-0" />
-                      <span className="text-foreground">Verified properties only</span>
+                      <span className="text-foreground">{t('benefit3')}</span>
                     </div>
                   </div>
                 </>
@@ -205,14 +205,14 @@ export function LeadCapture() {
                     <CheckCircle2 className="h-10 w-10 text-white" />
                   </div>
                   <h3 className="text-2xl font-bold text-foreground mb-3">
-                    Success! 🎉
+                    {t('successTitle')} 🎉
                   </h3>
                   <p className="text-lg text-muted-foreground mb-6">
-                    Your request has been received. Our expert will contact you within 5 minutes with your personalized property selection.
+                    {t('successMessage')}
                   </p>
                   <div className="inline-flex items-center gap-2 bg-green-50 text-green-700 px-4 py-2 rounded-full text-sm font-semibold">
                     <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-                    Processing your request...
+                    {t('processing')}
                   </div>
                 </div>
               )}

@@ -1,43 +1,46 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
 import { DollarSign, Target, CreditCard, MapPin, Building2, CheckCircle, Clock, Sparkles } from 'lucide-react'
 
 export function PropertyFinder() {
+  const t = useTranslations('home.propertyFinder')
+
   const parameters = [
     {
       icon: DollarSign,
-      title: 'Purchase Budget',
-      description: 'The price of apartments in new buildings starts from $800 per m², resale property - from $1,200 per m².',
+      title: t('param1Title'),
+      description: t('param1Desc'),
       gradient: 'from-accent via-accent/80 to-accent/60',
     },
     {
       icon: Target,
-      title: 'Purchase Goal',
-      description: 'For permanent or seasonal residence, investment, relocation, or obtaining a residence permit.',
+      title: t('param2Title'),
+      description: t('param2Desc'),
       gradient: 'from-accent via-accent/80 to-accent/60',
     },
     {
       icon: CreditCard,
-      title: 'Payment Method',
-      description: 'Cash, SWIFT transfer, cryptocurrency. Interest-free installments and mortgages are also available.',
+      title: t('param3Title'),
+      description: t('param3Desc'),
       gradient: 'from-accent via-accent/80 to-accent/60',
     },
     {
       icon: MapPin,
-      title: 'Location',
-      description: 'Tourist place, "green" zone, distance to the sea and mountains, nearby presence of universities, schools and business centers.',
+      title: t('param4Title'),
+      description: t('param4Desc'),
       gradient: 'from-accent via-accent/80 to-accent/60',
     },
     {
       icon: Building2,
-      title: 'Nearby Infrastructure',
-      description: 'Surroundings, sports complex, SPA, security, concierge service on the territory of the residential complex.',
+      title: t('param5Title'),
+      description: t('param5Desc'),
       gradient: 'from-accent via-accent/80 to-accent/60',
     },
     {
       icon: CheckCircle,
-      title: 'Property Condition',
-      description: 'Is the property ready for exploitation or still under construction, is there finishing inside, is it a new building or a secondary housing.',
+      title: t('param6Title'),
+      description: t('param6Desc'),
       gradient: 'from-accent via-accent/80 to-accent/60',
     },
   ]
@@ -57,14 +60,14 @@ export function PropertyFinder() {
           {/* Badge */}
           <div className="inline-flex items-center gap-2 bg-gradient-to-r from-accent/20 to-yellow-500/20 backdrop-blur-sm px-6 py-3 rounded-full border border-accent/30 shadow-lg mb-6">
             <Sparkles className="h-5 w-5 text-accent" />
-            <span className="text-sm font-bold text-accent">Our Proven Process</span>
+            <span className="text-sm font-bold text-accent">{t('badge')}</span>
           </div>
 
           {/* Heading */}
           <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6 leading-tight">
-            We Guarantee Finding the
+            {t('title')}
             <span className="block mt-2 bg-gradient-to-r from-accent to-yellow-500 bg-clip-text text-transparent">
-              Perfect Property
+              {t('titleHighlight')}
             </span>
           </h2>
 
@@ -74,13 +77,13 @@ export function PropertyFinder() {
               <Clock className="h-7 w-7 text-white" />
             </div>
             <div className="text-left">
-              <div className="text-3xl font-bold text-foreground">1-3 Days</div>
-              <div className="text-sm text-muted-foreground">Property selection guarantee</div>
+              <div className="text-3xl font-bold text-foreground">{t('guaranteeDays')}</div>
+              <div className="text-sm text-muted-foreground">{t('guaranteeText')}</div>
             </div>
           </div>
 
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Our experts analyze your requirements across 6 key parameters to find properties that perfectly match your needs and investment goals.
+            {t('subtitle')}
           </p>
         </div>
 
@@ -137,29 +140,29 @@ export function PropertyFinder() {
             <div className="relative z-10 text-center text-white">
               <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-5 py-2 rounded-full mb-6 border border-white/30">
                 <CheckCircle className="h-5 w-5" />
-                <span className="text-sm font-bold">Guaranteed Results</span>
+                <span className="text-sm font-bold">{t('resultBadge')}</span>
               </div>
 
               <h3 className="text-3xl lg:text-4xl font-bold mb-4 leading-tight">
-                Finally, You Get a Perfect Selection
+                {t('resultTitle')}
               </h3>
               <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
-                Properties ideally suited to your purposes and requirements. The deal can be arranged in just 1 day!
+                {t('resultDesc')}
               </p>
 
               {/* Features Grid */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-10">
                 <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
-                  <div className="text-4xl font-bold mb-2">10+</div>
-                  <div className="text-sm text-white/80">Properties analyzed per request</div>
+                  <div className="text-4xl font-bold mb-2">{t('stat1')}</div>
+                  <div className="text-sm text-white/80">{t('stat1Desc')}</div>
                 </div>
                 <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
-                  <div className="text-4xl font-bold mb-2">1 Day</div>
-                  <div className="text-sm text-white/80">To complete the deal</div>
+                  <div className="text-4xl font-bold mb-2">{t('stat2')}</div>
+                  <div className="text-sm text-white/80">{t('stat2Desc')}</div>
                 </div>
                 <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
-                  <div className="text-4xl font-bold mb-2">100%</div>
-                  <div className="text-sm text-white/80">Satisfaction guarantee</div>
+                  <div className="text-4xl font-bold mb-2">{t('stat3')}</div>
+                  <div className="text-sm text-white/80">{t('stat3Desc')}</div>
                 </div>
               </div>
             </div>
@@ -173,16 +176,16 @@ export function PropertyFinder() {
         {/* Process Timeline - Optional Enhancement */}
         <div className="max-w-4xl mx-auto mt-16">
           <div className="text-center mb-10">
-            <h3 className="text-2xl font-bold text-foreground mb-3">How It Works</h3>
-            <p className="text-muted-foreground">Simple, transparent, and efficient process</p>
+            <h3 className="text-2xl font-bold text-foreground mb-3">{t('processTitle')}</h3>
+            <p className="text-muted-foreground">{t('processSubtitle')}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             {[
-              { step: '1', title: 'Tell Us', desc: 'Share your requirements' },
-              { step: '2', title: 'We Analyze', desc: 'Match 1000+ properties' },
-              { step: '3', title: 'You Choose', desc: 'Review top 10 options' },
-              { step: '4', title: 'Deal Done', desc: 'Sign in 1 day' },
+              { step: '1', title: t('step1Title'), desc: t('step1Desc') },
+              { step: '2', title: t('step2Title'), desc: t('step2Desc') },
+              { step: '3', title: t('step3Title'), desc: t('step3Desc') },
+              { step: '4', title: t('step4Title'), desc: t('step4Desc') },
             ].map((item, idx) => (
               <div key={idx} className="relative">
                 <div className="text-center">

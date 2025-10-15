@@ -13,32 +13,32 @@ export function HowItWorks() {
   const steps = [
     {
       number: '01',
-      title: 'Tell Us Your Goals',
-      description: 'Share your investment budget, preferred location, and return expectations. Our experts will understand your unique requirements.',
+      title: t('step1Title'),
+      description: t('step1Desc'),
       icon: MessageSquare,
       color: 'accent',
       bgColor: 'bg-accent/10',
     },
     {
       number: '02',
-      title: 'Expert Property Selection',
-      description: 'Receive a curated list of properties matching your criteria. We analyze 574+ properties to find your perfect investment.',
+      title: t('step2Title'),
+      description: t('step2Desc'),
       icon: Search,
       color: 'accent',
       bgColor: 'bg-accent/10',
     },
     {
       number: '03',
-      title: 'Due Diligence & Verification',
-      description: 'We verify developer credentials, legal documents, and property details. Complete transparency at every step.',
+      title: t('step3Title'),
+      description: t('step3Desc'),
       icon: FileCheck,
       color: 'accent',
       bgColor: 'bg-accent/10',
     },
     {
       number: '04',
-      title: 'Invest & Earn Returns',
-      description: 'Complete your purchase with confidence. Track your investment performance and receive regular updates on returns.',
+      title: t('step4Title'),
+      description: t('step4Desc'),
       icon: TrendingUp,
       color: 'accent',
       bgColor: 'bg-accent/10',
@@ -55,16 +55,16 @@ export function HowItWorks() {
         <div className="mx-auto max-w-3xl text-center mb-16">
           <div className="inline-flex items-center rounded-full bg-accent/10 px-4 py-2 text-sm font-semibold text-accent mb-4">
             <span className="mr-2">🚀</span>
-            Simple & Transparent Process
+            {t('badge')}
           </div>
           <h2 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl mb-6">
-            Your Journey to
+            {t('title')}
             <span className="block mt-2 bg-gradient-to-r from-accent to-yellow-500 bg-clip-text text-transparent">
-              Smart Real Estate Investment
+              {t('titleHighlight')}
             </span>
           </h2>
           <p className="text-xl text-muted-foreground">
-            From consultation to closing in 4 simple steps. We handle everything so you can focus on returns.
+            {t('subtitle')}
           </p>
         </div>
 
@@ -114,18 +114,18 @@ export function HowItWorks() {
           <div className="inline-flex flex-col sm:flex-row gap-4">
             <Link href={`/${locale}/contact`}>
               <Button size="lg" className="gradient-gold text-white hover:opacity-90 px-8 py-6 h-auto text-lg font-bold shadow-xl group">
-                <span>Start Your Investment Journey</span>
+                <span>{t('ctaPrimary')}</span>
                 <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Button>
             </Link>
             <Link href={`/${locale}/projects`}>
               <Button size="lg" variant="outline" className="border-2 px-8 py-6 h-auto text-lg font-semibold">
-                Browse Properties First
+                {t('ctaSecondary')}
               </Button>
             </Link>
           </div>
           <p className="mt-6 text-sm text-muted-foreground">
-            🎯 <strong>No commitment required</strong> • Free consultation • Expert guidance
+            {t('ctaNote')}
           </p>
         </div>
       </div>
