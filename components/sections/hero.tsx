@@ -45,7 +45,7 @@ export function Hero() {
 
       {/* Content Container */}
       <div className="container relative z-10 mx-auto px-6 lg:px-8">
-        <div className="max-w-4xl">
+        <div className="max-w-4xl mx-auto text-center">
           {/* Premium Badge */}
           <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-accent/20 backdrop-blur-sm px-5 py-2 text-sm font-semibold text-accent border border-accent/30 shadow-lg animate-fade-in">
             <Shield className="h-4 w-4" />
@@ -61,12 +61,12 @@ export function Hero() {
           </h1>
 
           {/* Subheading */}
-          <p className="mb-10 text-xl text-gray-200 max-w-2xl leading-relaxed animate-fade-in">
+          <p className="mb-10 text-xl text-gray-200 max-w-2xl mx-auto leading-relaxed animate-fade-in">
             {t('subtitle')}
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 mb-12 animate-fade-in">
+          <div className="flex flex-col sm:flex-row gap-4 mb-12 animate-fade-in justify-center">
             <Link href={`/${locale}/projects`}>
               <Button
                 size="lg"
