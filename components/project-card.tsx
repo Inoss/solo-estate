@@ -18,31 +18,45 @@ interface ProjectCardProps {
     coverImage?: any
     coverImageUrl?: string | null
     gallery?: any[]
+    galleryUrls?: string[]
     pricing: {
       price: number
       currency?: string
-      pricePerSqm?: number
+      pricePerSqm?: number | null
+      maxPrice?: number
+      priceRange?: {
+        min: number
+        max: number
+      }
     }
     investment?: {
-      yield?: number
+      yield?: number | null
     }
     delivery?: {
-      quarter?: string
+      quarter?: string | null
       year?: number
-    }
+    } | null
     status: string
+    propertyType: string
     location?: {
       city?: string
+      area?: string
+      address?: string
+      distanceToSea?: string
     }
+    area?: number | null
     specifications?: {
       area?: {
         min?: number
         max?: number
       }
       finishing?: string[]
+      buildings?: number
+      layouts?: string
     }
     paymentOptions?: string[]
     highlights?: string[]
+    developer?: string | { _type: string; _ref: string } | null
   }
 }
 
@@ -59,9 +73,10 @@ export function ProjectCard({ project }: ProjectCardProps) {
       : '/images/placeholder-project.jpg'
 
   // Get gallery thumbnails
-  const galleryImages = project.gallery?.slice(0, 4).map(img =>
-    typeof img === 'string' ? img : urlForImage(img).width(200).height(150).url()
-  ) || []
+  const galleryImages = project.galleryUrls?.slice(0, 4) ||
+    project.gallery?.slice(0, 4).map(img =>
+      typeof img === 'string' ? img : urlForImage(img).width(200).height(150).url()
+    ) || []
 
   return (
     <Card className="group overflow-hidden border border-border/50 shadow-md hover:shadow-2xl transition-all duration-500 card-hover-lift bg-white">
@@ -78,6 +93,17 @@ export function ProjectCard({ project }: ProjectCardProps) {
 
             {/* Gradient Overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300" />
+
+            {/* SOLO Estate Logo Watermark */}
+            <div className="absolute bottom-20 right-3 opacity-20 group-hover:opacity-30 transition-opacity duration-300">
+              <Image
+                src="/logo.png"
+                alt="SOLO Estate"
+                width={80}
+                height={23}
+                className="h-6 w-auto drop-shadow-lg"
+              />
+            </div>
 
             {/* Investment Yield Badge - Top Left */}
             {project.investment?.yield && project.investment.yield > 0 && (
@@ -137,103 +163,118 @@ export function ProjectCard({ project }: ProjectCardProps) {
       <CardContent className="p-6">
         <Link href={`/${locale}/projects/${project.slug.current}`}>
           {/* Title */}
-          <h3 className="text-xl font-bold mb-3 line-clamp-2 group-hover:text-accent transition-colors duration-300 min-h-[3.5rem] leading-tight">
+          <h3 className="text-xl font-bold mb-2 line-clamp-2 group-hover:text-accent transition-colors duration-300 leading-tight">
             {project.title[locale] || project.title.en}
           </h3>
         </Link>
 
-        {/* Price - Large and Prominent */}
+        {/* Developer/Subtitle */}
+        {project.developer && typeof project.developer === 'string' && (
+          <p className="text-sm text-muted-foreground mb-4">by {project.developer}</p>
+        )}
+
+        {/* About Project Section */}
+        <div className="mb-4 pb-4 border-b border-border/50">
+          <p className="text-xs font-bold text-foreground mb-3 uppercase tracking-wide">About project:</p>
+
+          <div className="space-y-2.5">
+            {/* City */}
+            {project.location?.city && (
+              <div className="flex items-start justify-between text-sm">
+                <span className="text-muted-foreground font-medium">City:</span>
+                <span className="font-semibold text-foreground text-right">{project.location.city}</span>
+              </div>
+            )}
+
+            {/* Address */}
+            {project.location?.address && (
+              <div className="flex items-start justify-between text-sm">
+                <span className="text-muted-foreground font-medium">Address:</span>
+                <span className="font-semibold text-foreground text-right max-w-[60%]">{project.location.address}</span>
+              </div>
+            )}
+
+            {/* Property Type */}
+            <div className="flex items-start justify-between text-sm">
+              <span className="text-muted-foreground font-medium">Property type:</span>
+              <span className="font-semibold text-foreground text-right capitalize">{project.propertyType || 'Apartment'}</span>
+            </div>
+
+            {/* Number of Buildings */}
+            {project.specifications?.buildings && (
+              <div className="flex items-start justify-between text-sm">
+                <span className="text-muted-foreground font-medium">Number of buildings:</span>
+                <span className="font-semibold text-foreground text-right">{project.specifications.buildings}</span>
+              </div>
+            )}
+
+            {/* Due Date */}
+            {project.delivery?.year && (
+              <div className="flex items-start justify-between text-sm">
+                <span className="text-muted-foreground font-medium">Due date:</span>
+                <span className="font-semibold text-foreground text-right">{project.delivery.year}</span>
+              </div>
+            )}
+
+            {/* Distance to Sea */}
+            {project.location?.distanceToSea && (
+              <div className="flex items-start justify-between text-sm">
+                <span className="text-muted-foreground font-medium">Distance to sea:</span>
+                <span className="font-semibold text-foreground text-right">{project.location.distanceToSea}</span>
+              </div>
+            )}
+
+            {/* Square */}
+            {(project.specifications?.area?.min || project.area) && (
+              <div className="flex items-start justify-between text-sm">
+                <span className="text-muted-foreground font-medium">Square:</span>
+                <span className="font-semibold text-foreground text-right">
+                  {project.specifications?.area?.min
+                    ? `from ${project.specifications.area.min} м²${project.specifications.area.max ? ` to ${project.specifications.area.max} м²` : ''}`
+                    : `${project.area} м²`
+                  }
+                </span>
+              </div>
+            )}
+
+            {/* Types of Layouts */}
+            {project.specifications?.layouts && (
+              <div className="flex items-start justify-between text-sm">
+                <span className="text-muted-foreground font-medium">Types of layouts:</span>
+                <span className="font-semibold text-foreground text-right">{project.specifications.layouts}</span>
+              </div>
+            )}
+
+            {/* Finishing */}
+            {project.specifications?.finishing && project.specifications.finishing.length > 0 && (
+              <div className="flex items-start justify-between text-sm">
+                <span className="text-muted-foreground font-medium">Finishing:</span>
+                <span className="font-semibold text-foreground text-right">{project.specifications.finishing.join(', ')}</span>
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Price Section */}
         <div className="mb-5">
-          <p className="text-3xl font-bold bg-gradient-to-r from-accent to-yellow-600 bg-clip-text text-transparent">
+          <p className="text-xs font-bold text-foreground mb-2 uppercase tracking-wide">Price:</p>
+          <p className="text-2xl font-bold bg-gradient-to-r from-accent to-yellow-600 bg-clip-text text-transparent">
             {project.pricing.pricePerSqm
               ? `from ${formatPrice(project.pricing.pricePerSqm, project.pricing.currency)}/m²`
               : `from ${formatPrice(project.pricing.price, project.pricing.currency)}`
             }
+            {project.pricing.maxPrice && ` to ${formatPrice(project.pricing.maxPrice, project.pricing.currency)}`}
           </p>
         </div>
-
-        {/* Property Details Grid */}
-        <div className="grid grid-cols-2 gap-4 mb-5 pb-5 border-b border-border/50">
-          {/* Commissioning */}
-          {project.delivery?.year && (
-            <div className="space-y-1">
-              <div className="flex items-center gap-1.5 text-xs text-muted-foreground font-medium uppercase tracking-wide">
-                <Calendar className="h-3.5 w-3.5" />
-                Commissioning
-              </div>
-              <p className="text-sm font-bold text-foreground">
-                {project.delivery.year}
-              </p>
-            </div>
-          )}
-
-          {/* Area */}
-          {project.specifications?.area?.min && (
-            <div className="space-y-1">
-              <div className="flex items-center gap-1.5 text-xs text-muted-foreground font-medium uppercase tracking-wide">
-                <Maximize2 className="h-3.5 w-3.5" />
-                Area
-              </div>
-              <p className="text-sm font-bold text-foreground">
-                from {project.specifications.area.min} m²
-              </p>
-            </div>
-          )}
-
-          {/* Location */}
-          {project.location?.city && (
-            <div className="space-y-1 col-span-2">
-              <div className="flex items-center gap-1.5 text-xs text-muted-foreground font-medium uppercase tracking-wide">
-                <MapPin className="h-3.5 w-3.5" />
-                Location
-              </div>
-              <p className="text-sm font-bold text-foreground">{project.location.city}</p>
-            </div>
-          )}
-        </div>
-
-        {/* Finishing Types */}
-        {project.specifications?.finishing && project.specifications.finishing.length > 0 && (
-          <div className="mb-5">
-            <p className="text-xs text-muted-foreground font-medium uppercase tracking-wide mb-2">Finishing:</p>
-            <div className="flex flex-wrap gap-2">
-              {project.specifications.finishing.map((type, idx) => (
-                <span
-                  key={idx}
-                  className="inline-flex items-center px-3 py-1 rounded-full bg-secondary text-xs font-semibold text-secondary-foreground"
-                >
-                  {type}
-                </span>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* Payment Options */}
-        {project.paymentOptions && project.paymentOptions.length > 0 && (
-          <div className="mb-5">
-            <p className="text-xs text-muted-foreground font-medium uppercase tracking-wide mb-2">Payment method:</p>
-            <div className="flex flex-wrap gap-2">
-              {project.paymentOptions.map((option, idx) => (
-                <span
-                  key={idx}
-                  className="inline-flex items-center px-2.5 py-1 rounded-md bg-accent/10 text-xs font-medium text-accent border border-accent/20"
-                >
-                  {option}
-                </span>
-              ))}
-            </div>
-          </div>
-        )}
 
         {/* CTA Button */}
         <Link href={`/${locale}/projects/${project.slug.current}`} className="block">
           <Button
-            className="w-full gradient-gold text-white hover:opacity-90 transition-all duration-300 group/btn shadow-lg hover:shadow-xl h-12 text-base font-bold"
+            className="w-full gradient-gold text-white hover:opacity-90 transition-all duration-300 group/btn shadow-lg hover:shadow-xl h-11 text-sm font-bold"
             size="lg"
           >
-            <span>Get offers</span>
-            <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover/btn:translate-x-1" />
+            <span>More details</span>
+            <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
           </Button>
         </Link>
       </CardContent>
