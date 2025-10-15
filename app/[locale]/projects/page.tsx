@@ -10,14 +10,44 @@ export async function generateMetadata({
   const { locale } = await params
   const t = await getTranslations({ locale })
 
+  const titles: Record<string, string> = {
+    en: 'Real Estate Projects Georgia | 574+ Apartments for Sale Tbilisi & Batumi - SOLO Estate',
+    ru: 'Проекты Недвижимости Грузия | 574+ Квартир на Продажу Тбилиси и Батуми - SOLO Estate',
+    ka: 'უძრავი ქონების პროექტები საქართველო | 574+ ბინა გასაყიდად თბილისი და ბათუმი - SOLO Estate',
+    he: 'פרויקטי נדל״ן בג׳ורג׳יה | 574+ דירות למכירה בטביליסי ובבאטומי - SOLO Estate',
+    az: 'Gürcüstan Daşınmaz Əmlak Layihələri | 574+ Mənzil Satılır Tbilisi və Batumi - SOLO Estate',
+    hy: 'Անշարժ Գույքի Նախագծեր Վրաստան | 574+ Բնակարան Վաճառքի Թբիլիսի և Բաթումի - SOLO Estate',
+    uk: 'Проєкти Нерухомості Грузія | 574+ Квартир на Продаж Тбілісі та Батумі - SOLO Estate',
+  }
+
+  const descriptions: Record<string, string> = {
+    en: 'Browse 574+ verified real estate investment projects in Georgia. Apartments in Tbilisi, Batumi properties with 30% ROI. Filter by location, price, yield. Expert support, transparent pricing.',
+    ru: 'Просмотрите 574+ проверенных проектов недвижимости в Грузии. Квартиры в Тбилиси, недвижимость Батуми с доходностью 30%. Фильтр по расположению, цене, доходности. Экспертная поддержка.',
+    ka: 'დაათვალიერეთ 574+ გადამოწმებული უძრავი ქონების პროექტი საქართველოში. ბინები თბილისში, ბათუმის უძრავი ქონება 30% ROI-ით. ფილტრი ადგილმდებარეობით, ფასით, შემოსავლიანობით.',
+    he: 'עיין ב-574+ פרויקטי נדל״ן מאומתים בג׳ורג׳יה. דירות בטביליסי, נכסים בבאטומי עם תשואה של 30%. סנן לפי מיקום, מחיר, תשואה. תמיכת מומחים, תמחור שקוף.',
+    az: '574+ təsdiqlənmiş daşınmaz əmlak layihəsinə baxın. Tbilisidə mənzillər, Batumidə əmlak 30% ROI ilə. Yer, qiymət, gəlir üzrə filter. Ekspert dəstəyi, şəffaf qiymət.',
+    hy: 'Դիտեք 574+ հաստատված անշարժ գույքի նախագծեր Վրաստանում. Բնակարաններ Թբիլիսիում, Բաթումիի անշարժ գույք 30% ROI-ով. Զտել ըստ տեղանքի, գնի, եկամտաբերության.',
+    uk: 'Перегляньте 574+ перевірених проєктів нерухомості в Грузії. Квартири в Тбілісі, нерухомість Батумі з прибутковістю 30%. Фільтр за розташуванням, ціною, прибутковістю.',
+  }
+
   return {
-    title: 'Investment Projects - SOLO Estate',
-    description: 'Browse 574 real estate investment projects in Georgia from korter.ge with transparent metrics',
+    title: titles[locale] || titles.en,
+    description: descriptions[locale] || descriptions.en,
+    keywords: 'Real Estate Projects Georgia, Apartments for Sale Tbilisi, Batumi Real Estate, Investment Properties, New Construction Georgia, Property Listings, Real Estate Search Georgia, Buy Apartment Georgia, Property Investment Opportunities',
     openGraph: {
-      title: 'Investment Projects - SOLO Estate',
-      description: 'Browse 574 real estate projects in Georgia',
+      title: titles[locale] || titles.en,
+      description: descriptions[locale] || descriptions.en,
       locale: locale,
       type: 'website',
+      url: `https://solo-estate.com/${locale}/projects`,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: titles[locale] || titles.en,
+      description: descriptions[locale] || descriptions.en,
+    },
+    alternates: {
+      canonical: `https://solo-estate.com/${locale}/projects`,
     },
   }
 }
