@@ -15,7 +15,10 @@ import {
   ArrowLeft,
   CheckCircle2,
   Building2,
-  Briefcase
+  Briefcase,
+  Clock,
+  Gift,
+  ShieldCheck
 } from 'lucide-react'
 
 interface QuizData {
@@ -146,9 +149,21 @@ export function PropertyQuiz() {
               <ArrowRight className="ml-3 h-6 w-6 transition-transform group-hover:translate-x-1" />
             </Button>
 
-            <p className="mt-6 text-sm text-muted-foreground">
-              {t('timeInfo')}
-            </p>
+            {/* Premium Info Pills */}
+            <div className="mt-8 flex items-center justify-center flex-wrap gap-4">
+              <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm px-5 py-3 rounded-full border border-accent/20 shadow-md">
+                <Clock className="h-4 w-4 text-accent" />
+                <span className="text-sm font-semibold text-foreground">Takes 2 minutes</span>
+              </div>
+              <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm px-5 py-3 rounded-full border border-accent/20 shadow-md">
+                <Gift className="h-4 w-4 text-accent" />
+                <span className="text-sm font-semibold text-foreground">100% Free</span>
+              </div>
+              <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm px-5 py-3 rounded-full border border-accent/20 shadow-md">
+                <ShieldCheck className="h-4 w-4 text-accent" />
+                <span className="text-sm font-semibold text-foreground">No credit card required</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
