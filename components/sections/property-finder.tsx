@@ -46,13 +46,11 @@ export function PropertyFinder() {
   ]
 
   return (
-    <section className="relative py-20 lg:py-28 bg-gradient-to-b from-background via-secondary/20 to-background overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e7eb_1px,transparent_1px),linear-gradient(to_bottom,#e5e7eb_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-20" />
-
+    <section className="relative py-20 lg:py-28 bg-gradient-premium pattern-grid texture-noise overflow-hidden">
       {/* Floating Gradient Blobs */}
-      <div className="absolute top-20 left-10 w-72 h-72 bg-accent/10 rounded-full blur-3xl animate-pulse" />
-      <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
+      <div className="absolute top-20 left-10 w-72 h-72 bg-accent/10 rounded-full blur-3xl float-slow" />
+      <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent/10 rounded-full blur-3xl float-medium" />
+      <div className="geometric-square w-32 h-32 bg-accent top-1/4 right-1/3" />
 
       <div className="container mx-auto px-6 lg:px-8 relative z-10">
         {/* Section Header */}
