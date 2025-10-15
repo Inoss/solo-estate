@@ -34,13 +34,16 @@ export function Header() {
               <Image
                 src="/logo.png"
                 alt="SOLO Estate"
-                width={140}
-                height={40}
-                className="h-10 w-auto transition-all duration-300 group-hover:scale-105"
+                width={180}
+                height={52}
+                className="h-12 lg:h-14 w-auto transition-all duration-300 group-hover:scale-110 drop-shadow-[0_0_15px_rgba(202,138,4,0.5)]"
                 priority
               />
-              <div className="absolute inset-0 bg-amber-400/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute inset-0 bg-amber-400/30 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </div>
+            <span className="ml-3 text-amber-400 font-bold text-xs tracking-wider hidden lg:block opacity-80 group-hover:opacity-100 transition-opacity">
+              Premium Real Estate
+            </span>
           </Link>
         </div>
 
