@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation'
 import { getTranslations } from 'next-intl/server'
-import { client } from '@/sanity/lib/client'
+import { prisma } from '@/lib/prisma'
 import { Calendar, Clock, ArrowLeft } from 'lucide-react'
 import Link from 'next/link'
 import type { Locale } from '@/i18n'
@@ -13,24 +13,90 @@ interface Props {
 }
 
 async function getArticle(slug: string) {
-  const query = `*[_type == "article" && slug.current == $slug][0] {
-    _id,
-    title,
-    slug,
-    excerpt,
-    content,
-    coverImage,
-    author,
-    category,
-    tags,
-    publishedAt,
-    readTime,
-    seo
-  }`
-
   try {
-    const article = await client.fetch(query, { slug })
-    return article
+    const article = await prisma.article.findFirst({
+      where: { slug, published: true },
+      select: {
+        id: true,
+        titleEn: true,
+        titleKa: true,
+        titleRu: true,
+        titleHe: true,
+        titleAz: true,
+        titleHy: true,
+        titleUk: true,
+        slug: true,
+        excerptEn: true,
+        excerptKa: true,
+        excerptRu: true,
+        excerptHe: true,
+        excerptAz: true,
+        excerptHy: true,
+        excerptUk: true,
+        contentEn: true,
+        contentKa: true,
+        contentRu: true,
+        contentHe: true,
+        contentAz: true,
+        contentHy: true,
+        contentUk: true,
+        coverImage: true,
+        author: true,
+        category: true,
+        tags: true,
+        publishedAt: true,
+        readTime: true,
+        metaTitle: true,
+        metaDescription: true,
+        ogImage: true,
+      },
+    })
+
+    if (!article) return null
+
+    // Transform to expected format
+    return {
+      _id: article.id,
+      title: {
+        en: article.titleEn,
+        ka: article.titleKa || article.titleEn,
+        ru: article.titleRu || article.titleEn,
+        he: article.titleHe || article.titleEn,
+        az: article.titleAz || article.titleEn,
+        hy: article.titleHy || article.titleEn,
+        uk: article.titleUk || article.titleEn,
+      },
+      slug: { current: article.slug },
+      excerpt: {
+        en: article.excerptEn,
+        ka: article.excerptKa || article.excerptEn,
+        ru: article.excerptRu || article.excerptEn,
+        he: article.excerptHe || article.excerptEn,
+        az: article.excerptAz || article.excerptEn,
+        hy: article.excerptHy || article.excerptEn,
+        uk: article.excerptUk || article.excerptEn,
+      },
+      content: {
+        en: article.contentEn,
+        ka: article.contentKa || article.contentEn,
+        ru: article.contentRu || article.contentEn,
+        he: article.contentHe || article.contentEn,
+        az: article.contentAz || article.contentEn,
+        hy: article.contentHy || article.contentEn,
+        uk: article.contentUk || article.contentEn,
+      },
+      coverImage: article.coverImage,
+      author: article.author,
+      category: article.category,
+      tags: article.tags,
+      publishedAt: article.publishedAt?.toISOString() || new Date().toISOString(),
+      readTime: article.readTime,
+      seo: {
+        metaTitle: article.metaTitle,
+        metaDescription: article.metaDescription,
+        ogImage: article.ogImage,
+      },
+    }
   } catch (error) {
     console.error('Error fetching article:', error)
     return null
@@ -38,19 +104,64 @@ async function getArticle(slug: string) {
 }
 
 async function getRelatedArticles(category: string, currentId: string) {
-  const query = `*[_type == "article" && category == $category && _id != $currentId] | order(publishedAt desc) [0...3] {
-    _id,
-    title,
-    slug,
-    excerpt,
-    coverImage,
-    publishedAt,
-    readTime
-  }`
-
   try {
-    const articles = await client.fetch(query, { category, currentId })
-    return articles
+    const articles = await prisma.article.findMany({
+      where: {
+        category,
+        id: { not: currentId },
+        published: true,
+      },
+      orderBy: { publishedAt: 'desc' },
+      take: 3,
+      select: {
+        id: true,
+        titleEn: true,
+        titleKa: true,
+        titleRu: true,
+        titleHe: true,
+        titleAz: true,
+        titleHy: true,
+        titleUk: true,
+        slug: true,
+        excerptEn: true,
+        excerptKa: true,
+        excerptRu: true,
+        excerptHe: true,
+        excerptAz: true,
+        excerptHy: true,
+        excerptUk: true,
+        coverImage: true,
+        publishedAt: true,
+        readTime: true,
+      },
+    })
+
+    // Transform to expected format
+    return articles.map(article => ({
+      _id: article.id,
+      title: {
+        en: article.titleEn,
+        ka: article.titleKa || article.titleEn,
+        ru: article.titleRu || article.titleEn,
+        he: article.titleHe || article.titleEn,
+        az: article.titleAz || article.titleEn,
+        hy: article.titleHy || article.titleEn,
+        uk: article.titleUk || article.titleEn,
+      },
+      slug: { current: article.slug },
+      excerpt: {
+        en: article.excerptEn,
+        ka: article.excerptKa || article.excerptEn,
+        ru: article.excerptRu || article.excerptEn,
+        he: article.excerptHe || article.excerptEn,
+        az: article.excerptAz || article.excerptEn,
+        hy: article.excerptHy || article.excerptEn,
+        uk: article.excerptUk || article.excerptEn,
+      },
+      coverImage: article.coverImage,
+      publishedAt: article.publishedAt?.toISOString() || new Date().toISOString(),
+      readTime: article.readTime,
+    }))
   } catch (error) {
     console.error('Error fetching related articles:', error)
     return []

@@ -1,16 +1,19 @@
 import { MetadataRoute } from 'next'
-import { client } from '@/sanity/lib/client'
+import { prisma } from '@/lib/prisma'
 import { locales } from '@/i18n'
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://soloestate.com'
 
 async function getProjects() {
   try {
-    const query = `*[_type == "project"] {
-      slug,
-      _updatedAt
-    }`
-    return await client.fetch(query)
+    const projects = await prisma.project.findMany({
+      where: { published: true },
+      select: {
+        slug: true,
+        updatedAt: true,
+      },
+    })
+    return projects
   } catch {
     return []
   }
@@ -18,11 +21,14 @@ async function getProjects() {
 
 async function getArticles() {
   try {
-    const query = `*[_type == "article"] {
-      slug,
-      _updatedAt
-    }`
-    return await client.fetch(query)
+    const articles = await prisma.article.findMany({
+      where: { published: true },
+      select: {
+        slug: true,
+        updatedAt: true,
+      },
+    })
+    return articles
   } catch {
     return []
   }
@@ -66,8 +72,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   for (const project of projects) {
     for (const locale of locales) {
       urls.push({
-        url: `${baseUrl}/${locale}/projects/${project.slug.current}`,
-        lastModified: new Date(project._updatedAt),
+        url: `${baseUrl}/${locale}/projects/${project.slug}`,
+        lastModified: new Date(project.updatedAt),
         changeFrequency: 'weekly',
         priority: 0.9,
       })
@@ -78,8 +84,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   for (const article of articles) {
     for (const locale of locales) {
       urls.push({
-        url: `${baseUrl}/${locale}/insights/${article.slug.current}`,
-        lastModified: new Date(article._updatedAt),
+        url: `${baseUrl}/${locale}/insights/${article.slug}`,
+        lastModified: new Date(article.updatedAt),
         changeFrequency: 'monthly',
         priority: 0.7,
       })

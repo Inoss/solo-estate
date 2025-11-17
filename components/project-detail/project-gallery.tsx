@@ -2,7 +2,6 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
-import { urlForImage } from '@/sanity/lib/image'
 
 interface ProjectGalleryProps {
   gallery: any[]
@@ -14,6 +13,18 @@ export function ProjectGallery({ gallery, title }: ProjectGalleryProps) {
 
   if (!gallery || gallery.length === 0) return null
 
+  // Helper to get image URL from either string or object
+  const getImageUrl = (image: any) => {
+    if (typeof image === 'string') return image
+    return image?.url || image?.src || ''
+  }
+
+  // Helper to get alt text
+  const getAltText = (image: any, fallback: string) => {
+    if (typeof image === 'string') return fallback
+    return image?.alt || fallback
+  }
+
   return (
     <div>
       <h2 className="text-2xl font-bold mb-6">Gallery</h2>
@@ -21,8 +32,8 @@ export function ProjectGallery({ gallery, title }: ProjectGalleryProps) {
       {/* Main Image */}
       <div className="relative h-[400px] md:h-[500px] w-full mb-4 rounded-lg overflow-hidden bg-muted">
         <Image
-          src={urlForImage(gallery[selectedImage]).width(1200).height(800).url() || ''}
-          alt={gallery[selectedImage].alt || `${title} - Image ${selectedImage + 1}`}
+          src={getImageUrl(gallery[selectedImage])}
+          alt={getAltText(gallery[selectedImage], `${title} - Image ${selectedImage + 1}`)}
           fill
           className="object-cover"
         />
@@ -41,8 +52,8 @@ export function ProjectGallery({ gallery, title }: ProjectGalleryProps) {
             }`}
           >
             <Image
-              src={urlForImage(image).width(200).height(200).url() || ''}
-              alt={image.alt || `${title} - Thumbnail ${index + 1}`}
+              src={getImageUrl(image)}
+              alt={getAltText(image, `${title} - Thumbnail ${index + 1}`)}
               fill
               className="object-cover"
             />

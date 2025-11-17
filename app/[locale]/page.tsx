@@ -10,11 +10,11 @@ import { PropertyQuiz } from '@/components/sections/property-quiz'
 import { PurchaseProcess } from '@/components/sections/purchase-process'
 import { FAQ } from '@/components/sections/faq'
 import { ScrollReveal } from '@/components/scroll-reveal'
-import { getFeaturedKorterProjects } from '@/lib/get-korter-projects'
+import { getFeaturedProjects } from '@/lib/projects'
 
 export default async function HomePage() {
-  // Use real Korter.ge projects
-  const featuredProjects = await getFeaturedKorterProjects(6)
+  // Use our own database projects
+  const featuredProjects = await getFeaturedProjects(6)
 
   return (
     <>

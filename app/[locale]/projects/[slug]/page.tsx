@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation'
 import { getTranslations } from 'next-intl/server'
-import { client } from '@/sanity/lib/client'
+import { getProjectBySlug } from '@/lib/projects'
 import { ProjectHero } from '@/components/project-detail/project-hero'
 import { ProjectMetrics } from '@/components/project-detail/project-metrics'
 import { ProjectDescription } from '@/components/project-detail/project-description'
@@ -16,42 +16,9 @@ interface Props {
   }>
 }
 
-async function getProject(slug: string) {
-  const query = `*[_type == "project" && slug.current == $slug][0] {
-    _id,
-    title,
-    slug,
-    developer->,
-    status,
-    propertyType,
-    location,
-    pricing,
-    investment,
-    delivery,
-    area,
-    coverImage,
-    gallery,
-    videoUrl,
-    floorPlans,
-    description,
-    highlights,
-    documents,
-    seo,
-    publishedAt
-  }`
-
-  try {
-    const project = await client.fetch(query, { slug })
-    return project
-  } catch (error) {
-    console.error('Error fetching project:', error)
-    return null
-  }
-}
-
 export async function generateMetadata({ params }: Props) {
   const { locale, slug } = await params
-  const project = await getProject(slug)
+  const project = await getProjectBySlug(slug, locale as Locale)
 
   if (!project) {
     return {
@@ -76,7 +43,7 @@ export async function generateMetadata({ params }: Props) {
 
 export default async function ProjectDetailPage({ params }: Props) {
   const { locale, slug } = await params
-  const project = await getProject(slug)
+  const project = await getProjectBySlug(slug, locale as Locale)
 
   if (!project) {
     notFound()

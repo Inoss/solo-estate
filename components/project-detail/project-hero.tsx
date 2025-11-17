@@ -1,7 +1,6 @@
 'use client'
 
 import Image from 'next/image'
-import { urlForImage } from '@/sanity/lib/image'
 import type { Locale } from '@/i18n'
 
 interface ProjectHeroProps {
@@ -10,9 +9,10 @@ interface ProjectHeroProps {
 }
 
 export function ProjectHero({ project, locale }: ProjectHeroProps) {
-  const imageUrl = project.coverImage
-    ? urlForImage(project.coverImage).width(1600).height(800).url()
-    : '/images/placeholder-project.jpg'
+  // Handle both string URLs and Sanity image objects
+  const imageUrl = typeof project.coverImage === 'string'
+    ? project.coverImage
+    : project.coverImage?.url || '/images/placeholder-project.jpg'
 
   const title = project.title[locale] || project.title.en
   const statusLabels: Record<string, string> = {

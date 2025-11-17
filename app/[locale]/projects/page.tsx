@@ -1,6 +1,7 @@
 import { getTranslations } from 'next-intl/server'
 import { ProjectsList } from '@/components/projects-list'
-import { getKorterProjects } from '@/lib/get-korter-projects'
+import { getProjects } from '@/lib/projects'
+import type { Locale } from '@/i18n'
 
 export async function generateMetadata({
   params,
@@ -52,9 +53,14 @@ export async function generateMetadata({
   }
 }
 
-export default async function ProjectsPage() {
-  // Load all Korter.ge projects
-  const projects = await getKorterProjects()
+export default async function ProjectsPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>
+}) {
+  const { locale } = await params
+  // Load all projects from our database
+  const projects = await getProjects(locale as Locale)
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white via-secondary/10 to-white">

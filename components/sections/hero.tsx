@@ -12,15 +12,16 @@ export function Hero() {
 
   return (
     <section className="relative overflow-hidden min-h-[90vh] flex items-center">
-      {/* Tbilisi Cityscape - Premium View */}
+      {/* Hero Background Image */}
       <div className="absolute inset-0">
         <Image
-          src="https://images.unsplash.com/photo-1555881400-74d7acaacd8b?q=80&w=2400&auto=format&fit=crop"
-          alt="Tbilisi Cityscape"
+          src="/images/hero.png"
+          alt="SOLO Estate - Premium Real Estate"
           fill
           priority
           className="object-cover"
           sizes="100vw"
+          quality={90}
         />
 
         {/* Subtle Logo Watermark - Top Right */}

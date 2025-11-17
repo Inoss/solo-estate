@@ -47,3 +47,5 @@ next-env.d.ts
 /scripts/*.json
 /scripts/bdgroup-projects.json
 /scripts/sample-investment-projects.json
+
+/lib/generated/prisma

@@ -1,0 +1,214 @@
+// This is your Prisma schema file for SOLO Estate
+// Multi-language real estate platform
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// Admin Users Model
+model Admin {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String   // bcrypt hashed
+  name      String
+  role      String   @default("admin") // admin, editor, viewer
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// Developer Model
+model Developer {
+  id                String    @id @default(cuid())
+  name              String
+  slug              String    @unique
+  logo              String?   // URL to logo image
+  descriptionEn     String?
+  descriptionKa     String?
+  descriptionRu     String?
+  descriptionHe     String?
+  descriptionAz     String?
+  descriptionHy     String?
+  descriptionUk     String?
+  rating            Float?
+  completedProjects Int?
+  website           String?
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+  projects          Project[]
+}
+
+// Project Model (Main Content)
+model Project {
+  id           String    @id @default(cuid())
+  slug         String    @unique
+
+  // Multilingual title
+  titleEn      String
+  titleKa      String?
+  titleRu      String?
+  titleHe      String?
+  titleAz      String?
+  titleHy      String?
+  titleUk      String?
+
+  // Multilingual description
+  descriptionEn String?
+  descriptionKa String?
+  descriptionRu String?
+  descriptionHe String?
+  descriptionAz String?
+  descriptionHy String?
+  descriptionUk String?
+
+  // Developer relationship
+  developerId  String?
+  developer    Developer? @relation(fields: [developerId], references: [id])
+
+  // Basic info
+  status       String     // offPlan, underConstruction, ready
+  propertyType String     // apartment, aparthotel, commercial, villa
+  area         Float?     // in square meters
+
+  // Location
+  locationCity     String?
+  locationArea     String?
+  locationAddress  String?
+  locationLat      Float?
+  locationLng      Float?
+
+  // Pricing
+  price           Float
+  pricePerSqm     Float?
+  currency        String    @default("USD")
+  priceRangeMin   Float?
+  priceRangeMax   Float?
+
+  // Investment metrics
+  yield           Float?
+  capRate         Float?
+  irr             Float?
+  monthlyRent     Float?
+  occupancy       Float?
+  managementFee   Float?
+
+  // Delivery
+  deliveryQuarter String?  // Q1, Q2, Q3, Q4
+  deliveryYear    Int?
+
+  // Media
+  coverImage      String?  // URL
+  gallery         String?  // JSON array of image URLs
+  videoUrl        String?
+  floorPlans      String?  // JSON array of file URLs
+
+  // Features
+  highlights      String?  // JSON array of feature strings
+
+  // Documents (stored as JSON)
+  documents       Json?    // [{title: "Brochure", file: "url"}, ...]
+
+  // SEO
+  metaTitle       String?
+  metaDescription String?
+  ogImage         String?
+
+  // Status
+  featured        Boolean  @default(false)
+  published       Boolean  @default(true)
+  publishedAt     DateTime @default(now())
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+// Article/Blog Model
+model Article {
+  id           String   @id @default(cuid())
+  slug         String   @unique
+
+  // Multilingual title
+  titleEn      String
+  titleKa      String?
+  titleRu      String?
+  titleHe      String?
+  titleAz      String?
+  titleHy      String?
+  titleUk      String?
+
+  // Multilingual content (rich text stored as HTML)
+  contentEn    String?
+  contentKa    String?
+  contentRu    String?
+  contentHe    String?
+  contentAz    String?
+  contentHy    String?
+  contentUk    String?
+
+  // Multilingual excerpt
+  excerptEn    String?
+  excerptKa    String?
+  excerptRu    String?
+  excerptHe    String?
+  excerptAz    String?
+  excerptHy    String?
+  excerptUk    String?
+
+  // Media
+  coverImage   String?
+
+  // Categorization
+  category     String?  // Investment, Market News, Guides, etc.
+  tags         String?  // JSON array of tags
+
+  // SEO
+  metaTitle       String?
+  metaDescription String?
+  ogImage         String?
+
+  // Status
+  featured     Boolean  @default(false)
+  published    Boolean  @default(true)
+  publishedAt  DateTime @default(now())
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+// Global Settings Model (singleton)
+model Settings {
+  id              String   @id @default("global")
+
+  // Site info
+  siteNameEn      String?
+  siteNameKa      String?
+  siteNameRu      String?
+  siteNameHe      String?
+  siteNameAz      String?
+  siteNameHy      String?
+  siteNameUk      String?
+
+  // Contact
+  email           String?
+  phone           String?
+  whatsapp        String?
+  address         String?
+
+  // Social media
+  facebook        String?
+  instagram       String?
+  linkedin        String?
+  twitter         String?
+
+  // SEO defaults
+  defaultMetaTitle       String?
+  defaultMetaDescription String?
+  defaultOgImage         String?
+
+  // Other settings (stored as JSON for flexibility)
+  customSettings  Json?
+
+  updatedAt       DateTime @updatedAt
+}

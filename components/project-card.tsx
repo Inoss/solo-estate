@@ -5,7 +5,6 @@ import Link from 'next/link'
 import { useLocale } from 'next-intl'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
-import { urlForImage } from '@/sanity/lib/image'
 import { formatPrice, formatPercent } from '@/lib/utils'
 import type { Locale } from '@/i18n'
 import { MapPin, TrendingUp, Calendar, ArrowRight, Home, Building2, Maximize2 } from 'lucide-react'
@@ -63,20 +62,13 @@ interface ProjectCardProps {
 export function ProjectCard({ project }: ProjectCardProps) {
   const locale = useLocale() as Locale
 
-  // Handle different image sources
-  const imageUrl = project.coverImageUrl
-    ? project.coverImageUrl
-    : project.coverImage
-      ? typeof project.coverImage === 'string'
-        ? project.coverImage
-        : urlForImage(project.coverImage).width(800).height(600).url()
-      : '/images/placeholder-project.jpg'
+  // Handle different image sources (now using direct URLs from database)
+  const imageUrl = project.coverImageUrl ||
+    (typeof project.coverImage === 'string' ? project.coverImage : null) ||
+    '/images/placeholder-project.jpg'
 
-  // Get gallery thumbnails
-  const galleryImages = project.galleryUrls?.slice(0, 4) ||
-    project.gallery?.slice(0, 4).map(img =>
-      typeof img === 'string' ? img : urlForImage(img).width(200).height(150).url()
-    ) || []
+  // Get gallery thumbnails (using direct URLs)
+  const galleryImages = project.galleryUrls?.slice(0, 4) || []
 
   return (
     <Card className="group overflow-hidden border border-border/50 shadow-md hover:shadow-2xl transition-all duration-500 card-hover-lift bg-white">

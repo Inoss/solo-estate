@@ -1,27 +1,70 @@
 import { getTranslations } from 'next-intl/server'
-import { client } from '@/sanity/lib/client'
+import { prisma } from '@/lib/prisma'
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
 import { Calendar, Clock, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 import type { Locale } from '@/i18n'
 
 async function getArticles() {
-  const query = `*[_type == "article"] | order(publishedAt desc) {
-    _id,
-    title,
-    slug,
-    excerpt,
-    coverImage,
-    author,
-    category,
-    tags,
-    publishedAt,
-    readTime
-  }`
-
   try {
-    const articles = await client.fetch(query)
-    return articles
+    const articles = await prisma.article.findMany({
+      where: { published: true },
+      orderBy: { publishedAt: 'desc' },
+      select: {
+        id: true,
+        titleEn: true,
+        titleKa: true,
+        titleRu: true,
+        titleHe: true,
+        titleAz: true,
+        titleHy: true,
+        titleUk: true,
+        slug: true,
+        excerptEn: true,
+        excerptKa: true,
+        excerptRu: true,
+        excerptHe: true,
+        excerptAz: true,
+        excerptHy: true,
+        excerptUk: true,
+        coverImage: true,
+        author: true,
+        category: true,
+        tags: true,
+        publishedAt: true,
+        readTime: true,
+      },
+    })
+
+    // Transform to expected format
+    return articles.map(article => ({
+      _id: article.id,
+      title: {
+        en: article.titleEn,
+        ka: article.titleKa || article.titleEn,
+        ru: article.titleRu || article.titleEn,
+        he: article.titleHe || article.titleEn,
+        az: article.titleAz || article.titleEn,
+        hy: article.titleHy || article.titleEn,
+        uk: article.titleUk || article.titleEn,
+      },
+      slug: { current: article.slug },
+      excerpt: {
+        en: article.excerptEn,
+        ka: article.excerptKa || article.excerptEn,
+        ru: article.excerptRu || article.excerptEn,
+        he: article.excerptHe || article.excerptEn,
+        az: article.excerptAz || article.excerptEn,
+        hy: article.excerptHy || article.excerptEn,
+        uk: article.excerptUk || article.excerptEn,
+      },
+      coverImage: article.coverImage,
+      author: article.author,
+      category: article.category,
+      tags: article.tags,
+      publishedAt: article.publishedAt?.toISOString() || new Date().toISOString(),
+      readTime: article.readTime,
+    }))
   } catch (error) {
     console.error('Error fetching articles:', error)
     return []
