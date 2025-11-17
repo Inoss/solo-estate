@@ -6,9 +6,11 @@ import { locales } from '@/i18n';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 import { GoogleAnalytics } from '@/components/analytics';
+import { MetaPixel } from '@/components/meta-pixel';
 import { TawkChat } from '@/components/tawk-chat';
 import { CookieConsent } from '@/components/cookie-consent';
 import { StructuredData } from '@/components/structured-data';
+import { SocialWidget } from '@/components/social-widget';
 import './globals.css';
 
 const inter = Inter({
@@ -143,9 +145,11 @@ export default async function LocaleLayout({
         className={`${inter.variable} ${notoGeorgian.variable} ${notoHebrew.variable} ${notoArmenian.variable} font-sans antialiased`}
       >
         <GoogleAnalytics />
+        <MetaPixel />
         <TawkChat />
         <CookieConsent />
         <StructuredData locale={locale} />
+        <SocialWidget />
         <NextIntlClientProvider messages={messages}>
           <Header />
           <main className="min-h-screen">

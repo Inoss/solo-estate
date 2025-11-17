@@ -135,5 +135,29 @@
     "copyright": "© {year} SOLO Estate. כל הזכויות שמורות.",
     "terms": "תנאי שימוש",
     "privacy": "מדיניות פרטיות"
+  },
+  "about": {
+    "title": "About Us",
+    "description": "Learn more about SOLO Estate - your trusted partner for real estate investments in Georgia"
+  },
+  "insights": {
+    "title": "Insights & News",
+    "description": "Expert insights, market analysis, and latest news about real estate investment in Georgia",
+    "categories": {
+      "all": "All Articles",
+      "market": "Market Analysis",
+      "investment": "Investment Tips",
+      "legal": "Legal & Regulations",
+      "lifestyle": "Lifestyle & Living"
+    },
+    "hero": {
+      "title": "Real Estate Insights & Market Analysis",
+      "subtitle": "Stay informed with expert insights, market trends, and investment tips for Georgia real estate market"
+    },
+    "readMore": "Read More",
+    "noArticles": "No articles available yet",
+    "checkBackSoon": "Check back soon for latest insights and market updates",
+    "backToArticles": "Back to Articles",
+    "relatedArticles": "Related Articles"
   }
 }

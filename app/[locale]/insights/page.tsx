@@ -28,11 +28,9 @@ async function getArticles() {
         excerptHy: true,
         excerptUk: true,
         coverImage: true,
-        author: true,
         category: true,
         tags: true,
         publishedAt: true,
-        readTime: true,
       },
     })
 
@@ -59,11 +57,9 @@ async function getArticles() {
         uk: article.excerptUk || article.excerptEn,
       },
       coverImage: article.coverImage,
-      author: article.author,
       category: article.category,
       tags: article.tags,
       publishedAt: article.publishedAt?.toISOString() || new Date().toISOString(),
-      readTime: article.readTime,
     }))
   } catch (error) {
     console.error('Error fetching articles:', error)

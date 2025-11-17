@@ -41,11 +41,9 @@ async function getArticle(slug: string) {
         contentHy: true,
         contentUk: true,
         coverImage: true,
-        author: true,
         category: true,
         tags: true,
         publishedAt: true,
-        readTime: true,
         metaTitle: true,
         metaDescription: true,
         ogImage: true,
@@ -86,11 +84,9 @@ async function getArticle(slug: string) {
         uk: article.contentUk || article.contentEn,
       },
       coverImage: article.coverImage,
-      author: article.author,
       category: article.category,
       tags: article.tags,
       publishedAt: article.publishedAt?.toISOString() || new Date().toISOString(),
-      readTime: article.readTime,
       seo: {
         metaTitle: article.metaTitle,
         metaDescription: article.metaDescription,
@@ -132,7 +128,6 @@ async function getRelatedArticles(category: string, currentId: string) {
         excerptUk: true,
         coverImage: true,
         publishedAt: true,
-        readTime: true,
       },
     })
 
@@ -160,7 +155,6 @@ async function getRelatedArticles(category: string, currentId: string) {
       },
       coverImage: article.coverImage,
       publishedAt: article.publishedAt?.toISOString() || new Date().toISOString(),
-      readTime: article.readTime,
     }))
   } catch (error) {
     console.error('Error fetching related articles:', error)

@@ -30,6 +30,7 @@ const nextConfig: NextConfig = {
       },
     ],
     formats: ['image/avif', 'image/webp'],
+    qualities: [75, 85, 90, 100],
   },
   experimental: {
     optimizePackageImports: ['@radix-ui/react-icons'],
