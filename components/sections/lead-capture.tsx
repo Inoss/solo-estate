@@ -1,13 +1,14 @@
 'use client'
 
 import { useState } from 'react'
-import { useTranslations } from 'next-intl'
+import { useTranslations, useLocale } from 'next-intl'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Star, TrendingUp, Home, CreditCard, ArrowRight, CheckCircle2, Sparkles } from 'lucide-react'
 
 export function LeadCapture() {
   const t = useTranslations('home.leadCapture')
+  const locale = useLocale()
   const [phone, setPhone] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
@@ -16,17 +17,36 @@ export function LeadCapture() {
     e.preventDefault()
     setIsSubmitting(true)
 
-    // Simulate API call
-    setTimeout(() => {
-      setIsSubmitting(false)
-      setIsSuccess(true)
+    try {
+      const response = await fetch('/api/leads', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          phone,
+          source: 'homepage-lead-capture',
+          locale,
+        }),
+      })
 
-      // Reset after 3 seconds
-      setTimeout(() => {
-        setIsSuccess(false)
-        setPhone('')
-      }, 3000)
-    }, 1500)
+      if (response.ok) {
+        setIsSuccess(true)
+        // Reset after 3 seconds
+        setTimeout(() => {
+          setIsSuccess(false)
+          setPhone('')
+        }, 3000)
+      } else {
+        console.error('Failed to submit lead')
+        alert('Failed to submit. Please try again.')
+      }
+    } catch (error) {
+      console.error('Error submitting lead:', error)
+      alert('An error occurred. Please try again.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (

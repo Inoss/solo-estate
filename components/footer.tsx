@@ -23,9 +23,9 @@ export function Footer() {
   ]
 
   const socialLinks = [
-    { name: 'Facebook', href: '#', icon: 'facebook' },
-    { name: 'Instagram', href: '#', icon: 'instagram' },
-    { name: 'LinkedIn', href: '#', icon: 'linkedin' },
+    { name: 'Facebook', href: 'https://www.facebook.com/profile.php?id=61558366256708&mibextid=wwXIfr&rdid=snb7fqt8A2aBtQzL&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1DwssytEPX%2F%3Fmibextid%3DwwXIfr#', icon: 'facebook' },
+    { name: 'Instagram', href: 'https://www.instagram.com/soloestate_?igsh=MWc1czR4YnR0ZHNzNg%3D%3D&utm_source=qr', icon: 'instagram' },
+    { name: 'LinkedIn', href: 'https://www.linkedin.com/company/solo-estate', icon: 'linkedin' },
   ]
 
   return (

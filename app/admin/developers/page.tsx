@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 import Link from "next/link"
-import { Plus, Edit, Trash2 } from "lucide-react"
+import { Plus, Edit, Trash2, Search, Users, ExternalLink, Star } from "lucide-react"
 
 interface Developer {
   id: string
@@ -19,6 +19,7 @@ interface Developer {
 export default function DevelopersPage() {
   const [developers, setDevelopers] = useState<Developer[]>([])
   const [isLoading, setIsLoading] = useState(true)
+  const [searchTerm, setSearchTerm] = useState("")
 
   useEffect(() => {
     fetchDevelopers()
@@ -57,79 +58,144 @@ export default function DevelopersPage() {
     }
   }
 
+  const filteredDevelopers = developers.filter((developer) =>
+    developer.name.toLowerCase().includes(searchTerm.toLowerCase())
+  )
+
   return (
-    <div className="p-8">
-      <div className="flex items-center justify-between mb-6">
-        <div>
-          <h1 className="text-3xl font-bold text-slate-900">Developers</h1>
-          <p className="text-slate-600 mt-1">Manage real estate developers</p>
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-slate-50">
+      {/* Header */}
+      <div className="bg-white border-b border-slate-200 sticky top-0 z-10 backdrop-blur-lg bg-white/80">
+        <div className="px-8 py-6">
+          <div className="flex items-center justify-between">
+            <div>
+              <h1 className="text-3xl font-bold text-slate-900 mb-1">Developers</h1>
+              <p className="text-slate-600">Manage real estate developers</p>
+            </div>
+            <Link
+              href="/admin/developers/new"
+              className="flex items-center gap-2 bg-gradient-to-r from-green-600 to-emerald-500 hover:from-green-700 hover:to-emerald-600 text-white px-6 py-3 rounded-xl transition-all duration-300 shadow-lg shadow-green-500/30 hover:shadow-green-500/50 hover:scale-105 font-medium"
+            >
+              <Plus className="h-5 w-5" />
+              Add New Developer
+            </Link>
+          </div>
         </div>
-        <Link
-          href="/admin/developers/new"
-          className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition"
-        >
-          <Plus className="h-5 w-5" />
-          Add New Developer
-        </Link>
       </div>
 
-      <div className="bg-white rounded-lg shadow overflow-hidden">
+      <div className="p-8">
+        {/* Search */}
+        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 mb-6">
+          <div className="relative">
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-400" />
+            <input
+              type="text"
+              placeholder="Search developers..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="w-full pl-12 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition"
+            />
+          </div>
+        </div>
+
+        {/* Developers Grid */}
         {isLoading ? (
-          <div className="p-8 text-center text-slate-600">Loading...</div>
-        ) : developers.length === 0 ? (
-          <div className="p-8 text-center text-slate-600">
-            No developers yet. Create your first developer!
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[1, 2, 3].map((i) => (
+              <div key={i} className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 animate-pulse">
+                <div className="h-6 bg-slate-200 rounded mb-4"></div>
+                <div className="h-4 bg-slate-200 rounded w-2/3 mb-2"></div>
+                <div className="h-4 bg-slate-200 rounded w-1/2"></div>
+              </div>
+            ))}
+          </div>
+        ) : filteredDevelopers.length === 0 ? (
+          <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-12 text-center">
+            <Users className="h-16 w-16 text-slate-300 mx-auto mb-4" />
+            <h3 className="text-xl font-semibold text-slate-900 mb-2">No developers found</h3>
+            <p className="text-slate-600 mb-6">
+              {searchTerm
+                ? "Try adjusting your search"
+                : "Get started by adding your first developer"}
+            </p>
+            {!searchTerm && (
+              <Link
+                href="/admin/developers/new"
+                className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-xl transition-all duration-300 font-medium"
+              >
+                <Plus className="h-5 w-5" />
+                Add First Developer
+              </Link>
+            )}
           </div>
         ) : (
-          <table className="w-full">
-            <thead className="bg-slate-50 border-b border-slate-200">
-              <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium text-slate-700 uppercase">Name</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-slate-700 uppercase">Rating</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-slate-700 uppercase">Projects</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-slate-700 uppercase">Website</th>
-                <th className="px-6 py-3 text-right text-xs font-medium text-slate-700 uppercase">Actions</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-slate-200">
-              {developers.map((developer) => (
-                <tr key={developer.id} className="hover:bg-slate-50">
-                  <td className="px-6 py-4">
-                    <div className="text-sm font-medium text-slate-900">{developer.name}</div>
-                  </td>
-                  <td className="px-6 py-4">
-                    <div className="text-sm text-slate-600">
-                      {developer.rating ? `⭐ ${developer.rating}` : "-"}
-                    </div>
-                  </td>
-                  <td className="px-6 py-4">
-                    <span className="px-2 py-1 text-xs font-semibold rounded-full bg-blue-100 text-blue-800">
-                      {developer._count.projects} projects
-                    </span>
-                  </td>
-                  <td className="px-6 py-4">
-                    {developer.website ? (
-                      <a href={developer.website} target="_blank" rel="noopener noreferrer" className="text-sm text-blue-600 hover:underline">
-                        Visit
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filteredDevelopers.map((developer) => (
+              <div
+                key={developer.id}
+                className="group bg-white rounded-2xl shadow-sm border border-slate-200 p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+              >
+                {/* Header */}
+                <div className="flex items-start justify-between mb-4">
+                  <div className="flex-1">
+                    <h3 className="font-bold text-lg text-slate-900 mb-1 group-hover:text-green-600 transition-colors">
+                      {developer.name}
+                    </h3>
+                    {developer.website && (
+                      <a
+                        href={developer.website}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm text-blue-600 hover:text-blue-700 inline-flex items-center gap-1"
+                      >
+                        <ExternalLink className="h-3 w-3" />
+                        Website
                       </a>
-                    ) : (
-                      <span className="text-sm text-slate-400">-</span>
                     )}
-                  </td>
-                  <td className="px-6 py-4 text-right text-sm font-medium">
-                    <Link href={`/admin/developers/${developer.id}`} className="text-blue-600 hover:text-blue-900 mr-4 inline-flex items-center gap-1">
-                      <Edit className="h-4 w-4" />
-                      Edit
-                    </Link>
-                    <button onClick={() => handleDelete(developer.id)} className="text-red-600 hover:text-red-900 inline-flex items-center gap-1">
-                      <Trash2 className="h-4 w-4" />
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+                  </div>
+                  {developer.rating && (
+                    <div className="flex items-center gap-1 bg-yellow-100 px-3 py-1.5 rounded-full">
+                      <Star className="h-4 w-4 text-yellow-600 fill-yellow-600" />
+                      <span className="text-sm font-semibold text-yellow-700">
+                        {developer.rating}
+                      </span>
+                    </div>
+                  )}
+                </div>
+
+                {/* Stats */}
+                <div className="grid grid-cols-2 gap-4 mb-5 pb-5 border-b border-slate-200">
+                  <div>
+                    <p className="text-xs text-slate-500 mb-1">Active Projects</p>
+                    <p className="text-2xl font-bold text-slate-900">{developer._count.projects}</p>
+                  </div>
+                  <div>
+                    <p className="text-xs text-slate-500 mb-1">Completed</p>
+                    <p className="text-2xl font-bold text-slate-900">
+                      {developer.completedProjects || 0}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Actions */}
+                <div className="flex items-center gap-2">
+                  <Link
+                    href={`/admin/developers/${developer.id}`}
+                    className="flex-1 flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white px-4 py-2.5 rounded-lg transition-all duration-300 font-medium"
+                  >
+                    <Edit className="h-4 w-4" />
+                    Edit
+                  </Link>
+                  <button
+                    onClick={() => handleDelete(developer.id)}
+                    className="flex items-center justify-center gap-2 bg-red-50 hover:bg-red-100 text-red-600 px-4 py-2.5 rounded-lg transition-all duration-300"
+                  >
+                    <Trash2 className="h-4 w-4" />
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
         )}
       </div>
     </div>

@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { useTranslations } from 'next-intl'
+import { useTranslations, useLocale } from 'next-intl'
 import { Button } from '@/components/ui/button'
 import {
   Home,
@@ -38,6 +38,7 @@ interface QuizData {
 
 export function PropertyQuiz() {
   const t = useTranslations('home.propertyQuiz')
+  const locale = useLocale()
   const [isOpen, setIsOpen] = useState(false)
   const [currentStep, setCurrentStep] = useState(1)
   const [quizData, setQuizData] = useState<QuizData>({
@@ -55,6 +56,7 @@ export function PropertyQuiz() {
     },
   })
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   const totalSteps = 7
 
@@ -70,10 +72,42 @@ export function PropertyQuiz() {
     }
   }
 
-  const handleSubmit = () => {
-    // Here you would send data to your API
-    console.log('Quiz Data:', quizData)
-    setIsSubmitted(true)
+  const handleSubmit = async () => {
+    setIsSubmitting(true)
+
+    try {
+      const response = await fetch('/api/quiz', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          propertyType: quizData.propertyType,
+          budget: quizData.budget,
+          location: quizData.location,
+          purpose: quizData.purpose,
+          timeline: quizData.timeline,
+          size: quizData.size,
+          infrastructure: quizData.infrastructure,
+          contactName: quizData.contact.name,
+          contactEmail: quizData.contact.email,
+          contactPhone: quizData.contact.phone,
+          locale,
+        }),
+      })
+
+      if (response.ok) {
+        setIsSubmitted(true)
+      } else {
+        console.error('Failed to submit quiz')
+        alert('Failed to submit. Please try again.')
+      }
+    } catch (error) {
+      console.error('Error submitting quiz:', error)
+      alert('An error occurred. Please try again.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const updateData = (field: string, value: any) => {
@@ -577,12 +611,13 @@ export function PropertyQuiz() {
                   disabled={
                     !quizData.contact.name ||
                     !quizData.contact.phone ||
-                    !quizData.contact.email
+                    !quizData.contact.email ||
+                    isSubmitting
                   }
                   className="gradient-gold text-white px-8"
                 >
-                  {t('submitButton')}
-                  <Sparkles className="ml-2 h-5 w-5" />
+                  {isSubmitting ? t('submitting') || 'Submitting...' : t('submitButton')}
+                  {!isSubmitting && <Sparkles className="ml-2 h-5 w-5" />}
                 </Button>
               )}
             </div>

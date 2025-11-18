@@ -12,7 +12,8 @@ import {
   Settings,
   LogOut,
   Home,
-  ChevronRight
+  ChevronRight,
+  MessageSquare
 } from "lucide-react"
 
 const navigation = [
@@ -20,6 +21,7 @@ const navigation = [
   { name: "Projects", href: "/admin/projects", icon: Building2 },
   { name: "Developers", href: "/admin/developers", icon: Users },
   { name: "Articles", href: "/admin/articles", icon: FileText },
+  { name: "Leads", href: "/admin/leads", icon: MessageSquare },
   { name: "Settings", href: "/admin/settings", icon: Settings },
 ]
 
