@@ -1,15 +1,18 @@
 import { auth } from "@/auth"
+import { redirect } from "next/navigation"
 import { prisma } from "@/lib/db"
-import { Building2, Users, FileText, TrendingUp, ArrowUpRight } from "lucide-react"
+import { Building2, Users, FileText, TrendingUp, ArrowUpRight, MessageSquare } from "lucide-react"
 import Link from "next/link"
 
 async function getStats() {
-  const [projectsCount, developersCount, articlesCount, publishedProjects, leadsCount] = await Promise.all([
+  const [projectsCount, developersCount, articlesCount, publishedProjects, leadsCount, contactRequestsCount, newContactRequestsCount] = await Promise.all([
     prisma.project.count(),
     prisma.developer.count(),
     prisma.article.count(),
     prisma.project.count({ where: { published: true } }),
     prisma.lead.count(),
+    prisma.contactRequest.count(),
+    prisma.contactRequest.count({ where: { status: 'new' } }),
   ])
 
   // Get recent projects
@@ -39,14 +42,31 @@ async function getStats() {
     },
   })
 
+  // Get recent contact requests
+  const recentContactRequests = await prisma.contactRequest.findMany({
+    take: 5,
+    orderBy: { createdAt: 'desc' },
+    select: {
+      id: true,
+      type: true,
+      name: true,
+      email: true,
+      status: true,
+      createdAt: true,
+    },
+  })
+
   return {
     projects: projectsCount,
     developers: developersCount,
     articles: articlesCount,
     publishedProjects,
     leads: leadsCount,
+    contactRequests: contactRequestsCount,
+    newContactRequests: newContactRequestsCount,
     recentProjects,
     recentLeads,
+    recentContactRequests,
   }
 }
 
@@ -74,7 +94,7 @@ export default async function DashboardPage() {
       </div>
 
       {/* Stats Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-8">
         <StatCard
           title="Total Projects"
           value={stats.projects}
@@ -100,6 +120,14 @@ export default async function DashboardPage() {
           href="/admin/articles"
         />
         <StatCard
+          title="Contact Requests"
+          value={stats.contactRequests}
+          subtitle={`${stats.newContactRequests} New`}
+          icon={MessageSquare}
+          gradient="from-pink-500 to-rose-600"
+          href="/admin/contact-requests"
+        />
+        <StatCard
           title="Leads"
           value={stats.leads}
           subtitle="Total Inquiries"
@@ -114,7 +142,7 @@ export default async function DashboardPage() {
         <div className="flex items-center justify-between mb-6">
           <h2 className="text-xl font-semibold text-slate-900">Quick Actions</h2>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           <QuickActionCard
             title="Add New Project"
             description="Create a new property listing"
@@ -136,11 +164,18 @@ export default async function DashboardPage() {
             icon={FileText}
             gradient="from-purple-500 to-purple-600"
           />
+          <QuickActionCard
+            title="View Contact Requests"
+            description="Manage form submissions"
+            href="/admin/contact-requests"
+            icon={MessageSquare}
+            gradient="from-pink-500 to-rose-600"
+          />
         </div>
       </div>
 
       {/* Recent Activity */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Recent Projects */}
         <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
           <div className="flex items-center justify-between mb-6">
@@ -187,6 +222,71 @@ export default async function DashboardPage() {
               ))
             ) : (
               <p className="text-center text-slate-500 py-8">No projects yet</p>
+            )}
+          </div>
+        </div>
+
+        {/* Recent Contact Requests */}
+        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-xl font-semibold text-slate-900">Contact Requests</h2>
+            <Link
+              href="/admin/contact-requests"
+              className="text-sm text-pink-600 hover:text-pink-700 font-medium flex items-center gap-1"
+            >
+              View All
+              <ArrowUpRight className="w-4 h-4" />
+            </Link>
+          </div>
+          <div className="space-y-3">
+            {stats.recentContactRequests.length > 0 ? (
+              stats.recentContactRequests.map((request) => (
+                <Link
+                  key={request.id}
+                  href="/admin/contact-requests"
+                  className="flex items-center justify-between p-4 rounded-xl hover:bg-slate-50 transition-colors border border-slate-100 group"
+                >
+                  <div className="flex items-center gap-3 flex-1 min-w-0">
+                    <div className="p-2 bg-pink-100 rounded-lg group-hover:bg-pink-200 transition-colors">
+                      <MessageSquare className="w-5 h-5 text-pink-600" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="font-medium text-slate-900 truncate group-hover:text-pink-600 transition-colors">
+                        {request.name}
+                      </p>
+                      <p className="text-sm text-slate-500 truncate">
+                        {request.email} • {new Date(request.createdAt).toLocaleDateString()}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex flex-col items-end gap-1">
+                    <span
+                      className={`px-2 py-1 rounded-full text-xs font-medium ${
+                        request.type === 'contact'
+                          ? "bg-purple-100 text-purple-700"
+                          : "bg-indigo-100 text-indigo-700"
+                      }`}
+                    >
+                      {request.type === 'contact' ? 'Contact' : 'Offer'}
+                    </span>
+                    <span
+                      className={`px-2 py-1 rounded-full text-xs font-medium ${
+                        request.status === 'new'
+                          ? "bg-blue-100 text-blue-700"
+                          : request.status === 'contacted'
+                          ? "bg-yellow-100 text-yellow-700"
+                          : request.status === 'qualified'
+                          ? "bg-green-100 text-green-700"
+                          : "bg-gray-100 text-gray-700"
+                      }`}
+                    >
+                      {request.status}
+                    </span>
+                  </div>
+                </Link>
+              ))
+            ) : (
+              <p className="text-center text-slate-500 py-8">No requests yet</p>
             )}
           </div>
         </div>

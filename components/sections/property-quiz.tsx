@@ -1,6 +1,7 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { createPortal } from 'react-dom'
 import { useTranslations, useLocale } from 'next-intl'
 import { Button } from '@/components/ui/button'
 import {
@@ -41,6 +42,7 @@ export function PropertyQuiz() {
   const locale = useLocale()
   const [isOpen, setIsOpen] = useState(false)
   const [currentStep, setCurrentStep] = useState(1)
+  const [mounted, setMounted] = useState(false)
   const [quizData, setQuizData] = useState<QuizData>({
     propertyType: '',
     budget: '',
@@ -59,6 +61,11 @@ export function PropertyQuiz() {
   const [isSubmitting, setIsSubmitting] = useState(false)
 
   const totalSteps = 7
+
+  // Client-side only portal mounting
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   const handleNext = () => {
     if (currentStep < totalSteps) {
@@ -204,60 +211,8 @@ export function PropertyQuiz() {
     )
   }
 
-  if (isSubmitted) {
-    return (
-      <section className="py-20 lg:py-28 bg-gradient-to-br from-green-50 to-background">
-        <div className="container mx-auto px-6 lg:px-8">
-          <div className="max-w-2xl mx-auto text-center">
-            <div className="inline-flex items-center justify-center w-24 h-24 rounded-full bg-green-500 mb-8 shadow-2xl animate-bounce">
-              <CheckCircle2 className="h-12 w-12 text-white" />
-            </div>
-
-            <h2 className="text-4xl font-bold text-foreground mb-4">
-              {t('successTitle')}
-            </h2>
-            <p className="text-xl text-muted-foreground mb-8">
-              {t('successMessage')}
-            </p>
-
-            <div className="bg-white rounded-2xl p-8 shadow-xl border border-border/50 mb-8">
-              <h3 className="font-bold text-lg mb-4">{t('nextStepsTitle')}</h3>
-              <div className="space-y-4 text-left">
-                {[
-                  t('nextStep1'),
-                  t('nextStep2'),
-                  t('nextStep3'),
-                  t('nextStep4'),
-                ].map((step, idx) => (
-                  <div key={idx} className="flex items-start gap-3">
-                    <div className="flex-shrink-0 w-6 h-6 rounded-full bg-accent text-white flex items-center justify-center text-sm font-bold">
-                      {idx + 1}
-                    </div>
-                    <span className="text-muted-foreground">{step}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <Button
-              size="lg"
-              onClick={() => {
-                setIsOpen(false)
-                setIsSubmitted(false)
-                setCurrentStep(1)
-              }}
-              variant="outline"
-              className="px-8 py-6 h-auto text-lg"
-            >
-              {t('closeButton')}
-            </Button>
-          </div>
-        </div>
-      </section>
-    )
-  }
-
-  return (
+  // Render quiz modal in a portal
+  const quizModal = isOpen && mounted && (
     <section className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 overflow-y-auto">
       <div className="min-h-screen py-10 px-4">
         <div className="max-w-3xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden">
@@ -625,5 +580,135 @@ export function PropertyQuiz() {
         </div>
       </div>
     </section>
+  )
+
+  if (isSubmitted) {
+    return (
+      <section className="py-20 lg:py-28 bg-gradient-to-br from-green-50 to-background">
+        <div className="container mx-auto px-6 lg:px-8">
+          <div className="max-w-2xl mx-auto text-center">
+            <div className="inline-flex items-center justify-center w-24 h-24 rounded-full bg-green-500 mb-8 shadow-2xl animate-bounce">
+              <CheckCircle2 className="h-12 w-12 text-white" />
+            </div>
+
+            <h2 className="text-4xl font-bold text-foreground mb-4">
+              {t('successTitle')}
+            </h2>
+            <p className="text-xl text-muted-foreground mb-8">
+              {t('successMessage')}
+            </p>
+
+            <div className="bg-white rounded-2xl p-8 shadow-xl border border-border/50 mb-8">
+              <h3 className="font-bold text-lg mb-4">{t('nextStepsTitle')}</h3>
+              <div className="space-y-4 text-left">
+                {[
+                  t('nextStep1'),
+                  t('nextStep2'),
+                  t('nextStep3'),
+                  t('nextStep4'),
+                ].map((step, idx) => (
+                  <div key={idx} className="flex items-start gap-3">
+                    <div className="flex-shrink-0 w-6 h-6 rounded-full bg-accent text-white flex items-center justify-center text-sm font-bold">
+                      {idx + 1}
+                    </div>
+                    <span className="text-muted-foreground">{step}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <Button
+              size="lg"
+              onClick={() => {
+                setIsOpen(false)
+                setIsSubmitted(false)
+                setCurrentStep(1)
+              }}
+              variant="outline"
+              className="px-8 py-6 h-auto text-lg"
+            >
+              {t('closeButton')}
+            </Button>
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  return (
+    <>
+      {mounted && quizModal && createPortal(quizModal, document.body)}
+      {!isOpen && (
+        <section className="py-20 lg:py-28 bg-gradient-to-br from-accent/10 via-background to-yellow-500/10 relative overflow-hidden">
+          {/* Background Pattern */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(201,169,97,0.15),transparent_50%)]" />
+
+          <div className="container mx-auto px-6 lg:px-8 relative z-10">
+            <div className="max-w-4xl mx-auto text-center">
+              {/* Badge */}
+              <div className="inline-flex items-center gap-2 bg-white backdrop-blur-sm px-6 py-3 rounded-full border-2 border-accent/30 shadow-xl mb-6">
+                <Sparkles className="h-5 w-5 text-accent" />
+                <span className="text-sm font-bold text-accent">{t('badge')}</span>
+              </div>
+
+              {/* Heading */}
+              <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6 leading-tight">
+                {t('title')}
+                <span className="block mt-2 bg-gradient-to-r from-accent to-yellow-500 bg-clip-text text-transparent">
+                  {t('titleHighlight')}
+                </span>
+              </h2>
+
+              <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">
+                {t('subtitle')}
+              </p>
+
+              {/* Benefits Grid */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                {[
+                  { icon: CheckCircle2, text: t('benefit1') },
+                  { icon: TrendingUp, text: t('benefit2') },
+                  { icon: Sparkles, text: t('benefit3') },
+                ].map((item, idx) => (
+                  <div
+                    key={idx}
+                    className="flex items-center justify-center gap-3 bg-white rounded-xl p-4 shadow-md border border-border/50"
+                  >
+                    <item.icon className="h-5 w-5 text-accent flex-shrink-0" />
+                    <span className="text-sm font-semibold text-foreground">{item.text}</span>
+                  </div>
+                ))}
+              </div>
+
+              {/* CTA Button */}
+              <Button
+                size="lg"
+                onClick={() => setIsOpen(true)}
+                className="gradient-gold text-white hover:opacity-90 px-12 py-8 h-auto text-xl font-bold shadow-2xl hover:shadow-3xl transition-all duration-300 group rounded-2xl"
+              >
+                <span>{t('startButton')}</span>
+                <ArrowRight className="ml-3 h-6 w-6 transition-transform group-hover:translate-x-1" />
+              </Button>
+
+              {/* Premium Info Pills */}
+              <div className="mt-8 flex items-center justify-center flex-wrap gap-4">
+                <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm px-5 py-3 rounded-full border border-accent/20 shadow-md">
+                  <Clock className="h-4 w-4 text-accent" />
+                  <span className="text-sm font-semibold text-foreground">Takes 2 minutes</span>
+                </div>
+                <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm px-5 py-3 rounded-full border border-accent/20 shadow-md">
+                  <Gift className="h-4 w-4 text-accent" />
+                  <span className="text-sm font-semibold text-foreground">100% Free</span>
+                </div>
+                <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm px-5 py-3 rounded-full border border-accent/20 shadow-md">
+                  <ShieldCheck className="h-4 w-4 text-accent" />
+                  <span className="text-sm font-semibold text-foreground">No credit card required</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+    </>
   )
 }

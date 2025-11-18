@@ -13,8 +13,8 @@ export function OrganizationSchema({ locale }: OrganizationSchemaProps) {
     url: `${process.env.NEXT_PUBLIC_SITE_URL}/${locale}`,
     logo: `${process.env.NEXT_PUBLIC_SITE_URL}/logo.png`,
     image: `${process.env.NEXT_PUBLIC_SITE_URL}/og-image.jpg`,
-    telephone: '+995-XXX-XXX-XXX',
-    email: 'info@soloestate.com',
+    telephone: '+995-511-107-142',
+    email: 'sales@soloestate.ge',
     address: {
       '@type': 'PostalAddress',
       addressCountry: 'GE',

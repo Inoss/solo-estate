@@ -58,8 +58,8 @@ export function ContactInfo({ locale }: { locale: string }) {
             </div>
             <div>
               <h3 className="font-semibold text-lg mb-2">Email</h3>
-              <a href="mailto:info@soloestate.ge" className="text-muted-foreground hover:text-accent transition-colors font-medium">
-                info@soloestate.ge
+              <a href="mailto:sales@soloestate.ge" className="text-muted-foreground hover:text-accent transition-colors font-medium">
+                sales@soloestate.ge
               </a>
               <p className="text-sm text-muted-foreground mt-1">We reply within 24 hours</p>
             </div>

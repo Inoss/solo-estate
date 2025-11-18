@@ -15,6 +15,7 @@ import {
   Inbox,
   TrendingUp,
   ChevronRight,
+  MessageSquare,
 } from 'lucide-react'
 import { useState } from 'react'
 import { signOut } from 'next-auth/react'
@@ -24,7 +25,8 @@ const navigation = [
   { name: 'Projects', href: '/admin/projects', icon: Building2, badge: null },
   { name: 'Developers', href: '/admin/developers', icon: Users, badge: null },
   { name: 'Articles', href: '/admin/articles', icon: FileText, badge: null },
-  { name: 'Leads', href: '/admin/leads', icon: Inbox, badge: 'new' },
+  { name: 'Contact Requests', href: '/admin/contact-requests', icon: MessageSquare, badge: null },
+  { name: 'Leads', href: '/admin/leads', icon: Inbox, badge: null },
   { name: 'Settings', href: '/admin/settings', icon: Settings, badge: null },
 ]
 

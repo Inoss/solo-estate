@@ -19,9 +19,9 @@ export function ContactMethods({ locale }: { locale: string }) {
     {
       icon: Mail,
       title: 'Email',
-      description: 'info@soloestate.ge',
+      description: 'sales@soloestate.ge',
       action: 'Send Email',
-      href: 'mailto:info@soloestate.ge',
+      href: 'mailto:sales@soloestate.ge',
     },
     {
       icon: Phone,

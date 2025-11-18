@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { sendContactEmail, sendAutoReplyEmail } from '@/lib/email'
+import { prisma } from '@/lib/db'
 
 export async function POST(request: NextRequest) {
   try {
@@ -45,6 +46,27 @@ export async function POST(request: NextRequest) {
 
     console.log('New contact form submission:', contactData)
 
+    // Save to database
+    try {
+      await prisma.contactRequest.create({
+        data: {
+          type: 'contact',
+          name,
+          email,
+          phone: phone || '',
+          subject,
+          message,
+          locale,
+          source: 'Contact Form',
+          status: 'new',
+        },
+      })
+      console.log('Contact request saved to database')
+    } catch (dbError) {
+      console.error('Database save failed:', dbError)
+      // Continue even if DB save fails
+    }
+
     // Send email notifications
     try {
       if (process.env.RESEND_API_KEY) {
@@ -55,11 +77,6 @@ export async function POST(request: NextRequest) {
       console.error('Email sending failed:', emailError)
       // Don't fail the request if email fails
     }
-
-    // TODO: Implement CRM integration
-    // if (process.env.HUBSPOT_API_KEY) {
-    //   await sendToCRM(contactData)
-    // }
 
     return NextResponse.json(
       {

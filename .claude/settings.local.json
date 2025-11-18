@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx prisma generate:*)",
+      "Bash(npm run dev:*)",
+      "Bash(ping:*)",
+      "Bash(nul)",
+      "Bash(if exist .env type .env)",
+      "Bash(if exist .env.local type .env.local)",
+      "Bash(git add:*)",
+      "Bash(git reset:*)",
+      "Bash(git commit:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

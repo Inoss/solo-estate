@@ -68,7 +68,7 @@ export async function sendRequestOfferEmail(data: RequestOfferEmailData) {
   try {
     const result = await resend.emails.send({
       from: process.env.EMAIL_FROM || 'SOLO Estate <noreply@soloestate.com>',
-      to: process.env.EMAIL_TO || 'info@soloestate.com',
+      to: process.env.EMAIL_TO || 'sales@soloestate.ge',
       replyTo: email,
       subject: emailSubject,
       html: emailBody,
@@ -111,7 +111,7 @@ export async function sendContactEmail(data: ContactEmailData) {
   try {
     const result = await resend.emails.send({
       from: process.env.EMAIL_FROM || 'SOLO Estate <noreply@soloestate.com>',
-      to: process.env.EMAIL_TO || 'info@soloestate.com',
+      to: process.env.EMAIL_TO || 'sales@soloestate.ge',
       replyTo: email,
       subject: emailSubject,
       html: emailBody,
@@ -142,9 +142,9 @@ export async function sendAutoReplyEmail(to: string, name: string, locale: strin
         <p>Our team will review your request and get back to you within 24 hours.</p>
         <p>In the meantime, feel free to explore our website or contact us directly:</p>
         <ul>
-          <li>Phone: +995 XXX XXX XXX</li>
-          <li>Email: info@soloestate.com</li>
-          <li>WhatsApp: +995 XXX XXX XXX</li>
+          <li>Phone: +995 511 107 142</li>
+          <li>Email: sales@soloestate.ge</li>
+          <li>WhatsApp: +995 511 107 142</li>
         </ul>
         <p>Best regards,<br>SOLO Estate Team</p>
       `,
@@ -158,9 +158,9 @@ export async function sendAutoReplyEmail(to: string, name: string, locale: strin
         <p>Наша команда рассмотрит ваш запрос и свяжется с вами в течение 24 часов.</p>
         <p>Тем временем, не стесняйтесь изучать наш сайт или связаться с нами напрямую:</p>
         <ul>
-          <li>Телефон: +995 XXX XXX XXX</li>
-          <li>Email: info@soloestate.com</li>
-          <li>WhatsApp: +995 XXX XXX XXX</li>
+          <li>Телефон: +995 511 107 142</li>
+          <li>Email: sales@soloestate.ge</li>
+          <li>WhatsApp: +995 511 107 142</li>
         </ul>
         <p>С уважением,<br>Команда SOLO Estate</p>
       `,
