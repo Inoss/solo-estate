@@ -49,3 +49,5 @@ next-env.d.ts
 /scripts/sample-investment-projects.json
 
 /lib/generated/prisma
+
+.vercel
