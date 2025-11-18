@@ -176,3 +176,4 @@ For questions about this project, refer to the technical specification or check:
 ---
 
 **Built with** Next.js 14, Sanity CMS, Tailwind CSS, TypeScript
+
