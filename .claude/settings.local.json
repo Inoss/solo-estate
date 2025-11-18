@@ -9,7 +9,9 @@
       "Bash(if exist .env.local type .env.local)",
       "Bash(git add:*)",
       "Bash(git reset:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(vercel:*)"
     ],
     "deny": [],
     "ask": []

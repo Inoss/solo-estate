@@ -1,6 +1,6 @@
 -- CreateTable
-CREATE TABLE "ContactRequest" (
-    "id" TEXT NOT NULL PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS "ContactRequest" (
+    "id" TEXT NOT NULL,
     "type" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "email" TEXT NOT NULL,
@@ -16,6 +16,8 @@ CREATE TABLE "ContactRequest" (
     "source" TEXT,
     "locale" TEXT,
     "status" TEXT NOT NULL DEFAULT 'new',
-    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updatedAt" DATETIME NOT NULL
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "ContactRequest_pkey" PRIMARY KEY ("id")
 );
