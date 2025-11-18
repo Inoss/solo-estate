@@ -1,17 +1,19 @@
 -- CreateTable
-CREATE TABLE "Admin" (
-    "id" TEXT NOT NULL PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS "Admin" (
+    "id" TEXT NOT NULL,
     "email" TEXT NOT NULL,
     "password" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "role" TEXT NOT NULL DEFAULT 'admin',
-    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updatedAt" DATETIME NOT NULL
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "Admin_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
-CREATE TABLE "Developer" (
-    "id" TEXT NOT NULL PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS "Developer" (
+    "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "slug" TEXT NOT NULL,
     "logo" TEXT,
@@ -22,16 +24,18 @@ CREATE TABLE "Developer" (
     "descriptionAz" TEXT,
     "descriptionHy" TEXT,
     "descriptionUk" TEXT,
-    "rating" REAL,
+    "rating" DOUBLE PRECISION,
     "completedProjects" INTEGER,
     "website" TEXT,
-    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updatedAt" DATETIME NOT NULL
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "Developer_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
-CREATE TABLE "Project" (
-    "id" TEXT NOT NULL PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS "Project" (
+    "id" TEXT NOT NULL,
     "slug" TEXT NOT NULL,
     "titleEn" TEXT NOT NULL,
     "titleKa" TEXT,
@@ -50,23 +54,23 @@ CREATE TABLE "Project" (
     "developerId" TEXT,
     "status" TEXT NOT NULL,
     "propertyType" TEXT NOT NULL,
-    "area" REAL,
+    "area" DOUBLE PRECISION,
     "locationCity" TEXT,
     "locationArea" TEXT,
     "locationAddress" TEXT,
-    "locationLat" REAL,
-    "locationLng" REAL,
-    "price" REAL NOT NULL,
-    "pricePerSqm" REAL,
+    "locationLat" DOUBLE PRECISION,
+    "locationLng" DOUBLE PRECISION,
+    "price" DOUBLE PRECISION NOT NULL,
+    "pricePerSqm" DOUBLE PRECISION,
     "currency" TEXT NOT NULL DEFAULT 'USD',
-    "priceRangeMin" REAL,
-    "priceRangeMax" REAL,
-    "yield" REAL,
-    "capRate" REAL,
-    "irr" REAL,
-    "monthlyRent" REAL,
-    "occupancy" REAL,
-    "managementFee" REAL,
+    "priceRangeMin" DOUBLE PRECISION,
+    "priceRangeMax" DOUBLE PRECISION,
+    "yield" DOUBLE PRECISION,
+    "capRate" DOUBLE PRECISION,
+    "irr" DOUBLE PRECISION,
+    "monthlyRent" DOUBLE PRECISION,
+    "occupancy" DOUBLE PRECISION,
+    "managementFee" DOUBLE PRECISION,
     "deliveryQuarter" TEXT,
     "deliveryYear" INTEGER,
     "coverImage" TEXT,
@@ -80,15 +84,16 @@ CREATE TABLE "Project" (
     "ogImage" TEXT,
     "featured" BOOLEAN NOT NULL DEFAULT false,
     "published" BOOLEAN NOT NULL DEFAULT true,
-    "publishedAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updatedAt" DATETIME NOT NULL,
-    CONSTRAINT "Project_developerId_fkey" FOREIGN KEY ("developerId") REFERENCES "Developer" ("id") ON DELETE SET NULL ON UPDATE CASCADE
+    "publishedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "Project_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
-CREATE TABLE "Article" (
-    "id" TEXT NOT NULL PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS "Article" (
+    "id" TEXT NOT NULL,
     "slug" TEXT NOT NULL,
     "titleEn" TEXT NOT NULL,
     "titleKa" TEXT,
@@ -119,14 +124,16 @@ CREATE TABLE "Article" (
     "ogImage" TEXT,
     "featured" BOOLEAN NOT NULL DEFAULT false,
     "published" BOOLEAN NOT NULL DEFAULT true,
-    "publishedAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updatedAt" DATETIME NOT NULL
+    "publishedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "Article_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
-CREATE TABLE "Settings" (
-    "id" TEXT NOT NULL PRIMARY KEY DEFAULT 'global',
+CREATE TABLE IF NOT EXISTS "Settings" (
+    "id" TEXT NOT NULL DEFAULT 'global',
     "siteNameEn" TEXT,
     "siteNameKa" TEXT,
     "siteNameRu" TEXT,
@@ -146,17 +153,22 @@ CREATE TABLE "Settings" (
     "defaultMetaDescription" TEXT,
     "defaultOgImage" TEXT,
     "customSettings" JSONB,
-    "updatedAt" DATETIME NOT NULL
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "Settings_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateIndex
-CREATE UNIQUE INDEX "Admin_email_key" ON "Admin"("email");
+CREATE UNIQUE INDEX IF NOT EXISTS "Admin_email_key" ON "Admin"("email");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "Developer_slug_key" ON "Developer"("slug");
+CREATE UNIQUE INDEX IF NOT EXISTS "Developer_slug_key" ON "Developer"("slug");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "Project_slug_key" ON "Project"("slug");
+CREATE UNIQUE INDEX IF NOT EXISTS "Project_slug_key" ON "Project"("slug");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "Article_slug_key" ON "Article"("slug");
+CREATE UNIQUE INDEX IF NOT EXISTS "Article_slug_key" ON "Article"("slug");
+
+-- AddForeignKey
+ALTER TABLE "Project" ADD CONSTRAINT "Project_developerId_fkey" FOREIGN KEY ("developerId") REFERENCES "Developer"("id") ON DELETE SET NULL ON UPDATE CASCADE;
