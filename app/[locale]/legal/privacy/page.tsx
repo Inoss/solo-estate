@@ -19,7 +19,6 @@ export default async function PrivacyPage({
   params: Promise<{ locale: string }>
 }) {
   const { locale } = await params
-  const t = await getTranslations({ locale, namespace: 'legal' })
 
   return (
     <div className="min-h-screen py-20 bg-background">

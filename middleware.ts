@@ -42,5 +42,7 @@ export default auth((req) => {
 
 export const config = {
   // Match all routes except static files
-  matcher: ['/', '/(ka|ru|he|az|hy|uk|en)/:path*', '/admin/:path*']
+  matcher: ['/', '/(ka|ru|he|az|hy|uk|en)/:path*', '/admin/:path*'],
+  // Use Node.js runtime instead of Edge Runtime for Prisma/bcryptjs compatibility
+  runtime: 'nodejs'
 };
