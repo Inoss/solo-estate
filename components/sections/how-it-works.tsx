@@ -54,10 +54,6 @@ export function HowItWorks() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8 relative">
         {/* Section Header */}
         <div className="mx-auto max-w-3xl text-center mb-16">
-          <div className="inline-flex items-center rounded-full bg-accent/10 px-4 py-2 text-sm font-semibold text-accent mb-4">
-            <span className="mr-2">🚀</span>
-            {t('badge')}
-          </div>
           <h2 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl mb-6">
             {t('title')}
             <span className="block mt-2 bg-gradient-to-r from-accent to-yellow-500 bg-clip-text text-transparent">
