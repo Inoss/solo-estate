@@ -11,7 +11,11 @@
       "Bash(git reset:*)",
       "Bash(git commit:*)",
       "Bash(git push:*)",
-      "Bash(vercel:*)"
+      "Bash(vercel:*)",
+      "Bash(npx tsx:*)",
+      "Bash(npx prisma db pull:*)",
+      "Bash(DATABASE_URL='postgres://07fd24f5e30ccf452f7b2aa9988fbe1ab21f6c7d9c9bdc76f6bcc0366bc3aa42:sk_735LgzoPXDcllFEI2uclR@db.prisma.io:5432/postgres?sslmode=require' npx tsx:*)",
+      "Bash(timeout /t 3 /nobreak)"
     ],
     "deny": [],
     "ask": []
