@@ -103,6 +103,9 @@ async function importToProduction() {
           where: { slug: proj.slug }
         })
 
+        // Calculate price - use priceFrom if available, otherwise default to 100000
+        const price = proj.priceFrom || 100000
+
         const projectData = {
           slug: proj.slug,
           developerId,
@@ -122,30 +125,8 @@ async function importToProduction() {
           descriptionUk: proj.descriptionUk,
           propertyType: proj.propertyType,
           status: proj.status,
-          city: proj.city,
-          cityEn: proj.cityEn,
-          cityKa: proj.cityKa,
-          cityRu: proj.cityRu,
-          cityHe: proj.cityHe,
-          cityAz: proj.cityAz,
-          cityHy: proj.cityHy,
-          cityUk: proj.cityUk,
-          location: proj.location,
-          locationEn: proj.locationEn,
-          locationKa: proj.locationKa,
-          locationRu: proj.locationRu,
-          locationHe: proj.locationHe,
-          locationAz: proj.locationAz,
-          locationHy: proj.locationHy,
-          locationUk: proj.locationUk,
-          priceFrom: proj.priceFrom,
-          priceTo: proj.priceTo,
+          price: price, // Required field in production schema
           pricePerSqm: proj.pricePerSqm,
-          minSqm: proj.minSqm,
-          maxSqm: proj.maxSqm,
-          completionDate: proj.completionDate ? new Date(proj.completionDate) : null,
-          yieldPercent: proj.yieldPercent,
-          roiPercent: proj.roiPercent,
           coverImage: proj.coverImage,
           gallery: proj.gallery,
           featured: proj.featured,
