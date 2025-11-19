@@ -103,12 +103,14 @@ async function importToProduction() {
           where: { slug: proj.slug }
         })
 
-        // Calculate price - use priceFrom if available, otherwise default to 100000
-        const price = proj.priceFrom || 100000
+        // Map local schema to production schema
+        const price = proj.priceFrom || proj.price || 100000
 
         const projectData = {
           slug: proj.slug,
           developerId,
+
+          // Titles
           titleEn: proj.titleEn,
           titleKa: proj.titleKa,
           titleRu: proj.titleRu,
@@ -116,6 +118,8 @@ async function importToProduction() {
           titleAz: proj.titleAz,
           titleHy: proj.titleHy,
           titleUk: proj.titleUk,
+
+          // Descriptions
           descriptionEn: proj.descriptionEn,
           descriptionKa: proj.descriptionKa,
           descriptionRu: proj.descriptionRu,
@@ -123,13 +127,56 @@ async function importToProduction() {
           descriptionAz: proj.descriptionAz,
           descriptionHy: proj.descriptionHy,
           descriptionUk: proj.descriptionUk,
+
+          // Basic info
           propertyType: proj.propertyType,
           status: proj.status,
-          price: price, // Required field in production schema
-          pricePerSqm: proj.pricePerSqm,
+          area: proj.area || proj.minSqm || null,
+
+          // Location (production uses single language fields)
+          locationCity: proj.city || proj.locationCity || null,
+          locationArea: proj.location || proj.locationArea || null,
+          locationAddress: proj.locationAddress || null,
+          locationLat: proj.locationLat || null,
+          locationLng: proj.locationLng || null,
+
+          // Pricing
+          price: price,
+          pricePerSqm: proj.pricePerSqm || null,
+          currency: proj.currency || 'USD',
+          priceRangeMin: proj.priceFrom || proj.priceRangeMin || null,
+          priceRangeMax: proj.priceTo || proj.priceRangeMax || null,
+
+          // Investment metrics (ROI %, Yield %, etc.)
+          yield: proj.yieldPercent || proj.yield || null,
+          capRate: proj.capRate || null,
+          irr: proj.roiPercent || proj.irr || null,
+          monthlyRent: proj.monthlyRent || null,
+          occupancy: proj.occupancy || null,
+          managementFee: proj.managementFee || null,
+
+          // Delivery
+          deliveryQuarter: proj.deliveryQuarter || null,
+          deliveryYear: proj.deliveryYear || (proj.completionDate ? new Date(proj.completionDate).getFullYear() : null),
+
+          // Media
           coverImage: proj.coverImage,
           gallery: proj.gallery,
-          featured: proj.featured,
+          videoUrl: proj.videoUrl || null,
+          floorPlans: proj.floorPlans || null,
+
+          // Features
+          highlights: proj.highlights || null,
+          documents: proj.documents || null,
+
+          // SEO
+          metaTitle: proj.metaTitle || null,
+          metaDescription: proj.metaDescription || null,
+          ogImage: proj.ogImage || null,
+
+          // Status
+          featured: proj.featured || false,
+          published: proj.published !== undefined ? proj.published : true,
           publishedAt: proj.publishedAt ? new Date(proj.publishedAt) : new Date(),
         }
 
