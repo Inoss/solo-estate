@@ -26,6 +26,9 @@ export default function EditProjectPage({ params }: { params: Promise<{ id: stri
   const [area, setArea] = useState("")
   const [price, setPrice] = useState("")
   const [currency, setCurrency] = useState("USD")
+  const [pricePerSqm, setPricePerSqm] = useState("")
+  const [yieldPercent, setYieldPercent] = useState("")
+  const [roiPercent, setRoiPercent] = useState("")
   const [coverImage, setCoverImage] = useState("")
   const [gallery, setGallery] = useState<string[]>([])
   const [published, setPublished] = useState(true)
@@ -66,6 +69,9 @@ export default function EditProjectPage({ params }: { params: Promise<{ id: stri
       setArea(project.area?.toString() || "")
       setPrice(project.price.toString())
       setCurrency(project.currency)
+      setPricePerSqm(project.pricePerSqm?.toString() || "")
+      setYieldPercent(project.yield?.toString() || "")
+      setRoiPercent(project.irr?.toString() || "")
       setCoverImage(project.coverImage || "")
       setGallery(project.gallery ? JSON.parse(project.gallery) : [])
       setPublished(project.published)
@@ -109,8 +115,11 @@ export default function EditProjectPage({ params }: { params: Promise<{ id: stri
         descriptionUk: description.uk,
         status,
         propertyType,
-        area: area || null,
+        area: area ? parseFloat(area) : null,
         price: parseFloat(price),
+        pricePerSqm: pricePerSqm ? parseFloat(pricePerSqm) : null,
+        yield: yieldPercent ? parseFloat(yieldPercent) : null,
+        irr: roiPercent ? parseFloat(roiPercent) : null,
         currency,
         coverImage,
         gallery,
@@ -289,6 +298,59 @@ export default function EditProjectPage({ params }: { params: Promise<{ id: stri
                 <option value="GEL">GEL</option>
                 <option value="RUB">RUB</option>
               </select>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-slate-700 mb-2">
+                Price per sqm
+              </label>
+              <input
+                type="number"
+                step="0.01"
+                value={pricePerSqm}
+                onChange={(e) => setPricePerSqm(e.target.value)}
+                className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+                placeholder="1500"
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Investment Metrics */}
+        <div className="bg-white rounded-lg shadow p-6 space-y-6">
+          <h2 className="text-xl font-semibold text-slate-900 border-b pb-3">
+            Investment Metrics
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label className="block text-sm font-medium text-slate-700 mb-2">
+                Yield % (per annum)
+              </label>
+              <input
+                type="number"
+                step="0.01"
+                value={yieldPercent}
+                onChange={(e) => setYieldPercent(e.target.value)}
+                className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+                placeholder="8.5"
+              />
+              <p className="text-sm text-slate-500 mt-1">Annual rental yield percentage</p>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-slate-700 mb-2">
+                ROI % (IRR)
+              </label>
+              <input
+                type="number"
+                step="0.01"
+                value={roiPercent}
+                onChange={(e) => setRoiPercent(e.target.value)}
+                className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+                placeholder="12.5"
+              />
+              <p className="text-sm text-slate-500 mt-1">Return on Investment / Internal Rate of Return</p>
             </div>
           </div>
         </div>
