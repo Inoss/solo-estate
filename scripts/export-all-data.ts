@@ -13,7 +13,7 @@ async function exportAllData() {
 
     // Export developers
     const developers = await prisma.developer.findMany({
-      orderBy: { nameEn: 'asc' }
+      orderBy: { name: 'asc' }
     })
 
     // Export projects
