@@ -89,14 +89,28 @@ html {
 @media (max-width: 768px) {
   /* Enhance text visibility on mobile for better readability */
   .text-muted-foreground {
-    color: #374151 !important; /* Darker gray for mobile - better contrast */
+    color: #1f2937 !important; /* Very dark gray for mobile - maximum contrast */
+    font-weight: 500 !important; /* Slightly bolder */
   }
 
-  /* Ensure small text is more readable on mobile */
+  /* All text size variants with muted foreground */
   .text-sm.text-muted-foreground,
-  .text-xs.text-muted-foreground {
-    color: #374151 !important;
-    font-weight: 500; /* Slightly bolder for better visibility */
+  .text-xs.text-muted-foreground,
+  .text-base.text-muted-foreground,
+  .text-lg.text-muted-foreground,
+  .text-xl.text-muted-foreground,
+  .text-2xl.text-muted-foreground {
+    color: #1f2937 !important;
+    font-weight: 500 !important;
+  }
+
+  /* Gray text colors - make them darker on mobile */
+  [class*="text-gray-200"],
+  [class*="text-gray-300"],
+  [class*="text-gray-400"],
+  [class*="text-gray-500"] {
+    color: #1f2937 !important;
+    font-weight: 500 !important;
   }
 
   /* Very small text needs even better contrast and increased size */
@@ -106,31 +120,45 @@ html {
   [class*="text-[11px]"] {
     font-size: 12px !important; /* Minimum readable size on mobile */
     font-weight: 600 !important; /* Bolder for visibility */
-    color: #1f2937 !important; /* Very dark gray - maximum contrast */
+    color: #111827 !important; /* Near black - maximum contrast */
   }
 
   /* Ensure text-foreground on white backgrounds has sufficient contrast */
   .bg-white .text-foreground,
   .bg-background .text-foreground,
   .bg-card .text-foreground {
-    color: #1a1a1a !important;
+    color: #111827 !important;
+  }
+
+  /* Subtitles and descriptions on white cards */
+  .bg-white .text-sm,
+  .bg-white .text-xs,
+  .bg-white p:not([class*="text-white"]),
+  .bg-white span:not([class*="text-white"]):not([class*="text-accent"]):not([class*="bg-"]),
+  .bg-card .text-sm,
+  .bg-card .text-xs {
+    color: #1f2937 !important;
+    font-weight: 500 !important;
+  }
+
+  /* Target paragraphs and text in light background sections */
+  section [class*="bg-white"] p,
+  section [class*="bg-background"] p,
+  section [class*="bg-card"] p {
+    color: #1f2937 !important;
   }
 
   /* Remove problematic opacity on light backgrounds that reduces text visibility */
-  .bg-white [class*="opacity-"],
-  .bg-background [class*="opacity-"],
-  .bg-card [class*="opacity-"] {
-    opacity: 1 !important; /* Remove opacity on text over light backgrounds for mobile */
+  .bg-white [class*="opacity-"]:not([class*="bg-"]),
+  .bg-background [class*="opacity-"]:not([class*="bg-"]),
+  .bg-card [class*="opacity-"]:not([class*="bg-"]) {
+    opacity: 1 !important;
   }
 
-  /* Specifically target text elements to ensure visibility */
-  .bg-white p,
-  .bg-white span,
-  .bg-white div:not([class*="bg-"]),
-  .bg-background p,
-  .bg-background span,
-  .bg-background div:not([class*="bg-"]) {
-    color: inherit;
+  /* Ensure all small descriptive text is visible */
+  .text-sm,
+  .text-xs {
+    font-weight: 500 !important;
   }
 }
 
