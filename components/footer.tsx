@@ -1,25 +1,24 @@
 'use client'
 
-import Link from 'next/link'
+import { Link } from '@/i18n/routing'
 import Image from 'next/image'
-import { useTranslations, useLocale } from 'next-intl'
+import { useTranslations } from 'next-intl'
 
 export function Footer() {
   const t = useTranslations('footer')
   const tCommon = useTranslations('common')
-  const locale = useLocale()
   const currentYear = new Date().getFullYear()
 
   const companyLinks = [
-    { name: tCommon('about'), href: `/${locale}/about` },
-    { name: tCommon('services'), href: `/${locale}/services` },
-    { name: tCommon('projects'), href: `/${locale}/projects` },
-    { name: tCommon('contact'), href: `/${locale}/contact` },
+    { name: tCommon('about'), href: '/about' },
+    { name: tCommon('services'), href: '/services' },
+    { name: tCommon('projects'), href: '/projects' },
+    { name: tCommon('contact'), href: '/contact' },
   ]
 
   const legalLinks = [
-    { name: t('terms'), href: `/${locale}/legal/terms` },
-    { name: t('privacy'), href: `/${locale}/legal/privacy` },
+    { name: t('terms'), href: '/legal/terms' },
+    { name: t('privacy'), href: '/legal/privacy' },
   ]
 
   const socialLinks = [
@@ -34,7 +33,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="col-span-1 md:col-span-2">
-            <Link href={`/${locale}`} className="inline-block mb-6 group">
+            <Link href="/" className="inline-block mb-6 group">
               <div className="relative">
                 <Image
                   src="/logo.png"

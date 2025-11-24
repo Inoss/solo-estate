@@ -1,24 +1,23 @@
 'use client'
 
-import Link from 'next/link'
+import { Link } from '@/i18n/routing'
 import Image from 'next/image'
-import { useTranslations, useLocale } from 'next-intl'
+import { useTranslations } from 'next-intl'
 import { LanguageSwitcher } from './language-switcher'
 import { Button } from './ui/button'
 import { useState } from 'react'
 
 export function Header() {
   const t = useTranslations('common')
-  const locale = useLocale()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   const navigation = [
-    { name: t('home'), href: `/${locale}` },
-    { name: t('projects'), href: `/${locale}/projects` },
-    { name: t('about'), href: `/${locale}/about` },
-    { name: t('services'), href: `/${locale}/services` },
-    { name: t('insights'), href: `/${locale}/insights` },
-    { name: t('contact'), href: `/${locale}/contact` },
+    { name: t('home'), href: '/' },
+    { name: t('projects'), href: '/projects' },
+    { name: t('about'), href: '/about' },
+    { name: t('services'), href: '/services' },
+    { name: t('insights'), href: '/insights' },
+    { name: t('contact'), href: '/contact' },
   ]
 
   return (
@@ -29,7 +28,7 @@ export function Header() {
       <nav className="mx-auto flex max-w-7xl items-center justify-between p-4 lg:px-8" aria-label="Global">
         {/* Logo */}
         <div className="flex lg:flex-1">
-          <Link href={`/${locale}`} className="-m-1.5 p-1.5 flex items-center group">
+          <Link href="/" className="-m-1.5 p-1.5 flex items-center group">
             <div className="relative">
               <Image
                 src="/logo.png"
@@ -84,7 +83,7 @@ export function Header() {
         {/* Right side - Language switcher and CTA */}
         <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-4 items-center">
           <LanguageSwitcher />
-          <Link href={`/${locale}/contact`}>
+          <Link href="/contact">
             <Button className="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-semibold shadow-lg shadow-amber-500/50 hover:shadow-amber-600/50 transition-all duration-300 hover:scale-105">
               {t('requestOffer')}
             </Button>
@@ -108,7 +107,7 @@ export function Header() {
             ))}
             <div className="flex flex-col gap-3 pt-4 border-t border-amber-900/20">
               <LanguageSwitcher />
-              <Link href={`/${locale}/contact`}>
+              <Link href="/contact">
                 <Button className="w-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-semibold shadow-lg shadow-amber-500/50">
                   {t('requestOffer')}
                 </Button>

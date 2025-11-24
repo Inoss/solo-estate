@@ -21,7 +21,14 @@
       "Bash(findstr:*)",
       "Bash(taskkill:*)",
       "Bash(cmd //c \"taskkill //PID 17152 //F\")",
-      "Bash(npx kill-port:*)"
+      "Bash(npx kill-port:*)",
+      "Bash(timeout /t 5 /nobreak)",
+      "Bash(dir:*)",
+      "Bash(npx prisma migrate:*)",
+      "Bash(if exist prismamigrationsmigration_lock.toml type prismamigrationsmigration_lock.toml)",
+      "Bash(if exist prismaprismadev.db echo Database exists)",
+      "Bash(npx prisma studio:*)",
+      "Bash(npm run build:local:*)"
     ],
     "deny": [],
     "ask": []

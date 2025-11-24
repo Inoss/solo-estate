@@ -2,13 +2,11 @@
 
 import { useTranslations } from 'next-intl'
 import { MessageSquare, Search, FileCheck, TrendingUp, ArrowRight } from 'lucide-react'
-import Link from 'next/link'
+import { Link } from '@/i18n/routing'
 import { Button } from '@/components/ui/button'
-import { useLocale } from 'next-intl'
 
 export function HowItWorks() {
   const t = useTranslations('home.howItWorks')
-  const locale = useLocale()
 
   const steps = [
     {
@@ -109,13 +107,13 @@ export function HowItWorks() {
         {/* CTA Section */}
         <div className="text-center mt-16">
           <div className="inline-flex flex-col sm:flex-row gap-4">
-            <Link href={`/${locale}/contact`}>
+            <Link href="/contact">
               <Button size="lg" className="gradient-gold text-white hover:opacity-90 px-8 py-6 h-auto text-lg font-bold shadow-xl group">
                 <span>{t('ctaPrimary')}</span>
                 <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Button>
             </Link>
-            <Link href={`/${locale}/projects`}>
+            <Link href="/projects">
               <Button size="lg" variant="outline" className="border-2 px-8 py-6 h-auto text-lg font-semibold">
                 {t('ctaSecondary')}
               </Button>

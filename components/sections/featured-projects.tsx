@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import Link from 'next/link'
+import { Link } from '@/i18n/routing'
 import { useTranslations, useLocale } from 'next-intl'
 import { ProjectCard } from '@/components/project-card'
 import { Button } from '@/components/ui/button'
@@ -158,7 +158,7 @@ export function FeaturedProjects({ projects }: FeaturedProjectsProps) {
 
         {/* Show More Button - BD Group Style */}
         <div className="text-center">
-          <Link href={`/${locale}/projects`}>
+          <Link href="/projects">
             <Button
               size="lg"
               className="gradient-gold text-white hover:opacity-90 px-10 py-6 h-auto text-base font-bold shadow-xl hover:shadow-2xl transition-all duration-300 group rounded-xl"

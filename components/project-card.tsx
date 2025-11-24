@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import Link from 'next/link'
+import { Link } from '@/i18n/routing'
 import { useLocale } from 'next-intl'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
@@ -72,7 +72,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
 
   return (
     <Card className="group overflow-hidden border border-border/50 shadow-md hover:shadow-2xl transition-all duration-500 card-hover-lift bg-white">
-      <Link href={`/${locale}/projects/${project.slug.current}`}>
+      <Link href={`/projects/${project.slug.current}`}>
         {/* Image Container with Gallery Thumbnails */}
         <div className="relative">
           <div className="relative h-64 w-full overflow-hidden bg-gradient-to-br from-muted to-muted/50">
@@ -153,7 +153,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
       </Link>
 
       <CardContent className="p-6">
-        <Link href={`/${locale}/projects/${project.slug.current}`}>
+        <Link href={`/projects/${project.slug.current}`}>
           {/* Title */}
           <h3 className="text-xl font-bold mb-2 line-clamp-2 group-hover:text-accent transition-colors duration-300 leading-tight">
             {project.title[locale] || project.title.en}
@@ -260,7 +260,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
         </div>
 
         {/* CTA Button */}
-        <Link href={`/${locale}/projects/${project.slug.current}`} className="block">
+        <Link href={`/projects/${project.slug.current}`} className="block">
           <Button
             className="w-full gradient-gold text-white hover:opacity-90 transition-all duration-300 group/btn shadow-lg hover:shadow-xl h-11 text-sm font-bold"
             size="lg"

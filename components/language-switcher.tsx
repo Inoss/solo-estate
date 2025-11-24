@@ -1,30 +1,43 @@
 'use client'
 
-import { usePathname, useRouter } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import { useLocale, useTranslations } from 'next-intl'
 import { locales, localeNames, type Locale } from '@/i18n'
-import { useTransition } from 'react'
+import { useState } from 'react'
 
 export function LanguageSwitcher() {
   const locale = useLocale() as Locale
-  const router = useRouter()
   const pathname = usePathname()
-  const [isPending, startTransition] = useTransition()
+  const [isPending, setIsPending] = useState(false)
   const t = useTranslations('common')
 
   const handleLanguageChange = (newLocale: Locale) => {
     if (newLocale === locale) return
 
-    startTransition(() => {
-      // Remove the current locale from pathname to get the path without locale
-      const pathWithoutLocale = pathname.replace(`/${locale}`, '') || '/'
+    setIsPending(true)
 
-      // Navigate to the new locale with the same path
-      const newPath = `/${newLocale}${pathWithoutLocale}`
+    // Extract current locale from pathname (more reliable than using state)
+    const pathParts = pathname.split('/').filter(Boolean)
+    const currentLocaleInPath = pathParts[0]
 
-      router.push(newPath)
-      router.refresh()
-    })
+    // Check if the first part is a valid locale
+    const isValidLocale = locales.includes(currentLocaleInPath as Locale)
+
+    let pathnameWithoutLocale = ''
+
+    if (isValidLocale) {
+      // Remove the locale from the beginning of the path
+      const remainingParts = pathParts.slice(1)
+      if (remainingParts.length > 0) {
+        pathnameWithoutLocale = '/' + remainingParts.join('/')
+      }
+    }
+
+    // Construct new path with new locale
+    const newPath = `/${newLocale}${pathnameWithoutLocale}`
+
+    // Use window.location for a clean navigation
+    window.location.href = newPath
   }
 
   return (

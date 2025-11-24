@@ -1,14 +1,13 @@
 'use client'
 
-import Link from 'next/link'
+import { Link } from '@/i18n/routing'
 import Image from 'next/image'
-import { useTranslations, useLocale } from 'next-intl'
+import { useTranslations } from 'next-intl'
 import { Button } from '@/components/ui/button'
 import { ArrowRight, TrendingUp, Building2, Shield, Users } from 'lucide-react'
 
 export function Hero() {
   const t = useTranslations('home.hero')
-  const locale = useLocale()
 
   return (
     <section className="relative overflow-hidden min-h-[90vh] flex items-center">
@@ -79,7 +78,7 @@ export function Hero() {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 mb-12 animate-fade-in justify-center">
-            <Link href={`/${locale}/projects`}>
+            <Link href="/projects">
               <Button
                 size="lg"
                 className="w-full sm:w-auto gradient-gold text-white hover:opacity-90 transition-all duration-300 shadow-xl hover:shadow-2xl px-8 py-7 h-auto text-lg font-bold group"
@@ -89,7 +88,7 @@ export function Hero() {
               </Button>
             </Link>
 
-            <Link href={`/${locale}/contact`}>
+            <Link href="/contact">
               <Button
                 size="lg"
                 variant="outline"
