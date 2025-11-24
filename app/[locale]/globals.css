@@ -85,80 +85,98 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Mobile text contrast improvement */
+/* Mobile text contrast improvement - ONLY for light backgrounds */
 @media (max-width: 768px) {
-  /* Enhance text visibility on mobile for better readability */
-  .text-muted-foreground {
-    color: #1f2937 !important; /* Very dark gray for mobile - maximum contrast */
-    font-weight: 500 !important; /* Slightly bolder */
-  }
+  /* Enhance text visibility on mobile for light backgrounds only */
 
-  /* All text size variants with muted foreground */
-  .text-sm.text-muted-foreground,
-  .text-xs.text-muted-foreground,
-  .text-base.text-muted-foreground,
-  .text-lg.text-muted-foreground,
-  .text-xl.text-muted-foreground,
-  .text-2xl.text-muted-foreground {
-    color: #1f2937 !important;
-    font-weight: 500 !important;
-  }
-
-  /* Gray text colors - make them darker on mobile */
-  [class*="text-gray-200"],
-  [class*="text-gray-300"],
-  [class*="text-gray-400"],
-  [class*="text-gray-500"] {
-    color: #1f2937 !important;
-    font-weight: 500 !important;
-  }
-
-  /* Very small text needs even better contrast and increased size */
-  [class*="text-[8px]"],
-  [class*="text-[9px]"],
-  [class*="text-[10px]"],
-  [class*="text-[11px]"] {
-    font-size: 12px !important; /* Minimum readable size on mobile */
-    font-weight: 600 !important; /* Bolder for visibility */
-    color: #111827 !important; /* Near black - maximum contrast */
-  }
-
-  /* Ensure text-foreground on white backgrounds has sufficient contrast */
-  .bg-white .text-foreground,
-  .bg-background .text-foreground,
-  .bg-card .text-foreground {
-    color: #111827 !important;
-  }
-
-  /* Subtitles and descriptions on white cards */
+  /* Text on white backgrounds */
+  .bg-white .text-muted-foreground,
   .bg-white .text-sm,
   .bg-white .text-xs,
+  .bg-white .text-base,
+  .bg-white .text-lg,
+  .bg-white .text-foreground,
   .bg-white p:not([class*="text-white"]),
-  .bg-white span:not([class*="text-white"]):not([class*="text-accent"]):not([class*="bg-"]),
-  .bg-card .text-sm,
-  .bg-card .text-xs {
+  .bg-white span:not([class*="text-white"]):not([class*="text-accent"]):not([class*="bg-"]) {
     color: #1f2937 !important;
     font-weight: 500 !important;
   }
 
-  /* Target paragraphs and text in light background sections */
-  section [class*="bg-white"] p,
-  section [class*="bg-background"] p,
-  section [class*="bg-card"] p {
+  /* Text on card backgrounds (light) */
+  .bg-card .text-muted-foreground,
+  .bg-card .text-sm,
+  .bg-card .text-xs,
+  .bg-card .text-base,
+  .bg-card .text-foreground,
+  .bg-card p:not([class*="text-white"]),
+  .bg-card span:not([class*="text-white"]):not([class*="text-accent"]):not([class*="bg-"]) {
     color: #1f2937 !important;
+    font-weight: 500 !important;
+  }
+
+  /* Text on general light background */
+  .bg-background .text-muted-foreground,
+  .bg-background .text-sm,
+  .bg-background .text-xs,
+  .bg-background .text-foreground,
+  .bg-background p:not([class*="text-white"]) {
+    color: #1f2937 !important;
+    font-weight: 500 !important;
+  }
+
+  /* Text on gradient-premium background (light) */
+  .bg-gradient-premium .text-muted-foreground,
+  .bg-gradient-premium .text-sm,
+  .bg-gradient-premium .text-xs,
+  .bg-gradient-premium p:not([class*="text-white"]) {
+    color: #1f2937 !important;
+    font-weight: 500 !important;
+  }
+
+  /* Target paragraphs and text in sections with light background classes */
+  section [class*="bg-white"] .text-muted-foreground,
+  section [class*="bg-white"] p:not([class*="text-white"]),
+  section [class*="bg-background"] .text-muted-foreground,
+  section [class*="bg-background"] p:not([class*="text-white"]),
+  section [class*="bg-card"] .text-muted-foreground,
+  section [class*="bg-card"] p:not([class*="text-white"]) {
+    color: #1f2937 !important;
+    font-weight: 500 !important;
+  }
+
+  /* Gray text colors on light backgrounds only */
+  .bg-white [class*="text-gray-"],
+  .bg-card [class*="text-gray-"],
+  .bg-background [class*="text-gray-"],
+  .bg-gradient-premium [class*="text-gray-"] {
+    color: #1f2937 !important;
+    font-weight: 500 !important;
+  }
+
+  /* Very small text on light backgrounds - increase size and contrast */
+  .bg-white [class*="text-[8px]"],
+  .bg-white [class*="text-[9px]"],
+  .bg-white [class*="text-[10px]"],
+  .bg-white [class*="text-[11px]"],
+  .bg-card [class*="text-[8px]"],
+  .bg-card [class*="text-[9px]"],
+  .bg-card [class*="text-[10px]"],
+  .bg-card [class*="text-[11px]"],
+  .bg-background [class*="text-[8px]"],
+  .bg-background [class*="text-[9px]"],
+  .bg-background [class*="text-[10px]"],
+  .bg-background [class*="text-[11px]"] {
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    color: #111827 !important;
   }
 
   /* Remove problematic opacity on light backgrounds that reduces text visibility */
   .bg-white [class*="opacity-"]:not([class*="bg-"]),
   .bg-background [class*="opacity-"]:not([class*="bg-"]),
-  .bg-card [class*="opacity-"]:not([class*="bg-"]) {
+  .bg-card [class*="opacity-"]:not([class*="bg-"]),
+  .bg-gradient-premium [class*="opacity-"]:not([class*="bg-"]) {
     opacity: 1 !important;
-  }
-
-  /* Ensure all small descriptive text is visible */
-  .text-sm,
-  .text-xs {
-    font-weight: 500 !important;
   }
 }
 
