@@ -98,6 +98,40 @@ html {
     color: #374151 !important;
     font-weight: 500; /* Slightly bolder for better visibility */
   }
+
+  /* Very small text needs even better contrast and increased size */
+  [class*="text-[8px]"],
+  [class*="text-[9px]"],
+  [class*="text-[10px]"],
+  [class*="text-[11px]"] {
+    font-size: 12px !important; /* Minimum readable size on mobile */
+    font-weight: 600 !important; /* Bolder for visibility */
+    color: #1f2937 !important; /* Very dark gray - maximum contrast */
+  }
+
+  /* Ensure text-foreground on white backgrounds has sufficient contrast */
+  .bg-white .text-foreground,
+  .bg-background .text-foreground,
+  .bg-card .text-foreground {
+    color: #1a1a1a !important;
+  }
+
+  /* Remove problematic opacity on light backgrounds that reduces text visibility */
+  .bg-white [class*="opacity-"],
+  .bg-background [class*="opacity-"],
+  .bg-card [class*="opacity-"] {
+    opacity: 1 !important; /* Remove opacity on text over light backgrounds for mobile */
+  }
+
+  /* Specifically target text elements to ensure visibility */
+  .bg-white p,
+  .bg-white span,
+  .bg-white div:not([class*="bg-"]),
+  .bg-background p,
+  .bg-background span,
+  .bg-background div:not([class*="bg-"]) {
+    color: inherit;
+  }
 }
 
 /* Focus styles for accessibility */
