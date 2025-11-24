@@ -92,10 +92,12 @@ html {
   .bg-card,
   .bg-background,
   .bg-gradient-premium,
+  section:has(.image-overlay-light),
   section:has([class*="bg-white"]),
   section:has([class*="bg-card"]),
   div:has(> .bg-white),
-  div:has(> .bg-card) {
+  div:has(> .bg-card),
+  div:has(> .image-overlay-light) {
     --muted-foreground: #1f2937;
     --foreground: #111827;
   }
@@ -104,7 +106,8 @@ html {
   .bg-white *:not([class*="bg-gradient"]):not([class*="bg-primary"]):not([class*="bg-accent"]):not(.text-white):not(.text-accent),
   .bg-card *:not([class*="bg-gradient"]):not([class*="bg-primary"]):not([class*="bg-accent"]):not(.text-white):not(.text-accent),
   .bg-background *:not([class*="bg-gradient"]):not([class*="bg-primary"]):not([class*="bg-accent"]):not(.text-white):not(.text-accent),
-  .bg-gradient-premium *:not([class*="bg-gradient"]):not([class*="bg-primary"]):not([class*="bg-accent"]):not(.text-white):not(.text-accent) {
+  .bg-gradient-premium *:not([class*="bg-gradient"]):not([class*="bg-primary"]):not([class*="bg-accent"]):not(.text-white):not(.text-accent),
+  section:has(.image-overlay-light) *:not([class*="bg-gradient"]):not([class*="bg-primary"]):not([class*="bg-accent"]):not(.text-white):not(.text-accent) {
     color: #1f2937 !important;
   }
 
@@ -113,6 +116,7 @@ html {
   .bg-card .text-muted-foreground,
   .bg-background .text-muted-foreground,
   .bg-gradient-premium .text-muted-foreground,
+  section:has(.image-overlay-light) .text-muted-foreground,
   section [class*="bg-white"] .text-muted-foreground,
   section [class*="bg-card"] .text-muted-foreground {
     color: #1f2937 !important;
@@ -123,6 +127,7 @@ html {
   .bg-white .text-foreground,
   .bg-card .text-foreground,
   .bg-background .text-foreground,
+  section:has(.image-overlay-light) .text-foreground,
   section [class*="bg-white"] .text-foreground,
   section [class*="bg-card"] .text-foreground {
     color: #111827 !important;
@@ -134,19 +139,28 @@ html {
   .bg-white .text-sm,
   .bg-white .text-xs,
   .bg-white .text-base,
+  .bg-white .text-xl,
   .bg-white span:not([class*="text-white"]):not([class*="text-accent"]),
   .bg-card p,
   .bg-card .text-sm,
   .bg-card .text-xs,
   .bg-card .text-base,
+  .bg-card .text-xl,
   .bg-card span:not([class*="text-white"]):not([class*="text-accent"]),
   .bg-background p,
   .bg-background .text-sm,
   .bg-background .text-xs,
+  .bg-background .text-xl,
   .bg-background span:not([class*="text-white"]),
   .bg-gradient-premium p:not([class*="text-white"]),
   .bg-gradient-premium .text-sm:not([class*="text-white"]),
-  .bg-gradient-premium .text-xs:not([class*="text-white"]) {
+  .bg-gradient-premium .text-xs:not([class*="text-white"]),
+  .bg-gradient-premium .text-xl:not([class*="text-white"]),
+  section:has(.image-overlay-light) p:not([class*="text-white"]):not([class*="bg-gradient"]):not([class*="bg-primary"]),
+  section:has(.image-overlay-light) .text-sm:not([class*="text-white"]):not([class*="bg-gradient"]):not([class*="bg-primary"]),
+  section:has(.image-overlay-light) .text-xs:not([class*="text-white"]):not([class*="bg-gradient"]):not([class*="bg-primary"]),
+  section:has(.image-overlay-light) .text-xl:not([class*="text-white"]):not([class*="bg-gradient"]):not([class*="bg-primary"]),
+  section:has(.image-overlay-light) span:not([class*="text-white"]):not([class*="text-accent"]):not([class*="bg-gradient"]):not([class*="bg-primary"]) {
     color: #1f2937 !important;
     font-weight: 500 !important;
   }
@@ -184,6 +198,25 @@ html {
   .bg-card [class*="opacity-"]:not([class*="bg-"]),
   .bg-gradient-premium [class*="opacity-"]:not([class*="bg-"]) {
     opacity: 1 !important;
+  }
+
+  /* Fix glass button visibility on mobile - especially in hero section */
+  button.glass,
+  a button.glass,
+  .glass.text-white,
+  button.glass.text-white {
+    background: rgba(255, 255, 255, 0.25) !important; /* Increased from 0.1 to 0.25 */
+    border: 2px solid rgba(255, 255, 255, 0.5) !important; /* Thicker, more visible border */
+    backdrop-filter: blur(15px) !important;
+    -webkit-backdrop-filter: blur(15px) !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5) !important; /* Add shadow to white text */
+    font-weight: 600 !important; /* Make text bolder */
+  }
+
+  button.glass:hover,
+  .glass.text-white:hover {
+    background: rgba(255, 255, 255, 0.35) !important;
+    border-color: rgba(255, 255, 255, 0.7) !important;
   }
 }
 
