@@ -28,7 +28,12 @@
       "Bash(if exist prismamigrationsmigration_lock.toml type prismamigrationsmigration_lock.toml)",
       "Bash(if exist prismaprismadev.db echo Database exists)",
       "Bash(npx prisma studio:*)",
-      "Bash(npm run build:local:*)"
+      "Bash(npm run build:local:*)",
+      "Bash(node -e:*)",
+      "Bash(node check-translations.js:*)",
+      "Bash(node check-common.js:*)",
+      "Bash(node validate-all.js:*)",
+      "Bash(del check-translations.js check-common.js validate-all.js)"
     ],
     "deny": [],
     "ask": []
