@@ -87,64 +87,71 @@ html {
 
 /* Mobile text contrast improvement - ONLY for light backgrounds */
 @media (max-width: 768px) {
-  /* Enhance text visibility on mobile for light backgrounds only */
+  /* Override CSS variables for light background contexts */
+  .bg-white,
+  .bg-card,
+  .bg-background,
+  .bg-gradient-premium,
+  section:has([class*="bg-white"]),
+  section:has([class*="bg-card"]),
+  div:has(> .bg-white),
+  div:has(> .bg-card) {
+    --muted-foreground: #1f2937;
+    --foreground: #111827;
+  }
 
-  /* Text on white backgrounds */
+  /* Direct color overrides with maximum specificity for light backgrounds */
+  .bg-white *:not([class*="bg-gradient"]):not([class*="bg-primary"]):not([class*="bg-accent"]):not(.text-white):not(.text-accent),
+  .bg-card *:not([class*="bg-gradient"]):not([class*="bg-primary"]):not([class*="bg-accent"]):not(.text-white):not(.text-accent),
+  .bg-background *:not([class*="bg-gradient"]):not([class*="bg-primary"]):not([class*="bg-accent"]):not(.text-white):not(.text-accent),
+  .bg-gradient-premium *:not([class*="bg-gradient"]):not([class*="bg-primary"]):not([class*="bg-accent"]):not(.text-white):not(.text-accent) {
+    color: #1f2937 !important;
+  }
+
+  /* Ensure muted-foreground text is dark on light backgrounds */
   .bg-white .text-muted-foreground,
+  .bg-card .text-muted-foreground,
+  .bg-background .text-muted-foreground,
+  .bg-gradient-premium .text-muted-foreground,
+  section [class*="bg-white"] .text-muted-foreground,
+  section [class*="bg-card"] .text-muted-foreground {
+    color: #1f2937 !important;
+    font-weight: 500 !important;
+  }
+
+  /* Ensure foreground text is very dark on light backgrounds */
+  .bg-white .text-foreground,
+  .bg-card .text-foreground,
+  .bg-background .text-foreground,
+  section [class*="bg-white"] .text-foreground,
+  section [class*="bg-card"] .text-foreground {
+    color: #111827 !important;
+    font-weight: 500 !important;
+  }
+
+  /* Text sizes on light backgrounds */
+  .bg-white p,
   .bg-white .text-sm,
   .bg-white .text-xs,
   .bg-white .text-base,
-  .bg-white .text-lg,
-  .bg-white .text-foreground,
-  .bg-white p:not([class*="text-white"]),
-  .bg-white span:not([class*="text-white"]):not([class*="text-accent"]):not([class*="bg-"]) {
-    color: #1f2937 !important;
-    font-weight: 500 !important;
-  }
-
-  /* Text on card backgrounds (light) */
-  .bg-card .text-muted-foreground,
+  .bg-white span:not([class*="text-white"]):not([class*="text-accent"]),
+  .bg-card p,
   .bg-card .text-sm,
   .bg-card .text-xs,
   .bg-card .text-base,
-  .bg-card .text-foreground,
-  .bg-card p:not([class*="text-white"]),
-  .bg-card span:not([class*="text-white"]):not([class*="text-accent"]):not([class*="bg-"]) {
-    color: #1f2937 !important;
-    font-weight: 500 !important;
-  }
-
-  /* Text on general light background */
-  .bg-background .text-muted-foreground,
+  .bg-card span:not([class*="text-white"]):not([class*="text-accent"]),
+  .bg-background p,
   .bg-background .text-sm,
   .bg-background .text-xs,
-  .bg-background .text-foreground,
-  .bg-background p:not([class*="text-white"]) {
+  .bg-background span:not([class*="text-white"]),
+  .bg-gradient-premium p:not([class*="text-white"]),
+  .bg-gradient-premium .text-sm:not([class*="text-white"]),
+  .bg-gradient-premium .text-xs:not([class*="text-white"]) {
     color: #1f2937 !important;
     font-weight: 500 !important;
   }
 
-  /* Text on gradient-premium background (light) */
-  .bg-gradient-premium .text-muted-foreground,
-  .bg-gradient-premium .text-sm,
-  .bg-gradient-premium .text-xs,
-  .bg-gradient-premium p:not([class*="text-white"]) {
-    color: #1f2937 !important;
-    font-weight: 500 !important;
-  }
-
-  /* Target paragraphs and text in sections with light background classes */
-  section [class*="bg-white"] .text-muted-foreground,
-  section [class*="bg-white"] p:not([class*="text-white"]),
-  section [class*="bg-background"] .text-muted-foreground,
-  section [class*="bg-background"] p:not([class*="text-white"]),
-  section [class*="bg-card"] .text-muted-foreground,
-  section [class*="bg-card"] p:not([class*="text-white"]) {
-    color: #1f2937 !important;
-    font-weight: 500 !important;
-  }
-
-  /* Gray text colors on light backgrounds only */
+  /* Gray text colors on light backgrounds */
   .bg-white [class*="text-gray-"],
   .bg-card [class*="text-gray-"],
   .bg-background [class*="text-gray-"],
@@ -171,7 +178,7 @@ html {
     color: #111827 !important;
   }
 
-  /* Remove problematic opacity on light backgrounds that reduces text visibility */
+  /* Remove problematic opacity on light backgrounds */
   .bg-white [class*="opacity-"]:not([class*="bg-"]),
   .bg-background [class*="opacity-"]:not([class*="bg-"]),
   .bg-card [class*="opacity-"]:not([class*="bg-"]),
